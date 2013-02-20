@@ -1,0 +1,42 @@
+<Events>
+	<Event id="0">
+        <creatorid>1361370740</creatorid>
+        <date>2011-03-30</date>
+        <title>CS429 Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="1">
+        <creatorid>1361370740</creatorid>
+        <date>2011-04-01</date>
+		<title>Bieber Fever</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="2">
+        <creatorid>1361370740</creatorid>
+        <date>2011-04-02</date>
+		<title>Unofficial Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="3">
+        <creatorid>1361370740</creatorid>
+        <date>2011-04-07</date>
+		<title>Milestone 3 Bar Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="4">
+        <creatorid>1361370740</creatorid>
+        <date>2011-04-23</date>
+		<title>Milestone 4 Bar Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+</Events>

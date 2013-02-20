@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Events>
+	<Event id="0">
+        <creatorid>1361370740</creatorid>
+        <date>2011-02-23</date>
+        <title>CS429 Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="1">
+        <creatorid>1361370740</creatorid>
+        <date>2011-02-23</date>
+		<title>Bieber Fever</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="2">
+        <creatorid>1361370740</creatorid>
+        <date>2011-03-02</date>
+		<title>Unofficial Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="3">
+        <creatorid>1361370740</creatorid>
+        <date>2011-03-15</date>
+		<title>Milestone 3 Bar Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+    <Event id="4">
+        <creatorid>1361370740</creatorid>
+        <date>2011-03-05</date>
+		<title>Milestone 4 Bar Crawl</title>
+        <description>desc... </description>
+        <picture>images/logos/firehaus.png</picture>
+        <privacy>0</privacy>
+	</Event>
+</Events>
+
+<EventBars>
+	<Bar id="0">
+		<time>8:00</time>
+	</Bar>
+    <Bar id="1">
+        <time>9:00</time>
+    </Bar>
+    <Bar id="0">
+		<time>10:00</time>
+	</Bar>
+    <Bar id="2">
+        <time>2:00</time>
+    </Bar>
+</EventBars>
+
+<Bars>
+    <Bar id="0">
+        <name>Firehaus</name>
+        <address>123 fake st.</address>
+        <description>desc...</description>
+        <logo>images/logos/firehaus.png</logo>
+    </Bar>
+    <Bar id="1">
+        <name>The Clybourne</name>
+        <address>123 fake st.</address>
+        <description>cly's is cool</description>
+        <logo>images/logos/clybourne.png</logo>
+    </Bar>
+    <Bar id="2">
+        <description>this is murphy's</description>
+        <name>Murphy's Pub</name>
+        <address>123 fake st.</address>
+        <logo>images/logos/murphys.png</logo>
+    </Bar>    
+</Bars>
+

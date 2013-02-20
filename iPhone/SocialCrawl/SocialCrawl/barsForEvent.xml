@@ -1,0 +1,14 @@
+<EventBars>
+	<Bar id="3">
+		<time>20:00:00</time>
+	</Bar>
+    <Bar id="2">
+        <time>21:00:00</time>
+    </Bar>
+    <Bar id="1">
+		<time>22:00:00</time>
+	</Bar>
+    <Bar id="16">
+        <time>2:00:00</time>
+    </Bar>
+</EventBars>

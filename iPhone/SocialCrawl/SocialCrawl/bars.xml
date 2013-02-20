@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<Bars>
+    <Bar id="1">
+        <name>Firehaus</name>
+        <address>708 South Sixth Street</address>
+        <description>Firehaus, opened in 2005, a great bar!</description>
+        <logo>images/logos/firehaus.png</logo>
+    </Bar>
+    
+    <Bar id="2">
+        <name>The Clybourne</name>
+        <address>706 South Sixth Street</address>
+        <description>Really cool place!</description>
+        <logo>images/logos/clybourne.png</logo>
+    </Bar>
+    <Bar id="3">
+        
+        <name>Murphy's Pub</name>
+        <address>604 East Green Street</address>
+        <description>Hipsters and such</description>
+        <logo>images/logos/murphys.png</logo>
+    </Bar>
+    <Bar id="4">
+        <name>Brothers</name>
+        
+        <address>613 East Green Street</address>
+        <description>Brothers ultimate mission is to provide a comprehensive entertainment venue, with an emphasis on fun, safety, and cleanliness. We will provide great service to our customers through a well trained and caring staff that pledges to get it right. We will strive to lead, not follow, and be better than we were the day before.</description>
+        <logo>images/logos/brothers.png</logo>
+    </Bar>
+    <Bar id="5">
+        <name>Joe's Brewery</name>
+        <address>706 South 5th Street</address>
+        
+        <description>Founded in 1991 as a brewpub and grill, but mostly a way to fill a dilapidated, unrentable building, Joe&#x92;s has grown into a much-loved fixture on campus popular among students, alumni, and townspeople alike.</description>
+        <logo>images/logos/joes.png</logo>
+    </Bar>
+    <Bar id="6">
+        <name>Kam's</name>
+        <address>618 East Daniel Street</address>
+        
+        <description>Home of the drinking Illini.</description>
+        <logo>images/logos/kams.png</logo>
+    </Bar>
+    <Bar id="7">
+        <name>Fire Station Pizza and Pub</name>
+        <address>510 East John Street</address>
+        <description></description>
+        
+        <logo>images/logos/firestation.png</logo>
+    </Bar>
+    <Bar id="8">
+        <name>Legends</name>
+        <address>522 East Green Street</address>
+        <description>Legends, located in the heart of campus town, is the cornerstone of Illini pride.</description>
+        <logo>images/logos/legends.png</logo>
+        
+    </Bar>
+    <Bar id="9">
+        <name>White Horse Inn</name>
+        <address>112 East Green Street</address>
+        <description></description>
+        <logo>images/logos/whitehorse.png</logo>
+    </Bar>
+    
+    <Bar id="10">
+        <name>Geovanti's</name>
+        <address>401 East Green Street</address>
+        <description>Chicken strips the size of your forearm.</description>
+        <logo>images/logos/geovantis.png</logo>
+    </Bar>
+    <Bar id="11">
+        
+        <name>Zorba's</name>
+        <address>627 East Green Street</address>
+        <description>Greek</description>
+        <logo>images/logos/zorbas.png</logo>
+    </Bar>
+    <Bar id="12">
+        <name>The Canopy Club</name>
+        
+        <address>708 South Goodwin Avenue</address>
+        <description>Music and booze</description>
+        <logo>images/logos/canopy.png</logo>
+    </Bar>
+    <Bar id="13">
+        <name>88 Broadway</name>
+        <address>142 Lincoln Square</address>
+        
+        <description>88 Broadway is Urbana's premier special event venue.</description>
+        <logo>images/logos/88broadway.png</logo>
+    </Bar>
+    <Bar id="14">
+        <name>The Highdive</name>
+        <address>51 East Main Street</address>
+        <description></description>
+        
+        <logo>images/logos/highdive.png</logo>
+    </Bar>
+    <Bar id="15">
+        <name>Chester Street Dance Club</name>
+        <address>63 East Chester Street</address>
+        <description></description>
+        <logo>images/logos/cstreet.png</logo>
+        
+    </Bar>
+    <Bar id="16">
+        <name>The Red Lion</name>
+        <address>211 East Green Street</address>
+        <description></description>
+        <logo>images/logos/redlion.png</logo>
+    </Bar>
+    
+    <Bar id="17">
+        <name>Soma Ultralounge</name>
+        <address>320 North Neil Street</address>
+        <description>Talk about setting the mood. With an atmosphere flushed with warm reds and bathed in caramel and gold lighting, the mood at soma is always one of urbane expectation. Anything can happen here, and does.</description>
+        <logo>images/logos/soma.png</logo>
+    </Bar>
+    <Bar id="18">
+        
+        <name>Guido's Bar and Grill</name>
+        <address>2 East Main Street</address>
+        <description></description>
+        <logo>images/logos/guidos.png</logo>
+    </Bar>
+    <Bar id="19">
+        <name>Seven Saints</name>
+        
+        <address>32 East Chester Street</address>
+        <description></description>
+        <logo>images/logos/sevensaints.png</logo>
+    </Bar>
+    <Bar id="20">
+        <name>Cowboy Monkey</name>
+        <address>6 Taylor Street</address>
+        
+        <description></description>
+        <logo>images/logos/cowboymonkey.png</logo>
+    </Bar>
+    <Bar id="21">
+        <name>Jupiter's Pizzeria and Billiards</name>
+        <address>39 East Main Street</address>
+        <description></description>
+        
+        <logo>images/logos/jupiters.png</logo>
+    </Bar>
+    <Bar id="22">
+        <name>The Blind Pig Co.</name>
+        <address>120 North Walnut Street</address>
+        <description></description>
+        <logo>images/logos/blindpig.png</logo>
+        
+    </Bar>
+    <Bar id="23">
+        <name>The Blind Pig Brewery</name>
+        <address>120 North Neil Street</address>
+        <description></description>
+        <logo>images/logos/blindpigbrew.png</logo>
+    </Bar>
+    
+    <Bar id="24">
+        <name>Illini Inn</name>
+        <address>901 South Fourth Street</address>
+        <description></description>
+        <logo>images/logos/illiniinn.png</logo>
+    </Bar>
+    <Bar id="25">
+        
+        <name>Tumble Inn Tavern</name>
+        <address>302 South Neil Street</address>
+        <description></description>
+        <logo>images/logos/tumbleinn.png</logo>
+    </Bar>
+</Bars>
