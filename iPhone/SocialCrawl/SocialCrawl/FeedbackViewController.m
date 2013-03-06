@@ -59,9 +59,8 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-- (IBAction)pressedSend:(id)sender{
-SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+- (IBAction)pressedSend:(id)sender
+{
     //start the activity indicator set a timer to turn it off
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(turnOffActivityIndicator:) userInfo:nil repeats:NO];

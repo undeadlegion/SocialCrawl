@@ -34,7 +34,7 @@
 		0FDAE4A216CBDC280046CBE5 /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE45416CBDC280046CBE5 /* 111-user.png */; };
 		0FDAE4A316CBDC280046CBE5 /* 112-group.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE45516CBDC280046CBE5 /* 112-group.png */; };
 		0FDAE4A416CBDC280046CBE5 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE45716CBDC280046CBE5 /* Bar.m */; };
-		0FDAE4A616CBDC280046CBE5 /* BarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE45B16CBDC280046CBE5 /* BarDetailViewController.m */; };
+		0FDAE4A616CBDC280046CBE5 /* BarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE45B16CBDC280046CBE5 /* BarInfoViewController.m */; };
 		0FDAE4A716CBDC280046CBE5 /* BarForEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE45D16CBDC280046CBE5 /* BarForEvent.m */; };
 		0FDAE4A816CBDC280046CBE5 /* bars.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE45E16CBDC280046CBE5 /* bars.xml */; };
 		0FDAE4A916CBDC280046CBE5 /* BarsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE46016CBDC280046CBE5 /* BarsFetcher.m */; };
@@ -47,14 +47,11 @@
 		0FDAE4B416CBDC280046CBE5 /* commentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE46D16CBDC280046CBE5 /* commentIcon.png */; };
 		0FDAE4B516CBDC280046CBE5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE46F16CBDC280046CBE5 /* Constants.m */; };
 		0FDAE4BB16CBDC280046CBE5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE47C16CBDC280046CBE5 /* Event.m */; };
-		0FDAE4BC16CBDC280046CBE5 /* EventCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE47E16CBDC280046CBE5 /* EventCommentsViewController.m */; };
-		0FDAE4BD16CBDC280046CBE5 /* EventGuestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48016CBDC280046CBE5 /* EventGuestsViewController.m */; };
 		0FDAE4BE16CBDC280046CBE5 /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48216CBDC280046CBE5 /* EventInfoViewController.m */; };
 		0FDAE4BF16CBDC280046CBE5 /* EventMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48416CBDC280046CBE5 /* EventMapViewController.m */; };
 		0FDAE4C016CBDC280046CBE5 /* events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE48516CBDC280046CBE5 /* events.xml */; };
 		0FDAE4C116CBDC280046CBE5 /* EventSegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48716CBDC280046CBE5 /* EventSegmentsController.m */; };
 		0FDAE4C216CBDC280046CBE5 /* EventsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48916CBDC280046CBE5 /* EventsFetcher.m */; };
-		0FDAE4C316CBDC280046CBE5 /* EventWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48B16CBDC280046CBE5 /* EventWallViewController.m */; };
 		0FDAE4C416CBDC280046CBE5 /* eventxmlformat.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE48C16CBDC280046CBE5 /* eventxmlformat.xml */; };
 		0FDAE4C516CBDC280046CBE5 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48E16CBDC280046CBE5 /* FeedbackViewController.m */; };
 		0FDAE4C616CBDC280046CBE5 /* FeedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE49016CBDC280046CBE5 /* FeedPost.m */; };
@@ -62,7 +59,6 @@
 		0FDAE4CB16CBDC280046CBE5 /* man_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE49516CBDC280046CBE5 /* man_48.png */; };
 		0FDAE4CC16CBDC280046CBE5 /* man_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE49616CBDC280046CBE5 /* man_64.png */; };
 		0FDAE4CD16CBDC280046CBE5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE49816CBDC280046CBE5 /* Reachability.m */; };
-		0FDAE4CF16CBDC280046CBE5 /* SelectGuestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE49C16CBDC280046CBE5 /* SelectGuestsViewController.m */; };
 		0FDAE4D016CBDC280046CBE5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE49D16CBDC280046CBE5 /* Settings.bundle */; };
 		0FDAE4D116CBDC280046CBE5 /* WallPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE49F16CBDC280046CBE5 /* WallPost.m */; };
 		0FDAE4DD16CC09990046CBE5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE4DC16CC09990046CBE5 /* MapKit.framework */; };
@@ -116,8 +112,8 @@
 		0FDAE45516CBDC280046CBE5 /* 112-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "112-group.png"; sourceTree = "<group>"; };
 		0FDAE45616CBDC280046CBE5 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
 		0FDAE45716CBDC280046CBE5 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
-		0FDAE45A16CBDC280046CBE5 /* BarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarDetailViewController.h; sourceTree = "<group>"; };
-		0FDAE45B16CBDC280046CBE5 /* BarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarDetailViewController.m; sourceTree = "<group>"; };
+		0FDAE45A16CBDC280046CBE5 /* BarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarInfoViewController.h; sourceTree = "<group>"; };
+		0FDAE45B16CBDC280046CBE5 /* BarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarInfoViewController.m; sourceTree = "<group>"; };
 		0FDAE45C16CBDC280046CBE5 /* BarForEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarForEvent.h; sourceTree = "<group>"; };
 		0FDAE45D16CBDC280046CBE5 /* BarForEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarForEvent.m; sourceTree = "<group>"; };
 		0FDAE45E16CBDC280046CBE5 /* bars.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bars.xml; sourceTree = "<group>"; };
@@ -136,10 +132,6 @@
 		0FDAE46F16CBDC280046CBE5 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0FDAE47B16CBDC280046CBE5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		0FDAE47C16CBDC280046CBE5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		0FDAE47D16CBDC280046CBE5 /* EventCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCommentsViewController.h; sourceTree = "<group>"; };
-		0FDAE47E16CBDC280046CBE5 /* EventCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCommentsViewController.m; sourceTree = "<group>"; };
-		0FDAE47F16CBDC280046CBE5 /* EventGuestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventGuestsViewController.h; sourceTree = "<group>"; };
-		0FDAE48016CBDC280046CBE5 /* EventGuestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventGuestsViewController.m; sourceTree = "<group>"; };
 		0FDAE48116CBDC280046CBE5 /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
 		0FDAE48216CBDC280046CBE5 /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
 		0FDAE48316CBDC280046CBE5 /* EventMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMapViewController.h; sourceTree = "<group>"; };
@@ -149,8 +141,6 @@
 		0FDAE48716CBDC280046CBE5 /* EventSegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSegmentsController.m; sourceTree = "<group>"; };
 		0FDAE48816CBDC280046CBE5 /* EventsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsFetcher.h; sourceTree = "<group>"; };
 		0FDAE48916CBDC280046CBE5 /* EventsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsFetcher.m; sourceTree = "<group>"; };
-		0FDAE48A16CBDC280046CBE5 /* EventWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventWallViewController.h; sourceTree = "<group>"; };
-		0FDAE48B16CBDC280046CBE5 /* EventWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EventWallViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0FDAE48C16CBDC280046CBE5 /* eventxmlformat.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = eventxmlformat.xml; sourceTree = "<group>"; };
 		0FDAE48D16CBDC280046CBE5 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		0FDAE48E16CBDC280046CBE5 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
@@ -161,8 +151,6 @@
 		0FDAE49616CBDC280046CBE5 /* man_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man_64.png; sourceTree = "<group>"; };
 		0FDAE49716CBDC280046CBE5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		0FDAE49816CBDC280046CBE5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		0FDAE49B16CBDC280046CBE5 /* SelectGuestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectGuestsViewController.h; sourceTree = "<group>"; };
-		0FDAE49C16CBDC280046CBE5 /* SelectGuestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectGuestsViewController.m; sourceTree = "<group>"; };
 		0FDAE49D16CBDC280046CBE5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0FDAE49E16CBDC280046CBE5 /* WallPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallPost.h; sourceTree = "<group>"; };
 		0FDAE49F16CBDC280046CBE5 /* WallPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallPost.m; sourceTree = "<group>"; };
@@ -204,6 +192,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FAF0F4216D7361200DDCF6C /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
 		0FDAE3F516CBD7E50046CBE5 = {
 			isa = PBXGroup;
 			children = (
@@ -370,18 +365,11 @@
 			children = (
 				0FDAE4E216CC17220046CBE5 /* SocialCrawlViewController.h */,
 				0FDAE4E316CC17230046CBE5 /* SocialCrawlViewController.m */,
-				0FDAE45A16CBDC280046CBE5 /* BarDetailViewController.h */,
-				0FDAE45B16CBDC280046CBE5 /* BarDetailViewController.m */,
-				0FDAE47D16CBDC280046CBE5 /* EventCommentsViewController.h */,
-				0FDAE47E16CBDC280046CBE5 /* EventCommentsViewController.m */,
-				0FDAE47F16CBDC280046CBE5 /* EventGuestsViewController.h */,
-				0FDAE48016CBDC280046CBE5 /* EventGuestsViewController.m */,
-				0FDAE48A16CBDC280046CBE5 /* EventWallViewController.h */,
-				0FDAE48B16CBDC280046CBE5 /* EventWallViewController.m */,
+				0FDAE45A16CBDC280046CBE5 /* BarInfoViewController.h */,
+				0FDAE45B16CBDC280046CBE5 /* BarInfoViewController.m */,
 				0FDAE48D16CBDC280046CBE5 /* FeedbackViewController.h */,
 				0FDAE48E16CBDC280046CBE5 /* FeedbackViewController.m */,
-				0FDAE49B16CBDC280046CBE5 /* SelectGuestsViewController.h */,
-				0FDAE49C16CBDC280046CBE5 /* SelectGuestsViewController.m */,
+				0FAF0F4216D7361200DDCF6C /* Facebook */,
 				0FDAE4D516CBDD110046CBE5 /* Segments */,
 			);
 			name = Controllers;
@@ -519,24 +507,20 @@
 				0FDAE40E16CBD7E50046CBE5 /* main.m in Sources */,
 				0FDAE41216CBD7E50046CBE5 /* SocialCrawlAppDelegate.m in Sources */,
 				0FDAE4A416CBDC280046CBE5 /* Bar.m in Sources */,
-				0FDAE4A616CBDC280046CBE5 /* BarDetailViewController.m in Sources */,
+				0FDAE4A616CBDC280046CBE5 /* BarInfoViewController.m in Sources */,
 				0FDAE4A716CBDC280046CBE5 /* BarForEvent.m in Sources */,
 				0FDAE4A916CBDC280046CBE5 /* BarsFetcher.m in Sources */,
 				0FDAE4AB16CBDC280046CBE5 /* BarsForEventFetcher.m in Sources */,
 				0FDAE4AC16CBDC280046CBE5 /* BarsForEventViewController.m in Sources */,
 				0FDAE4B516CBDC280046CBE5 /* Constants.m in Sources */,
 				0FDAE4BB16CBDC280046CBE5 /* Event.m in Sources */,
-				0FDAE4BC16CBDC280046CBE5 /* EventCommentsViewController.m in Sources */,
-				0FDAE4BD16CBDC280046CBE5 /* EventGuestsViewController.m in Sources */,
 				0FDAE4BE16CBDC280046CBE5 /* EventInfoViewController.m in Sources */,
 				0FDAE4BF16CBDC280046CBE5 /* EventMapViewController.m in Sources */,
 				0FDAE4C116CBDC280046CBE5 /* EventSegmentsController.m in Sources */,
 				0FDAE4C216CBDC280046CBE5 /* EventsFetcher.m in Sources */,
-				0FDAE4C316CBDC280046CBE5 /* EventWallViewController.m in Sources */,
 				0FDAE4C516CBDC280046CBE5 /* FeedbackViewController.m in Sources */,
 				0FDAE4C616CBDC280046CBE5 /* FeedPost.m in Sources */,
 				0FDAE4CD16CBDC280046CBE5 /* Reachability.m in Sources */,
-				0FDAE4CF16CBDC280046CBE5 /* SelectGuestsViewController.m in Sources */,
 				0FDAE4D116CBDC280046CBE5 /* WallPost.m in Sources */,
 				0FDAE4E416CC17230046CBE5 /* SocialCrawlViewController.m in Sources */,
 				0F0DF19016D2ECDB00F8D62A /* DataFetcher.m in Sources */,

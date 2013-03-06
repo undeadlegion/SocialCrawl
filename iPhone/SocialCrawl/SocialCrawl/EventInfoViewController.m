@@ -9,9 +9,6 @@
 #import "EventInfoViewController.h"
 #import "Event.h"
 #import "BarForEvent.h"
-#import "EventGuestsViewController.h"
-#import "SelectGuestsViewController.h"
-#import "EventWallViewController.h"
 
 @implementation EventInfoViewController
 @synthesize currentEvent, serverURL;
@@ -31,15 +28,6 @@
     return self;
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -51,18 +39,11 @@
     tableTitle.textColor = [UIColor blackColor];
     tableTitle.backgroundColor = [self.tableView backgroundColor];
     tableTitle.font = [UIFont boldSystemFontOfSize:20];
-    tableTitle.textAlignment = UITextAlignmentCenter;
+    tableTitle.textAlignment = NSTextAlignmentCenter;
     tableTitle.text = currentEvent.title;
     self.tableView.tableHeaderView = tableTitle;
     
     [self.tableView reloadData];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -71,7 +52,7 @@
     tableTitle.textColor = [UIColor blackColor];
     tableTitle.backgroundColor = [self.tableView backgroundColor];
     tableTitle.font = [UIFont boldSystemFontOfSize:20];
-    tableTitle.textAlignment = UITextAlignmentCenter;
+    tableTitle.textAlignment = NSTextAlignmentCenter;
     tableTitle.text = currentEvent.title;
     self.tableView.tableHeaderView = tableTitle;
     
@@ -95,7 +76,7 @@
 }
 
 - (CGFloat)getMessageHeight:(NSString *) text {
-    return [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(270,300) lineBreakMode:UILineBreakModeWordWrap].height;
+    return [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(270,300) lineBreakMode:NSLineBreakByWordWrapping].height;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -163,7 +144,7 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.textLabel.text = currentEvent.description;
             cell.textLabel.font = [cell.textLabel.font fontWithSize:14];
-            cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
             cell.textLabel.numberOfLines = 0;
             break;
         
@@ -186,23 +167,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == EVENT_GUESTS) {
-        SelectGuestsViewController *selectGuestsViewController = [[SelectGuestsViewController alloc] initWithNibName:@"SelectGuestsViewController" bundle:nil];
-        if (useServer)
-            selectGuestsViewController.eventID = currentEvent.eventId;
-        else //for testing purposes
-            selectGuestsViewController.eventID = @"201994573163915"; //Blackhawk Bar Crawl
-        [self.navigationController pushViewController:selectGuestsViewController animated:YES];
-    }
-    
-    else if (indexPath.section == EVENT_WALL) {
-        EventWallViewController *eventWallViewController = [[EventWallViewController alloc] initWithNibName:@"EventWallViewController" bundle:nil];
-        if (useServer)
-            eventWallViewController.eventID = currentEvent.eventId;
-        else //for testing purposes
-            eventWallViewController.eventID = @"201994573163915"; //Blackhawk Bar Crawl
-        [self.navigationController pushViewController:eventWallViewController animated:YES];
-    }
+
 }
 
 @end

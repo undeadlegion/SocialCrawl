@@ -12,9 +12,11 @@
 #define kCurrentSection 0
 #define kPastSection 1
 
+#define kSpecialsSection 0
 #define kDescriptionSection 1
 #define kContactSection 2
-#define kSpecialsSection 0
+
+
 #define kAddressRow 0
 #define kWebsiteRow 1
 #define kFacebookId 754465610

@@ -11,7 +11,7 @@
 #import "Bar.h"
 #import "BarForEvent.h"
 #import "SocialCrawlAppDelegate.h"
-#import "BarDetailViewController.h"
+#import "BarInfoViewController.h"
 
 @implementation EventMapViewController
 @synthesize mapView, barsDictionary;
@@ -134,7 +134,7 @@
     MKPinAnnotationView *pinView = (MKPinAnnotationView *)calloutAccessoryView.superview;
     Bar *selectedBar = pinView.annotation;
     
-    BarDetailViewController *detailViewController = [[BarDetailViewController alloc] initWithNibName:@"BarDetailViewController" bundle:nil];
+    BarInfoViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BarInfoViewController"];
     detailViewController.currentBar = selectedBar;
     detailViewController.currentDateId = currentEvent.dateId;
 

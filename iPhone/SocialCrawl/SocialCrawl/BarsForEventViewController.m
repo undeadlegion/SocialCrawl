@@ -9,7 +9,7 @@
 #import "BarsForEventViewController.h"
 #import "Event.h"
 #import "BarForEvent.h"
-#import "BarDetailViewController.h"
+#import "BarInfoViewController.h"
 #import "BarsForEventFetcher.h"
 #import "Bar.h"
 #import "SocialCrawlAppDelegate.h"
@@ -17,23 +17,6 @@
 
 @implementation BarsForEventViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 - (NSDictionary *)barsDictionary {
     if (!_barsDictionary) {
@@ -155,7 +138,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BarDetailViewController *detailViewController = [[BarDetailViewController alloc] initWithNibName:@"BarDetailViewController" bundle:nil];
+    BarInfoViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BarInfoViewController"];
     
     BarForEvent *eventBar;
     if(indexPath.section == kCurrentSection)
@@ -211,8 +194,8 @@
         NSCalendar *calendar = [NSCalendar currentCalendar];
         unsigned unitFlags = NSYearCalendarUnit|NSMonthCalendarUnit |NSDayCalendarUnit| NSHourCalendarUnit |NSMinuteCalendarUnit |NSSecondCalendarUnit;
         NSDateComponents *dateComps = [calendar components:unitFlags fromDate:[NSDate date] toDate:barForEvent.time options:0];
-        int years = [dateComps year];
-        int months = [dateComps month];
+//        int years = [dateComps year];
+//        int months = [dateComps month];
         int days = [dateComps day];
         int hours = [dateComps hour];
         int minutes = [dateComps minute];
@@ -283,14 +266,6 @@
     }
     
 }
-
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
-    
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{}
-
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{}
 
 
 @end
