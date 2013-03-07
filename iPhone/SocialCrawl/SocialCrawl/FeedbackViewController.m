@@ -1,9 +1,9 @@
 //
 //  FeedbackViewController.m
-//  CampusCrawler
+//  SocialCrawl
 //
-//  Created by James Lubowich on 4/23/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
 #import "FeedbackViewController.h"
@@ -42,17 +42,9 @@
                                                object:nil];
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)turnOffActivityIndicator:(NSTimer*)timer{

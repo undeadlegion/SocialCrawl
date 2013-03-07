@@ -64,7 +64,7 @@
     NSBlockOperation *theOp = [NSBlockOperation blockOperationWithBlock:^{
         NSLog(@"Server:  %@ from server", dataType);
         dataFromServer = [dataFetcher fetchDataFromPath:dataPath relativeTo:serverURL isURL:useServer];
-        NSLog(@"Serevr: Loaded %@ from server", dataType);
+        NSLog(@"Server: Loaded %@ from server", dataType);
     }];
     // post completion notification on main thread
     [theOp setCompletionBlock:^(void){
@@ -186,4 +186,10 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"bars" object:nil];
+}
+
 @end

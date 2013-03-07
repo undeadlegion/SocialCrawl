@@ -1,9 +1,9 @@
 //
 //  EventDetailViewController.h
-//  CampusCrawler
+//  SocialCrawl
 //
-//  Created by James Lubowich on 2/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

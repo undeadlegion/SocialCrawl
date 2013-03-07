@@ -34,16 +34,20 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>us.crawlwith</string>
+			<string>us.socialcrawlwith</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb183973304975501</string>
+				<string>fb581955835147917</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>FacebookAppID</key>
+	<string>581955835147917</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

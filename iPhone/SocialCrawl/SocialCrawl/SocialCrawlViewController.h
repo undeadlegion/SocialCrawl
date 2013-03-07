@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddEventViewController.h"
 @class EventSegmentsController;
 
-@interface SocialCrawlViewController : UITableViewController
+@interface SocialCrawlViewController : UITableViewController <AddEventViewControllerDelegate>
 @property (strong, nonatomic) EventSegmentsController *eventSegmentsController;
 @property (strong, nonatomic) NSDictionary *eventsList;
 @property (strong, nonatomic) NSMutableArray *currentEvents;

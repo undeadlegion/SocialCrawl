@@ -1,15 +1,15 @@
 //
 //  EventSegmentsController.m
-//  CampusCrawler
+//  SocialCrawl
 //
-//  Created by James Lubowich on 2/22/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
 #import "EventSegmentsController.h"
 #import "BarsForEventViewController.h"
-#import "EventInfoViewController.h"
-#import "EventMapViewController.h"
+#import "InfoForEventViewController.h"
+#import "MapForEventViewController.h"
 #import "Event.h"
 #import "Constants.h"
 
@@ -54,7 +54,7 @@ BOOL isResettingIndex;
     incomingViewController.navigationItem.titleView = segmentedControl;
     incomingViewController.navigationItem.prompt = @"View Event Details";
     
-    ((EventInfoViewController *)incomingViewController).currentEvent = self.currentEvent;
+    ((InfoForEventViewController *)incomingViewController).currentEvent = self.currentEvent;
     
     [self.navigationController popViewControllerAnimated:NO];
     [self.navigationController pushViewController:incomingViewController animated:NO];
@@ -93,8 +93,8 @@ BOOL isResettingIndex;
 
 - (void)initSegmentViewControllers{
     BarsForEventViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BarsForEventViewController"];
-    EventInfoViewController *infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EventInfoViewController"];
-    EventMapViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EventMapViewController"];
+    InfoForEventViewController *infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoForEventViewController"];
+    MapForEventViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MapForEventViewController"];
     
     self.viewControllers = [[NSArray alloc] initWithObjects:detailViewController,infoViewController, mapViewController,nil];
     

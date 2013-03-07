@@ -1,9 +1,9 @@
 //
 //  BarInfoViewController.m
-//  CampusCrawler
+//  SocialCrawl
 //
-//  Created by James Lubowich on 2/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
 #import "BarInfoViewController.h"
@@ -21,6 +21,16 @@
     self.title = self.currentBar.name;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+}
+
+- (IBAction)unwindFromBarInfoViewController:(UIStoryboardSegue *)segue
+{
+    NSLog(@"Unwinding segue!");
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

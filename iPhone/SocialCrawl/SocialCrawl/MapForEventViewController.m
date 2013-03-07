@@ -1,38 +1,26 @@
 //
-//  EventMapViewController.m
-//  CampusCrawler
+//  MapForEventViewController.h
+//  SocialCrawl
 //
-//  Created by James Lubowich on 2/22/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
-#import "EventMapViewController.h"
+#import "MapForEventViewController.h"
 #import "Event.h"
 #import "Bar.h"
 #import "BarForEvent.h"
 #import "SocialCrawlAppDelegate.h"
 #import "BarInfoViewController.h"
 
-@implementation EventMapViewController
-@synthesize mapView, barsDictionary;
-@synthesize currentEvent, serverURL, viewToggle;
+@implementation MapForEventViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+- (NSDictionary *)barsDictionary {
+    if (!_barsDictionary) {
+        SocialCrawlAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        _barsDictionary = delegate.barsDictionary;
     }
-    return self;
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+    return _barsDictionary;
 }
 
 #pragma mark - View lifecycle
@@ -50,33 +38,35 @@
     region.span=span;
     region.center=location;
     
-    [mapView setRegion:region animated:NO];
-    [mapView regionThatFits:region];
+    [self.mapView setRegion:region animated:NO];
+    [self.mapView regionThatFits:region];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
 }
 
-
-- (void)viewDidUnload
+- (void)barsFinishedLoading:(NSNotification *)notif
 {
-    self.barsDictionary = nil;
-    [self setMapView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.barsDictionary = notif.userInfo;
+    // TODO: reload data
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"bars" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     barAnnotations = [[NSMutableArray alloc] init];
     //add all annotations
-    for (BarForEvent *barForEvent in currentEvent.barsForEvent) {
-        Bar *bar = [barsDictionary objectForKey:barForEvent.barId];
+    for (BarForEvent *barForEvent in self.currentEvent.barsForEvent) {
+        Bar *bar = [self.barsDictionary objectForKey:barForEvent.barId];
         [barAnnotations addObject:bar];
-        [mapView addAnnotation:bar];
+        [self.mapView addAnnotation:bar];
     }
     
     [self goToLocation];
@@ -85,7 +75,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     //remove all annotations
     for (Bar *bar in barAnnotations) {
-        [mapView removeAnnotation:bar];
+        [self.mapView removeAnnotation:bar];
     }
 }
 
@@ -136,15 +126,11 @@
     
     BarInfoViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BarInfoViewController"];
     detailViewController.currentBar = selectedBar;
-    detailViewController.currentDateId = currentEvent.dateId;
+    detailViewController.currentDateId = self.currentEvent.dateId;
 
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 //    MKPlacemark *placemark = [MKPlacemark alloc] initWithCoordinate:<#(CLLocationCoordinate2D)#> addressDictionary:<#(NSDictionary *)#>
 
 //    if(addAnnotation != nil) 

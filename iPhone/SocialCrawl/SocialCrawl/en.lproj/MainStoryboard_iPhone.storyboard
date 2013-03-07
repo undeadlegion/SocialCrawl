@@ -19,7 +19,23 @@
             </objects>
             <point key="canvasLocation" x="-594" y="-481"/>
         </scene>
-        <!--Bar Info View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="fcc-RT-1p5">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="InS-NY-rus" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="j6D-1P-MtJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rM1-JS-36r">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="h8h-UW-0sK" kind="relationship" relationship="rootViewController" id="VRv-gm-BrW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEU-DR-7tQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="-491"/>
+        </scene>
+        <!--Bar Info View Controller - Title-->
         <scene sceneID="wEA-5D-kJk">
             <objects>
                 <tableViewController storyboardIdentifier="BarInfoViewController" id="h8h-UW-0sK" customClass="BarInfoViewController" sceneMemberID="viewController">
@@ -74,6 +90,13 @@
                             <outlet property="delegate" destination="h8h-UW-0sK" id="xbb-uJ-AW3"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="i6N-3I-Lig">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="7DC-sA-NRs">
+                            <connections>
+                                <segue destination="n1X-UO-27C" kind="unwind" unwindAction="unwindToBarsForEvent:" id="d4R-vJ-v9B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="headerViewImage" destination="jdE-Ay-tsp" id="Ave-GT-ooi"/>
@@ -81,8 +104,9 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Swf-QT-SyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="n1X-UO-27C" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="634" y="-481"/>
+            <point key="canvasLocation" x="820" y="-481"/>
         </scene>
         <!--Bars For Event View Controller-->
         <scene sceneID="bNY-ll-Zt0">
@@ -113,6 +137,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="InS-NY-rus" kind="modal" identifier="BarInfo" id="Bmo-ND-Gb9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -123,7 +150,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqp-n4-A7p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="236" y="-481"/>
+            <point key="canvasLocation" x="-243" y="-481"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -177,16 +204,22 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="SocialCrawl" id="vmf-eN-Qkk"/>
+                    <navigationItem key="navigationItem" title="SocialCrawl" id="vmf-eN-Qkk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KzY-OM-qGC">
+                            <connections>
+                                <segue destination="E5T-BZ-Qe6" kind="modal" identifier="AddEvent" id="kac-RF-VAn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E2-Gq-bmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-167" y="187"/>
         </scene>
-        <!--Event Info View Controller-->
+        <!--Info For Event View Controller-->
         <scene sceneID="siC-fb-gQ1">
             <objects>
-                <tableViewController storyboardIdentifier="EventInfoViewController" id="LFi-LO-ai6" customClass="EventInfoViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="InfoForEventViewController" id="LFi-LO-ai6" customClass="InfoForEventViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="zVB-EZ-iu2">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,10 +245,135 @@
             </objects>
             <point key="canvasLocation" x="236" y="187"/>
         </scene>
-        <!--Event Map View Controller-->
+        <!--Add Event View Controller - Add SocialCrawl-->
+        <scene sceneID="71m-uz-eD9">
+            <objects>
+                <viewController id="itH-kd-frK" customClass="AddEventViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dMu-iP-dOT">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-k8-HTI">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add Existing SocialCrawl">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="LPg-Gp-voD" kind="push" id="raV-sg-jZV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4w-LE-hYq">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Create New SocialCrawl">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Ooc-Jo-BPd" kind="push" id="yxo-du-fpL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OC2-k8-HTI" firstAttribute="top" secondItem="dMu-iP-dOT" secondAttribute="top" constant="230" id="6fc-cL-1oo"/>
+                            <constraint firstItem="OC2-k8-HTI" firstAttribute="leading" secondItem="g4w-LE-hYq" secondAttribute="leading" type="default" id="Qhe-qZ-rsz"/>
+                            <constraint firstItem="g4w-LE-hYq" firstAttribute="top" secondItem="dMu-iP-dOT" secondAttribute="top" constant="162" id="dOO-wt-bLI"/>
+                            <constraint firstItem="OC2-k8-HTI" firstAttribute="trailing" secondItem="g4w-LE-hYq" secondAttribute="trailing" type="default" id="jdF-BO-MKp"/>
+                            <constraint firstItem="g4w-LE-hYq" firstAttribute="centerX" secondItem="dMu-iP-dOT" secondAttribute="centerX" type="default" id="xbF-Ty-J32"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add SocialCrawl" id="LKx-qR-3NX">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MBy-8T-XYU">
+                            <connections>
+                                <action selector="cancel:" destination="itH-kd-frK" id="YjL-lj-5zz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SSR-tf-qyN">
+                            <connections>
+                                <action selector="done:" destination="itH-kd-frK" id="hJz-MX-Xp4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYH-Jp-eVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-130" y="938"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="q8c-e4-uQO">
+            <objects>
+                <tableViewController id="Ooc-Jo-BPd" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mwc-V9-F7X">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="V0E-3d-HkN">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ooc-Jo-BPd" id="iD5-mr-UhT"/>
+                            <outlet property="delegate" destination="Ooc-Jo-BPd" id="yVt-xa-TUu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="x0f-Mu-Zhu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5N-nC-ZOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="346" y="919"/>
+        </scene>
+        <!--View Controller - Add SocialCrawl-->
+        <scene sceneID="0u7-mV-bZm">
+            <objects>
+                <viewController id="LPg-Gp-voD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wih-YR-Ebl">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RYG-d0-nQj">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter the Social Crawl Identifier" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="zCc-Hb-3G9">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zCc-Hb-3G9" firstAttribute="leading" secondItem="wih-YR-Ebl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="6ns-A1-dUy"/>
+                            <constraint firstItem="RYG-d0-nQj" firstAttribute="leading" secondItem="wih-YR-Ebl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Aaj-fi-zJJ"/>
+                            <constraint firstAttribute="trailing" secondItem="zCc-Hb-3G9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="C1M-KD-uU0"/>
+                            <constraint firstAttribute="trailing" secondItem="RYG-d0-nQj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="C3b-Xx-lbd"/>
+                            <constraint firstItem="RYG-d0-nQj" firstAttribute="centerY" secondItem="wih-YR-Ebl" secondAttribute="centerY" type="default" id="SaV-9v-rpQ"/>
+                            <constraint firstItem="zCc-Hb-3G9" firstAttribute="top" secondItem="wih-YR-Ebl" secondAttribute="top" constant="118" id="fer-ks-C2Q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add SocialCrawl" id="fwh-gK-Q81"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q87-ES-WuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="1581"/>
+        </scene>
+        <!--Map For Event View Controller-->
         <scene sceneID="dtv-Sc-0ei">
             <objects>
-                <viewController storyboardIdentifier="EventMapViewController" id="3OS-FA-rpe" customClass="EventMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapForEventViewController" id="3OS-FA-rpe" customClass="MapForEventViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SYC-KM-1Xd">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -224,7 +382,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aU9-cG-mzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="243" y="861"/>
+            <point key="canvasLocation" x="621" y="192"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wuK-Nk-uZm">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="E5T-BZ-Qe6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zVB-ct-5F9">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="itH-kd-frK" kind="relationship" relationship="rootViewController" id="Ggh-U1-dh1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pdy-UH-qxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-585" y="938"/>
         </scene>
         <!--Navigation Controller - Crawls-->
         <scene sceneID="OIv-uf-QyF">

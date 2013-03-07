@@ -1,16 +1,16 @@
 //
-//  EventInfoViewController.m
-//  CampusCrawler
+//  InfoForEventViewController.m
+//  SocialCrawl
 //
-//  Created by James Lubowich on 2/22/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
-#import "EventInfoViewController.h"
+#import "InfoForEventViewController.h"
 #import "Event.h"
 #import "BarForEvent.h"
 
-@implementation EventInfoViewController
+@implementation InfoForEventViewController
 @synthesize currentEvent, serverURL;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

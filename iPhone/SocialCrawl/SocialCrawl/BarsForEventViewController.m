@@ -1,9 +1,9 @@
 //
 //  EventDetailViewController.m
-//  CampusCrawler
+//  SocialCrawl
 //
-//  Created by James Lubowich on 2/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
 #import "BarsForEventViewController.h"
@@ -50,6 +50,13 @@
     self.serverURL = [[NSURL alloc] initWithString:serverString];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforevent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"bars" object:nil];
+}
+
+
 - (void)barsForEventFinishedLoading:(NSNotification *)notification {
     NSLog(@"BarsForEvent: BarsForEvent loaded");
     self.currentEvent.barsForEvent = notification.userInfo[@"0"];
@@ -69,6 +76,31 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+- (IBAction)unwindToBarsForEvent:(UIStoryboardSegue *)segue
+{
+    NSLog(@"BarsForEvent: Unwinding segue!");
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"BarInfo"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        BarInfoViewController *barInfoViewController = [[navigationController viewControllers] objectAtIndex:0];
+        UITableViewCell *selectedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:selectedCell];
+        
+        BarForEvent *eventBar;
+        if(indexPath.section == kCurrentSection)
+            eventBar = [self.currentBars objectAtIndex:indexPath.row];
+        if(indexPath.section == kPastSection)
+            eventBar = [self.pastBars objectAtIndex:indexPath.row];
+        
+        barInfoViewController.currentBar = [self.barsDictionary objectForKey:eventBar.barId];
+        barInfoViewController.currentDateId = self.currentEvent.dateId;
+    }
+    
 }
 
 #pragma mark - Table view data source
@@ -138,19 +170,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BarInfoViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BarInfoViewController"];
-    
-    BarForEvent *eventBar;
-    if(indexPath.section == kCurrentSection)
-        eventBar = [self.currentBars objectAtIndex:indexPath.row];
-    if(indexPath.section == kPastSection)
-        eventBar = [self.pastBars objectAtIndex:indexPath.row];
-        
-    detailViewController.currentBar = [self.barsDictionary objectForKey:eventBar.barId];
-    detailViewController.currentDateId = self.currentEvent.dateId;
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    
 }
+
 
 #pragma mark - Instance Methods
 

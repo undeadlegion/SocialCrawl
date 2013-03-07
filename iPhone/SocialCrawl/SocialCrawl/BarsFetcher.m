@@ -1,9 +1,9 @@
 //
 //  BarsFetcher.m
-//  CampusCrawler
+//  SocialCrawl
 //
-//  Created by James Lubowich on 2/27/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by James Lubo on 2/13/13.
+//  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
 #import "BarsFetcher.h"
