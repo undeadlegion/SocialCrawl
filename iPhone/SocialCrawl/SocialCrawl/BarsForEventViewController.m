@@ -34,14 +34,6 @@
     
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"h:mm a"];
-//    NSLocale *uslocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-//    [dateFormatter setLocale:uslocale];
-
-    SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
-    NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"barsforevent", @"id":self.currentEvent.eventId}];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    queue.name = @"Event Loader";
-    [queue addOperation:loadOperation];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsForEventFinishedLoading:) name:@"barsforevent" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
@@ -50,15 +42,29 @@
     self.serverURL = [[NSURL alloc] initWithString:serverString];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
+    NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"barsforevent", @"id":self.currentEvent.eventId}];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    queue.name = @"Event Loader";
+    [queue addOperation:loadOperation];
+
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforevent" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"bars" object:nil];
 }
 
-
 - (void)barsForEventFinishedLoading:(NSNotification *)notification {
     NSLog(@"BarsForEvent: BarsForEvent loaded");
+    if (self.barsDictionary) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }
     self.currentEvent.barsForEvent = notification.userInfo[@"0"];
     [self scheduleNotifications];
     [self sortBarsForEvent];
@@ -69,20 +75,19 @@
 - (void)barsFinishedLoading:(NSNotification *)notification {
     NSLog(@"BarsForEvent: Bars loaded");
     self.barsDictionary = notification.userInfo;
+
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
     [self.tableView reloadData];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 - (IBAction)unwindToBarsForEvent:(UIStoryboardSegue *)segue
 {
     NSLog(@"BarsForEvent: Unwinding segue!");
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"BarInfo"]) {
@@ -100,7 +105,6 @@
         barInfoViewController.currentBar = [self.barsDictionary objectForKey:eventBar.barId];
         barInfoViewController.currentDateId = self.currentEvent.dateId;
     }
-    
 }
 
 #pragma mark - Table view data source

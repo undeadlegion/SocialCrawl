@@ -17,6 +17,27 @@
 
 @implementation SocialCrawlViewController
 
+# pragma mark - View Lifecycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // register notification for when events finish loading
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"events" object:nil];
+    [self.tableView reloadData];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"events" object:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AddEvent"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddEventViewController *addEventViewController = [[navigationController viewControllers] objectAtIndex:0];
+        addEventViewController.delegate = self;
+    }
+}
 #pragma mark - Date Methods
 
 - (void)sortEvents{
@@ -105,27 +126,6 @@
     [self.tableView reloadData];
 }
 
-# pragma mark - View Lifecycle
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // register notification for when events finish loading
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"events" object:nil];
-    [self.tableView reloadData];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"events" object:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"AddEvent"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        AddEventViewController *addEventViewController = [[navigationController viewControllers] objectAtIndex:0];
-        addEventViewController.delegate = self;
-    }
-}
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -194,4 +194,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)unwindToSocialCrawlViewController:(UIStoryboardSegue *)segue
+{
+    NSLog(@"Segue back to Socialcrawl!");
+}
 @end

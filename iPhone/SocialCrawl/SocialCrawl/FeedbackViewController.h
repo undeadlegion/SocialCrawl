@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeedbackViewController : UIViewController <UITextViewDelegate> {
+@interface FeedbackViewController : UITableViewController <UITextViewDelegate> {
     CGRect keyboardBounds;
 }
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) IBOutlet UITextView *feedbackView;
+@property (nonatomic, weak) IBOutlet UITextView *feedbackView;
 
-- (IBAction)pressedSend:(id)sender;
 - (void)scrollViewToCenterOfScreen:(UIView *)theView; 
 - (void)turnOffActivityIndicator:(NSTimer *)timer;
 

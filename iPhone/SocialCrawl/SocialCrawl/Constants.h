@@ -16,6 +16,9 @@
 #define kDescriptionSection 1
 #define kContactSection 2
 
+#define kBeerSection 0
+#define kShotSection 1
+#define kWineSection 2
 
 #define kAddressRow 0
 #define kWebsiteRow 1
@@ -30,8 +33,6 @@ extern NSString * const barsForEventRequestString;
 extern NSString * const feedbackString;
 extern BOOL useServer;
 
-@interface Constants : NSObject {
-    
-}
+@interface Constants : NSObject
 
 @end

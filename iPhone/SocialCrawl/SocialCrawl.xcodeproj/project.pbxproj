@@ -8,10 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		0F0DF19016D2ECDB00F8D62A /* DataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0DF18F16D2ECDB00F8D62A /* DataFetcher.m */; };
+		0F479F7416EAFC8C00F82218 /* DrinkLoggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F479F7316EAFC8C00F82218 /* DrinkLoggerViewController.m */; };
+		0F479F7D16EB114B00F82218 /* AddDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F479F7C16EB114B00F82218 /* AddDrinkViewController.m */; };
+		0F4F68F716EB327600A4EE29 /* book_bookmark_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F416EB327600A4EE29 /* book_bookmark_24.png */; };
+		0F4F68F816EB327600A4EE29 /* book_bookmark_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F516EB327600A4EE29 /* book_bookmark_48.png */; };
+		0F4F68F916EB327600A4EE29 /* book_bookmark_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F616EB327600A4EE29 /* book_bookmark_64.png */; };
+		0F4F68FE16EB3A5900A4EE29 /* ExistingEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F68FD16EB3A5900A4EE29 /* ExistingEventViewController.m */; };
 		0F8CBEA116D59E0200923B08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9D16D59E0100923B08 /* Default.png */; };
 		0F8CBEA216D59E0200923B08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9E16D59E0100923B08 /* Default@2x.png */; };
-		0F8CBEA316D59E0200923B08 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9F16D59E0200923B08 /* Icon.png */; };
-		0F8CBEA416D59E0200923B08 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBEA016D59E0200923B08 /* Icon@2x.png */; };
+		0FC4212916EBB5D600395498 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9F16D59E0200923B08 /* Icon.png */; };
+		0FC4212A16EBB5D900395498 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBEA016D59E0200923B08 /* Icon@2x.png */; };
+		0FC9873716E8ED3E0067972A /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC9873616E8ED3E0067972A /* AddEventViewController.m */; };
 		0FDAE40216CBD7E50046CBE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE40116CBD7E50046CBE5 /* UIKit.framework */; };
 		0FDAE40416CBD7E50046CBE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE40316CBD7E50046CBE5 /* Foundation.framework */; };
 		0FDAE40616CBD7E50046CBE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE40516CBD7E50046CBE5 /* CoreGraphics.framework */; };
@@ -47,8 +54,8 @@
 		0FDAE4B416CBDC280046CBE5 /* commentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE46D16CBDC280046CBE5 /* commentIcon.png */; };
 		0FDAE4B516CBDC280046CBE5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE46F16CBDC280046CBE5 /* Constants.m */; };
 		0FDAE4BB16CBDC280046CBE5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE47C16CBDC280046CBE5 /* Event.m */; };
-		0FDAE4BE16CBDC280046CBE5 /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48216CBDC280046CBE5 /* EventInfoViewController.m */; };
-		0FDAE4BF16CBDC280046CBE5 /* EventMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48416CBDC280046CBE5 /* EventMapViewController.m */; };
+		0FDAE4BE16CBDC280046CBE5 /* InfoForEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48216CBDC280046CBE5 /* InfoForEventViewController.m */; };
+		0FDAE4BF16CBDC280046CBE5 /* MapForEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48416CBDC280046CBE5 /* MapForEventViewController.m */; };
 		0FDAE4C016CBDC280046CBE5 /* events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE48516CBDC280046CBE5 /* events.xml */; };
 		0FDAE4C116CBDC280046CBE5 /* EventSegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48716CBDC280046CBE5 /* EventSegmentsController.m */; };
 		0FDAE4C216CBDC280046CBE5 /* EventsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE48916CBDC280046CBE5 /* EventsFetcher.m */; };
@@ -80,11 +87,22 @@
 /* Begin PBXFileReference section */
 		0F0DF18E16D2ECDB00F8D62A /* DataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFetcher.h; sourceTree = "<group>"; };
 		0F0DF18F16D2ECDB00F8D62A /* DataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFetcher.m; sourceTree = "<group>"; };
+		0F479F7216EAFC8C00F82218 /* DrinkLoggerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrinkLoggerViewController.h; path = ../DrinkLoggerViewController.h; sourceTree = "<group>"; };
+		0F479F7316EAFC8C00F82218 /* DrinkLoggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrinkLoggerViewController.m; path = ../DrinkLoggerViewController.m; sourceTree = "<group>"; };
+		0F479F7B16EB114B00F82218 /* AddDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDrinkViewController.h; sourceTree = "<group>"; };
+		0F479F7C16EB114B00F82218 /* AddDrinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDrinkViewController.m; sourceTree = "<group>"; };
+		0F4F68F416EB327600A4EE29 /* book_bookmark_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_bookmark_24.png; sourceTree = "<group>"; };
+		0F4F68F516EB327600A4EE29 /* book_bookmark_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_bookmark_48.png; sourceTree = "<group>"; };
+		0F4F68F616EB327600A4EE29 /* book_bookmark_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_bookmark_64.png; sourceTree = "<group>"; };
+		0F4F68FC16EB3A5900A4EE29 /* ExistingEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistingEventViewController.h; sourceTree = "<group>"; };
+		0F4F68FD16EB3A5900A4EE29 /* ExistingEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistingEventViewController.m; sourceTree = "<group>"; };
 		0F8CBE9D16D59E0100923B08 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		0F8CBE9E16D59E0100923B08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		0F8CBE9F16D59E0200923B08 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
 		0F8CBEA016D59E0200923B08 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = SOURCE_ROOT; };
-		0FDAE3FE16CBD7E50046CBE5 /* SocialCrawler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialCrawler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FC9873516E8ED3E0067972A /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
+		0FC9873616E8ED3E0067972A /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
+		0FDAE3FE16CBD7E50046CBE5 /* SocialCrawl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialCrawl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FDAE40116CBD7E50046CBE5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0FDAE40316CBD7E50046CBE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FDAE40516CBD7E50046CBE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,10 +150,10 @@
 		0FDAE46F16CBDC280046CBE5 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0FDAE47B16CBDC280046CBE5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		0FDAE47C16CBDC280046CBE5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		0FDAE48116CBDC280046CBE5 /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
-		0FDAE48216CBDC280046CBE5 /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
-		0FDAE48316CBDC280046CBE5 /* EventMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMapViewController.h; sourceTree = "<group>"; };
-		0FDAE48416CBDC280046CBE5 /* EventMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMapViewController.m; sourceTree = "<group>"; };
+		0FDAE48116CBDC280046CBE5 /* InfoForEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoForEventViewController.h; sourceTree = "<group>"; };
+		0FDAE48216CBDC280046CBE5 /* InfoForEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoForEventViewController.m; sourceTree = "<group>"; };
+		0FDAE48316CBDC280046CBE5 /* MapForEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapForEventViewController.h; sourceTree = "<group>"; };
+		0FDAE48416CBDC280046CBE5 /* MapForEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapForEventViewController.m; sourceTree = "<group>"; };
 		0FDAE48516CBDC280046CBE5 /* events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = events.xml; sourceTree = "<group>"; };
 		0FDAE48616CBDC280046CBE5 /* EventSegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSegmentsController.h; sourceTree = "<group>"; };
 		0FDAE48716CBDC280046CBE5 /* EventSegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSegmentsController.m; sourceTree = "<group>"; };
@@ -192,11 +210,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FAF0F4216D7361200DDCF6C /* Facebook */ = {
+		0F479F7516EB105B00F82218 /* SocialCrawl Tab */ = {
 			isa = PBXGroup;
 			children = (
+				0FDAE4E216CC17220046CBE5 /* SocialCrawlViewController.h */,
+				0FDAE4E316CC17230046CBE5 /* SocialCrawlViewController.m */,
+				0FC9873516E8ED3E0067972A /* AddEventViewController.h */,
+				0FC9873616E8ED3E0067972A /* AddEventViewController.m */,
+				0F4F68FC16EB3A5900A4EE29 /* ExistingEventViewController.h */,
+				0F4F68FD16EB3A5900A4EE29 /* ExistingEventViewController.m */,
+				0FDAE4D516CBDD110046CBE5 /* Segments */,
 			);
-			name = Facebook;
+			name = "SocialCrawl Tab";
+			sourceTree = "<group>";
+		};
+		0F479F7616EB107B00F82218 /* Feedback Tab */ = {
+			isa = PBXGroup;
+			children = (
+				0FDAE48D16CBDC280046CBE5 /* FeedbackViewController.h */,
+				0FDAE48E16CBDC280046CBE5 /* FeedbackViewController.m */,
+			);
+			name = "Feedback Tab";
+			sourceTree = "<group>";
+		};
+		0F479F7716EB10B300F82218 /* Logger Tab */ = {
+			isa = PBXGroup;
+			children = (
+				0F479F7216EAFC8C00F82218 /* DrinkLoggerViewController.h */,
+				0F479F7316EAFC8C00F82218 /* DrinkLoggerViewController.m */,
+				0F479F7B16EB114B00F82218 /* AddDrinkViewController.h */,
+				0F479F7C16EB114B00F82218 /* AddDrinkViewController.m */,
+			);
+			name = "Logger Tab";
 			sourceTree = "<group>";
 		};
 		0FDAE3F516CBD7E50046CBE5 = {
@@ -212,7 +257,7 @@
 		0FDAE3FF16CBD7E50046CBE5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0FDAE3FE16CBD7E50046CBE5 /* SocialCrawler.app */,
+				0FDAE3FE16CBD7E50046CBE5 /* SocialCrawl.app */,
 				0FDAE43216CBD7E50046CBE5 /* SocialCrawlTests.octest */,
 			);
 			name = Products;
@@ -297,6 +342,9 @@
 				0F8CBEA016D59E0200923B08 /* Icon@2x.png */,
 				0FDAE45416CBDC280046CBE5 /* 111-user.png */,
 				0FDAE45516CBDC280046CBE5 /* 112-group.png */,
+				0F4F68F416EB327600A4EE29 /* book_bookmark_24.png */,
+				0F4F68F516EB327600A4EE29 /* book_bookmark_48.png */,
+				0F4F68F616EB327600A4EE29 /* book_bookmark_64.png */,
 				0FDAE46A16CBDC280046CBE5 /* bulb_off_24.png */,
 				0FDAE46B16CBDC280046CBE5 /* bulb_off_48.png */,
 				0FDAE46C16CBDC280046CBE5 /* bulb_off_64.png */,
@@ -315,14 +363,16 @@
 		0FDAE4D516CBDD110046CBE5 /* Segments */ = {
 			isa = PBXGroup;
 			children = (
-				0FDAE48616CBDC280046CBE5 /* EventSegmentsController.h */,
-				0FDAE48716CBDC280046CBE5 /* EventSegmentsController.m */,
 				0FDAE46416CBDC280046CBE5 /* BarsForEventViewController.h */,
 				0FDAE46516CBDC280046CBE5 /* BarsForEventViewController.m */,
-				0FDAE48116CBDC280046CBE5 /* EventInfoViewController.h */,
-				0FDAE48216CBDC280046CBE5 /* EventInfoViewController.m */,
-				0FDAE48316CBDC280046CBE5 /* EventMapViewController.h */,
-				0FDAE48416CBDC280046CBE5 /* EventMapViewController.m */,
+				0FDAE48116CBDC280046CBE5 /* InfoForEventViewController.h */,
+				0FDAE48216CBDC280046CBE5 /* InfoForEventViewController.m */,
+				0FDAE48316CBDC280046CBE5 /* MapForEventViewController.h */,
+				0FDAE48416CBDC280046CBE5 /* MapForEventViewController.m */,
+				0FDAE48616CBDC280046CBE5 /* EventSegmentsController.h */,
+				0FDAE48716CBDC280046CBE5 /* EventSegmentsController.m */,
+				0FDAE45A16CBDC280046CBE5 /* BarInfoViewController.h */,
+				0FDAE45B16CBDC280046CBE5 /* BarInfoViewController.m */,
 			);
 			name = Segments;
 			sourceTree = "<group>";
@@ -363,14 +413,9 @@
 		0FDAE4D816CBDDD40046CBE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0FDAE4E216CC17220046CBE5 /* SocialCrawlViewController.h */,
-				0FDAE4E316CC17230046CBE5 /* SocialCrawlViewController.m */,
-				0FDAE45A16CBDC280046CBE5 /* BarInfoViewController.h */,
-				0FDAE45B16CBDC280046CBE5 /* BarInfoViewController.m */,
-				0FDAE48D16CBDC280046CBE5 /* FeedbackViewController.h */,
-				0FDAE48E16CBDC280046CBE5 /* FeedbackViewController.m */,
-				0FAF0F4216D7361200DDCF6C /* Facebook */,
-				0FDAE4D516CBDD110046CBE5 /* Segments */,
+				0F479F7516EB105B00F82218 /* SocialCrawl Tab */,
+				0F479F7616EB107B00F82218 /* Feedback Tab */,
+				0F479F7716EB10B300F82218 /* Logger Tab */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -378,9 +423,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0FDAE3FD16CBD7E50046CBE5 /* SocialCrawler */ = {
+		0FDAE3FD16CBD7E50046CBE5 /* SocialCrawl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0FDAE44416CBD7E50046CBE5 /* Build configuration list for PBXNativeTarget "SocialCrawler" */;
+			buildConfigurationList = 0FDAE44416CBD7E50046CBE5 /* Build configuration list for PBXNativeTarget "SocialCrawl" */;
 			buildPhases = (
 				0FDAE3FA16CBD7E50046CBE5 /* Sources */,
 				0FDAE3FB16CBD7E50046CBE5 /* Frameworks */,
@@ -390,9 +435,9 @@
 			);
 			dependencies = (
 			);
-			name = SocialCrawler;
+			name = SocialCrawl;
 			productName = SocialCrawl;
-			productReference = 0FDAE3FE16CBD7E50046CBE5 /* SocialCrawler.app */;
+			productReference = 0FDAE3FE16CBD7E50046CBE5 /* SocialCrawl.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0FDAE43116CBD7E50046CBE5 /* SocialCrawlTests */ = {
@@ -436,7 +481,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0FDAE3FD16CBD7E50046CBE5 /* SocialCrawler */,
+				0FDAE3FD16CBD7E50046CBE5 /* SocialCrawl */,
 				0FDAE43116CBD7E50046CBE5 /* SocialCrawlTests */,
 			);
 		};
@@ -468,8 +513,11 @@
 				0FDAE4D016CBDC280046CBE5 /* Settings.bundle in Resources */,
 				0F8CBEA116D59E0200923B08 /* Default.png in Resources */,
 				0F8CBEA216D59E0200923B08 /* Default@2x.png in Resources */,
-				0F8CBEA316D59E0200923B08 /* Icon.png in Resources */,
-				0F8CBEA416D59E0200923B08 /* Icon@2x.png in Resources */,
+				0F4F68F716EB327600A4EE29 /* book_bookmark_24.png in Resources */,
+				0F4F68F816EB327600A4EE29 /* book_bookmark_48.png in Resources */,
+				0F4F68F916EB327600A4EE29 /* book_bookmark_64.png in Resources */,
+				0FC4212916EBB5D600395498 /* Icon.png in Resources */,
+				0FC4212A16EBB5D900395498 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,8 +562,8 @@
 				0FDAE4AC16CBDC280046CBE5 /* BarsForEventViewController.m in Sources */,
 				0FDAE4B516CBDC280046CBE5 /* Constants.m in Sources */,
 				0FDAE4BB16CBDC280046CBE5 /* Event.m in Sources */,
-				0FDAE4BE16CBDC280046CBE5 /* EventInfoViewController.m in Sources */,
-				0FDAE4BF16CBDC280046CBE5 /* EventMapViewController.m in Sources */,
+				0FDAE4BE16CBDC280046CBE5 /* InfoForEventViewController.m in Sources */,
+				0FDAE4BF16CBDC280046CBE5 /* MapForEventViewController.m in Sources */,
 				0FDAE4C116CBDC280046CBE5 /* EventSegmentsController.m in Sources */,
 				0FDAE4C216CBDC280046CBE5 /* EventsFetcher.m in Sources */,
 				0FDAE4C516CBDC280046CBE5 /* FeedbackViewController.m in Sources */,
@@ -524,6 +572,10 @@
 				0FDAE4D116CBDC280046CBE5 /* WallPost.m in Sources */,
 				0FDAE4E416CC17230046CBE5 /* SocialCrawlViewController.m in Sources */,
 				0F0DF19016D2ECDB00F8D62A /* DataFetcher.m in Sources */,
+				0FC9873716E8ED3E0067972A /* AddEventViewController.m in Sources */,
+				0F479F7416EAFC8C00F82218 /* DrinkLoggerViewController.m in Sources */,
+				0F479F7D16EB114B00F82218 /* AddDrinkViewController.m in Sources */,
+				0F4F68FE16EB3A5900A4EE29 /* ExistingEventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +592,7 @@
 /* Begin PBXTargetDependency section */
 		0FDAE43816CBD7E50046CBE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0FDAE3FD16CBD7E50046CBE5 /* SocialCrawler */;
+			target = 0FDAE3FD16CBD7E50046CBE5 /* SocialCrawl */;
 			targetProxy = 0FDAE43716CBD7E50046CBE5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -649,7 +701,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
-				OTHER_LDFLAGS = "-lsqlite3.0";
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -665,7 +720,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
-				OTHER_LDFLAGS = "-lsqlite3.0";
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -717,7 +775,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0FDAE44416CBD7E50046CBE5 /* Build configuration list for PBXNativeTarget "SocialCrawler" */ = {
+		0FDAE44416CBD7E50046CBE5 /* Build configuration list for PBXNativeTarget "SocialCrawl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0FDAE44516CBD7E50046CBE5 /* Debug */,

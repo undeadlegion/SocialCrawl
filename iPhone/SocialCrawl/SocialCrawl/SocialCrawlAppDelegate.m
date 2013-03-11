@@ -120,9 +120,9 @@
     
     NSOperation *loadBars, *loadEvents;
     loadBars = [self loadFromServer:@{@"type":@"bars"}];
-    loadEvents = [self loadFromServer:@{@"type":@"events"}];
+//    loadEvents = [self loadFromServer:@{@"type":@"events"}];
     [queue addOperation:loadBars];
-    [queue addOperation:loadEvents];
+//    [queue addOperation:loadEvents];
 
     //check if opened by an notification
     UILocalNotification *notif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
@@ -138,7 +138,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-#warning re-implement
     return NO;
 }
 

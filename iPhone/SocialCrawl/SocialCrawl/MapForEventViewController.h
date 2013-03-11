@@ -18,7 +18,7 @@
 @property (nonatomic, strong) Event *currentEvent;
 @property (nonatomic, copy) NSURL *serverURL;
 @property (nonatomic, strong) UISegmentedControl *viewToggle;
-@property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, weak) NSDictionary *barsDictionary;
 
 - (void)showDetails:(id)sender;

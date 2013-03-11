@@ -64,7 +64,9 @@
         currentBarForEvent.time = time;
     }
     if([elementName isEqualToString:@"specials"]){
-        currentBarForEvent.specials = currentStringValue;
+# warning re-implement
+        //        currentBarForEvent.specials = currentStringValue;
+        currentBarForEvent.specials = @"Ask your bartender for the local specials";
     }
     
     currentStringValue = nil;
