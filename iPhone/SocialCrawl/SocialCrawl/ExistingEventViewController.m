@@ -8,6 +8,7 @@
 
 #import "ExistingEventViewController.h"
 #import "SocialCrawlAppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface ExistingEventViewController ()
 
@@ -19,19 +20,34 @@
 {
     SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
     NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"events", @"id":self.eventId}];
+    
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     queue.name = @"Events Loader";
     [queue addOperation:loadOperation];
 
-    // timer to shut off actiivy indicator
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(turnOffActivityIndicator:) name:@"events" object:nil];
+    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progressHUD.labelText = @"Loading";
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(turnOffActivityIndicator:) userInfo:nil repeats:NO];
 }
 
 - (void)turnOffActivityIndicator:(NSTimer *)theTimer
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+    [TestFlight passCheckpoint:@"Add Existing Event"];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"events" object:nil];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.textView.scrollEnabled = NO;
 }
 
 #pragma mark -

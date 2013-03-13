@@ -24,6 +24,8 @@
 #define kWebsiteRow 1
 #define kFacebookId 754465610
 
+#define TESTING 1
+
 extern NSString * const reachabilityString;
 extern NSString * const serverString;
 extern NSString * const eventsRequestString;

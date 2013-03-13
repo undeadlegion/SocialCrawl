@@ -8,7 +8,7 @@
 
 #import "FeedbackViewController.h"
 #import "SocialCrawlAppDelegate.h"
-
+#import "MBProgressHUD.h"
 
 @implementation FeedbackViewController
 
@@ -31,6 +31,7 @@
 
 - (void)turnOffActivityIndicator:(NSTimer*)timer{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     self.feedbackView.text = @"";
 }
 
@@ -39,18 +40,22 @@
     //start the activity indicator set a timer to turn it off
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(turnOffActivityIndicator:) userInfo:nil repeats:NO];
-    
+    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progressHUD.labelText = @"Submitting";
+
     NSString *urlString = [NSString stringWithFormat:@"%@%@", serverString, feedbackString];
-        urlString = [urlString stringByAppendingString:@"0"];
+    urlString = [urlString stringByAppendingString:@"0"];
     urlString = [urlString stringByAppendingString:@"&message="];
     urlString = [urlString stringByAppendingString:[self.feedbackView.text stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSLog(@"URL:%@", urlString);
+    
     NSURL *url = [NSURL URLWithString:urlString];
-        
-
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
-    [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
+        [TestFlight submitFeedback:self.feedbackView.text];
+    });
 }
 
 - (void)keyboardNotification:(NSNotification*)notification {  
@@ -68,16 +73,20 @@
         [self.feedbackView becomeFirstResponder];
     }
 }
-- (void)textViewDidEndEditing:(UITextView *)textView{
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
 }
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-//    [self scrollViewToCenterOfScreen:textView];
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [TestFlight passCheckpoint:@"Type Feedback"];
+    //    [self scrollViewToCenterOfScreen:textView];
 }
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView{
     return YES;
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
     if([text isEqualToString:@"\n"]){
         [textView resignFirstResponder];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];

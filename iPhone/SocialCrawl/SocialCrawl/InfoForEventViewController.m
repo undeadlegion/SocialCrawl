@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [TestFlight passCheckpoint:@"View Event Info"];
     
     CGRect titleRect = CGRectMake(0, 0, 300, 40);
     UILabel *tableTitle = [[UILabel alloc] initWithFrame:titleRect];

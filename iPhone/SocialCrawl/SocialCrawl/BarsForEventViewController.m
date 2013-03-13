@@ -14,6 +14,12 @@
 #import "Bar.h"
 #import "SocialCrawlAppDelegate.h"
 #import "Reachability.h"
+#import "MBProgressHUD.h"
+
+@interface BarsForEventViewController ()
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (assign, nonatomic) BOOL shouldReload;
+@end
 
 @implementation BarsForEventViewController
 
@@ -32,28 +38,36 @@
 {
     [super viewDidLoad];
     
-    dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"h:mm a"];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"h:mm a"];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsForEventFinishedLoading:) name:@"barsforevent" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
-    
-    self.lastUpdated = [NSDate date];
+
+    self.shouldReload = YES;
     self.serverURL = [[NSURL alloc] initWithString:serverString];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
-    NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"barsforevent", @"id":self.currentEvent.eventId}];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    queue.name = @"Event Loader";
-    [queue addOperation:loadOperation];
-
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-
+    [super viewWillAppear:animated];
+    if (self.shouldReload) {
+        SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
+        NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"barsforevent", @"id":self.currentEvent.eventId}];
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        queue.name = @"Event Loader";
+        [queue addOperation:loadOperation];
+        
+        MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        progressHUD.labelText = @"Loading";
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    }
 }
-
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.shouldReload = YES;
+    [super viewWillDisappear:animated];
+}
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforevent" object:nil];
@@ -63,6 +77,7 @@
 - (void)barsForEventFinishedLoading:(NSNotification *)notification {
     NSLog(@"BarsForEvent: BarsForEvent loaded");
     if (self.barsDictionary) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
     self.currentEvent.barsForEvent = notification.userInfo[@"0"];
@@ -76,6 +91,7 @@
     NSLog(@"BarsForEvent: Bars loaded");
     self.barsDictionary = notification.userInfo;
 
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     [self.tableView reloadData];
@@ -84,7 +100,7 @@
 - (IBAction)unwindToBarsForEvent:(UIStoryboardSegue *)segue
 {
     NSLog(@"BarsForEvent: Unwinding segue!");
-    
+    self.shouldReload = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -150,7 +166,7 @@
     Bar *bar = [self.barsDictionary objectForKey:barForEvent.barId];
     
     cell.textLabel.text = bar.name;
-    cell.detailTextLabel.text = [dateFormatter stringFromDate:barForEvent.time];
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:barForEvent.time];
     
     //image view resizing properties
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;

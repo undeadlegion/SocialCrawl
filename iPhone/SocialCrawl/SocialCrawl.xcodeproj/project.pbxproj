@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F0DF19016D2ECDB00F8D62A /* DataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0DF18F16D2ECDB00F8D62A /* DataFetcher.m */; };
+		0F46FCE716ED99B300C4C0EA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F46FCE616ED99B300C4C0EA /* libz.dylib */; };
 		0F479F7416EAFC8C00F82218 /* DrinkLoggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F479F7316EAFC8C00F82218 /* DrinkLoggerViewController.m */; };
 		0F479F7D16EB114B00F82218 /* AddDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F479F7C16EB114B00F82218 /* AddDrinkViewController.m */; };
 		0F4F68F716EB327600A4EE29 /* book_bookmark_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F416EB327600A4EE29 /* book_bookmark_24.png */; };
@@ -16,6 +17,10 @@
 		0F4F68FE16EB3A5900A4EE29 /* ExistingEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F68FD16EB3A5900A4EE29 /* ExistingEventViewController.m */; };
 		0F8CBEA116D59E0200923B08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9D16D59E0100923B08 /* Default.png */; };
 		0F8CBEA216D59E0200923B08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9E16D59E0100923B08 /* Default@2x.png */; };
+		0FA840BF16F0EAFA0038B506 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA840BD16F0EAFA0038B506 /* libTestFlight.a */; };
+		0FA840C016F0EBC00038B506 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA840BD16F0EAFA0038B506 /* libTestFlight.a */; };
+		0FBCFE6E16EF03B100D5FAC1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCFE6D16EF03B100D5FAC1 /* MBProgressHUD.m */; };
+		0FBCFE6F16EF07DE00D5FAC1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCFE6D16EF03B100D5FAC1 /* MBProgressHUD.m */; };
 		0FC4212916EBB5D600395498 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9F16D59E0200923B08 /* Icon.png */; };
 		0FC4212A16EBB5D900395498 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBEA016D59E0200923B08 /* Icon@2x.png */; };
 		0FC9873716E8ED3E0067972A /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC9873616E8ED3E0067972A /* AddEventViewController.m */; };
@@ -87,6 +92,7 @@
 /* Begin PBXFileReference section */
 		0F0DF18E16D2ECDB00F8D62A /* DataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFetcher.h; sourceTree = "<group>"; };
 		0F0DF18F16D2ECDB00F8D62A /* DataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFetcher.m; sourceTree = "<group>"; };
+		0F46FCE616ED99B300C4C0EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0F479F7216EAFC8C00F82218 /* DrinkLoggerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrinkLoggerViewController.h; path = ../DrinkLoggerViewController.h; sourceTree = "<group>"; };
 		0F479F7316EAFC8C00F82218 /* DrinkLoggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrinkLoggerViewController.m; path = ../DrinkLoggerViewController.m; sourceTree = "<group>"; };
 		0F479F7B16EB114B00F82218 /* AddDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDrinkViewController.h; sourceTree = "<group>"; };
@@ -100,6 +106,10 @@
 		0F8CBE9E16D59E0100923B08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		0F8CBE9F16D59E0200923B08 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
 		0F8CBEA016D59E0200923B08 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		0FA840BD16F0EAFA0038B506 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		0FA840BE16F0EAFA0038B506 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		0FBCFE6C16EF03B100D5FAC1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		0FBCFE6D16EF03B100D5FAC1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0FC9873516E8ED3E0067972A /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		0FC9873616E8ED3E0067972A /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		0FDAE3FE16CBD7E50046CBE5 /* SocialCrawl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialCrawl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +204,8 @@
 				0FDAE40416CBD7E50046CBE5 /* Foundation.framework in Frameworks */,
 				0FDAE40616CBD7E50046CBE5 /* CoreGraphics.framework in Frameworks */,
 				0FDAE44B16CBD94A0046CBE5 /* FacebookSDK.framework in Frameworks */,
+				0FA840C016F0EBC00038B506 /* libTestFlight.a in Frameworks */,
+				0F46FCE716ED99B300C4C0EA /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +216,7 @@
 				0FDAE43416CBD7E50046CBE5 /* SenTestingKit.framework in Frameworks */,
 				0FDAE43516CBD7E50046CBE5 /* UIKit.framework in Frameworks */,
 				0FDAE43616CBD7E50046CBE5 /* Foundation.framework in Frameworks */,
+				0FA840BF16F0EAFA0038B506 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +320,11 @@
 				0FDAE41716CBD7E50046CBE5 /* Default-568h@2x.png */,
 				0FDAE46E16CBDC280046CBE5 /* Constants.h */,
 				0FDAE46F16CBDC280046CBE5 /* Constants.m */,
+				0FBCFE6C16EF03B100D5FAC1 /* MBProgressHUD.h */,
+				0FBCFE6D16EF03B100D5FAC1 /* MBProgressHUD.m */,
+				0FA840BD16F0EAFA0038B506 /* libTestFlight.a */,
+				0FA840BE16F0EAFA0038B506 /* TestFlight.h */,
+				0F46FCE616ED99B300C4C0EA /* libz.dylib */,
 				0FDAE49716CBDC280046CBE5 /* Reachability.h */,
 				0FDAE49816CBDC280046CBE5 /* Reachability.m */,
 			);
@@ -552,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FBCFE6F16EF07DE00D5FAC1 /* MBProgressHUD.m in Sources */,
 				0FDAE40E16CBD7E50046CBE5 /* main.m in Sources */,
 				0FDAE41216CBD7E50046CBE5 /* SocialCrawlAppDelegate.m in Sources */,
 				0FDAE4A416CBDC280046CBE5 /* Bar.m in Sources */,
@@ -584,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FDAE44116CBD7E50046CBE5 /* SocialCrawlTests.m in Sources */,
+				0FBCFE6E16EF03B100D5FAC1 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +721,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SocialCrawl\"",
+				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
 					"-ObjC",
@@ -713,6 +737,9 @@
 		0FDAE44616CBD7E50046CBE5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -720,11 +747,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SocialCrawl\"",
+				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -740,6 +773,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawlTests/SocialCrawlTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SocialCrawl\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -757,6 +794,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawlTests/SocialCrawlTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SocialCrawl\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;

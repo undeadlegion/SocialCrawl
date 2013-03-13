@@ -68,7 +68,7 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="DIk-yV-9n2" firstAttribute="centerY" secondItem="OqV-vQ-5oF" secondAttribute="centerY" type="default" id="Tx4-qE-UB1"/>
+                                            <constraint firstItem="DIk-yV-9n2" firstAttribute="top" secondItem="OqV-vQ-5oF" secondAttribute="top" constant="2" id="QyJ-07-F53"/>
                                             <constraint firstItem="DIk-yV-9n2" firstAttribute="centerX" secondItem="OqV-vQ-5oF" secondAttribute="centerX" type="default" id="ukj-fg-JYH"/>
                                         </constraints>
                                     </tableViewCell>

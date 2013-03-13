@@ -97,8 +97,10 @@
 #pragma mark - App Delegate -
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
+#ifdef TESTING
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
+    [TestFlight takeOff:@"4326d680-cde2-442e-86c9-28b7bd2027a9"];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -114,16 +116,20 @@
         [defaults synchronize];
     }
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
+
     // load from server
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     queue.name = @"Loading Queue";
     
     NSOperation *loadBars, *loadEvents;
     loadBars = [self loadFromServer:@{@"type":@"bars"}];
-//    loadEvents = [self loadFromServer:@{@"type":@"events"}];
     [queue addOperation:loadBars];
+//    loadEvents = [self loadFromServer:@{@"type":@"events"}];
 //    [queue addOperation:loadEvents];
 
+
+    
     //check if opened by an notification
     UILocalNotification *notif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if(notif != nil){
