@@ -1,0 +1,253 @@
+\hypertarget{class_facebook_data}{
+\section{FacebookData Class Reference}
+\label{class_facebook_data}\index{FacebookData@{FacebookData}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_facebook_data_aeef080cc7b907fda248d93c5ee1aed48}{getUserJSONArray} (\$id)
+\item 
+\hyperlink{class_facebook_data_a2e1eb25350e7bd9725b2e582fcf2037a}{getAllJSONArray} (\$id)
+\item 
+\hyperlink{class_facebook_data_aaa12cd22a15483a707d39d4a34369c36}{getAttendingJSONArray} (\$id)
+\item 
+\hyperlink{class_facebook_data_a7d83e3ac178e6144a7953c7970a0ffaf}{getMaybeJSONArray} (\$id)
+\item 
+\hyperlink{class_facebook_data_a0d47b98d28abc9edd02a7091c5b36cf5}{getDeclinedJSONArray} (\$id)
+\item 
+\hyperlink{class_facebook_data_a690c796963e3f659abb6eb557c6ef2d0}{getNotRepliedJSONArray} (\$id)
+\item 
+\hyperlink{class_facebook_data_a0e0cf92725f8613b788fc97e485acd5e}{getEventInfo} (\$eventID)
+\item 
+\hyperlink{class_facebook_data_a78d42466d87e3f2fbca288f7c3151d07}{getEventFeed} (\$eventID, \$pageNumber, \$ttl=86400)
+\item 
+\hyperlink{class_facebook_data_a1c7dc11fa368696b1ae2b523b3392bb1}{getUserFriends} (\$userID)
+\item 
+\hyperlink{class_facebook_data_ac1f0b24277db635b08a18d7c9cd6c193}{convert\_\-datetime} (\$SQLDateTime)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_facebook_data}{FacebookData} Class
+
+This class contains functions that pull live data from Facebook. Every time the you want information it will make a call to Facebook so that it is always the most up-\/to-\/date version of the data.
+
+\begin{DoxyAuthor}{Author}
+Dan $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$NOTE$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ The access token must be changed to ?access\_\-token='.\$cookie\mbox{[}'access\_\-token'\mbox{]} when the application is placed on website $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_facebook_data_ac1f0b24277db635b08a18d7c9cd6c193}{
+\index{FacebookData@{FacebookData}!convert\_\-datetime@{convert\_\-datetime}}
+\index{convert\_\-datetime@{convert\_\-datetime}!FacebookData@{FacebookData}}
+\subsubsection[{convert\_\-datetime}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::convert\_\-datetime (
+\begin{DoxyParamCaption}
+\item[{\$}]{ SQLDateTime}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_ac1f0b24277db635b08a18d7c9cd6c193}
+Converts a SQL style datetime string to a unix timestamp
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$SQLDateTime} & SQLDateTime string to convert to unix timestamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Unix timestamp 
+\end{DoxyReturn}
+\hypertarget{class_facebook_data_a2e1eb25350e7bd9725b2e582fcf2037a}{
+\index{FacebookData@{FacebookData}!getAllJSONArray@{getAllJSONArray}}
+\index{getAllJSONArray@{getAllJSONArray}!FacebookData@{FacebookData}}
+\subsubsection[{getAllJSONArray}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getAllJSONArray (
+\begin{DoxyParamCaption}
+\item[{\$}]{ id}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_a2e1eb25350e7bd9725b2e582fcf2037a}
+getAllJSONArray
+
+This function will return all Events JSON file for a specific id
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & \\
+\hline
+String & {\em \$currentToken} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSONArray events all 
+\end{DoxyReturn}
+\hypertarget{class_facebook_data_aaa12cd22a15483a707d39d4a34369c36}{
+\index{FacebookData@{FacebookData}!getAttendingJSONArray@{getAttendingJSONArray}}
+\index{getAttendingJSONArray@{getAttendingJSONArray}!FacebookData@{FacebookData}}
+\subsubsection[{getAttendingJSONArray}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getAttendingJSONArray (
+\begin{DoxyParamCaption}
+\item[{\$}]{ id}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_aaa12cd22a15483a707d39d4a34369c36}
+getAttendingJSONArray
+
+This functio will return the Attending Events JSON file for a specific id
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & \\
+\hline
+String & {\em \$currentToken} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSONArray events attending 
+\end{DoxyReturn}
+\hypertarget{class_facebook_data_a0d47b98d28abc9edd02a7091c5b36cf5}{
+\index{FacebookData@{FacebookData}!getDeclinedJSONArray@{getDeclinedJSONArray}}
+\index{getDeclinedJSONArray@{getDeclinedJSONArray}!FacebookData@{FacebookData}}
+\subsubsection[{getDeclinedJSONArray}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getDeclinedJSONArray (
+\begin{DoxyParamCaption}
+\item[{\$}]{ id}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_a0d47b98d28abc9edd02a7091c5b36cf5}
+getDeclindedJSONArray
+
+This function will return the Declined Events JSONArray for a specific user id
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSONarray events declined 
+\end{DoxyReturn}
+\hypertarget{class_facebook_data_a78d42466d87e3f2fbca288f7c3151d07}{
+\index{FacebookData@{FacebookData}!getEventFeed@{getEventFeed}}
+\index{getEventFeed@{getEventFeed}!FacebookData@{FacebookData}}
+\subsubsection[{getEventFeed}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getEventFeed (
+\begin{DoxyParamCaption}
+\item[{\$}]{ eventID, }
+\item[{\$}]{ pageNumber, }
+\item[{\$}]{ ttl = {\ttfamily 86400}}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_a78d42466d87e3f2fbca288f7c3151d07}
+getEventFeed
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$eventID} & This is the Facebook ID for the event \\
+\hline
+int & {\em \$page} & There are 25 comments per page. Start out with page 0. If the user would like more call page 1, then page 2 and so on. If first cell of array returned is null do not call again because all have been displayed. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_facebook_data_a0e0cf92725f8613b788fc97e485acd5e}{
+\index{FacebookData@{FacebookData}!getEventInfo@{getEventInfo}}
+\index{getEventInfo@{getEventInfo}!FacebookData@{FacebookData}}
+\subsubsection[{getEventInfo}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getEventInfo (
+\begin{DoxyParamCaption}
+\item[{\$}]{ eventID}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_a0e0cf92725f8613b788fc97e485acd5e}
+getEventInfo
+
+This function will return the Not Replied Events JSONArray for a specific id
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSONarray \$detailedEvent This will contain detailed information about the event 
+\end{DoxyReturn}
+\hypertarget{class_facebook_data_a7d83e3ac178e6144a7953c7970a0ffaf}{
+\index{FacebookData@{FacebookData}!getMaybeJSONArray@{getMaybeJSONArray}}
+\index{getMaybeJSONArray@{getMaybeJSONArray}!FacebookData@{FacebookData}}
+\subsubsection[{getMaybeJSONArray}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getMaybeJSONArray (
+\begin{DoxyParamCaption}
+\item[{\$}]{ id}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_a7d83e3ac178e6144a7953c7970a0ffaf}
+getMaybeJSONArray
+
+This function will return the maybe events JSONArray file for a specific user id
+
+Enter description here ... 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSONArray events maybe attending 
+\end{DoxyReturn}
+\hypertarget{class_facebook_data_a690c796963e3f659abb6eb557c6ef2d0}{
+\index{FacebookData@{FacebookData}!getNotRepliedJSONArray@{getNotRepliedJSONArray}}
+\index{getNotRepliedJSONArray@{getNotRepliedJSONArray}!FacebookData@{FacebookData}}
+\subsubsection[{getNotRepliedJSONArray}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getNotRepliedJSONArray (
+\begin{DoxyParamCaption}
+\item[{\$}]{ id}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_a690c796963e3f659abb6eb557c6ef2d0}
+getNotRepliedJSONArray
+
+This function will return the Not Replied Events JSONArray for a specific id
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSONarray events not replied to 
+\end{DoxyReturn}
+\hypertarget{class_facebook_data_a1c7dc11fa368696b1ae2b523b3392bb1}{
+\index{FacebookData@{FacebookData}!getUserFriends@{getUserFriends}}
+\index{getUserFriends@{getUserFriends}!FacebookData@{FacebookData}}
+\subsubsection[{getUserFriends}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getUserFriends (
+\begin{DoxyParamCaption}
+\item[{\$}]{ userID}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_a1c7dc11fa368696b1ae2b523b3392bb1}
+getUserFriends
+
+Returns a JSON array of a Facebook users friends
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$userID} & This is the unique Facebook user ID \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_facebook_data_aeef080cc7b907fda248d93c5ee1aed48}{
+\index{FacebookData@{FacebookData}!getUserJSONArray@{getUserJSONArray}}
+\index{getUserJSONArray@{getUserJSONArray}!FacebookData@{FacebookData}}
+\subsubsection[{getUserJSONArray}]{\setlength{\rightskip}{0pt plus 5cm}FacebookData::getUserJSONArray (
+\begin{DoxyParamCaption}
+\item[{\$}]{ id}
+\end{DoxyParamCaption}
+)}}
+\label{class_facebook_data_aeef080cc7b907fda248d93c5ee1aed48}
+getUserJSONArray
+
+This function will return the user JSONArray for a specific user id
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSONArray user information 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+FacebookInteraction.php\end{DoxyCompactItemize}
