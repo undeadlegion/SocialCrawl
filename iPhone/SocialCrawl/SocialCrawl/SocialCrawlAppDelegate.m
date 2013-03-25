@@ -102,12 +102,19 @@
 #endif
     [TestFlight takeOff:@"4326d680-cde2-442e-86c9-28b7bd2027a9"];
 
+    [Parse setApplicationId:@"62KUdydKMthgxjTx9GqMoCl0Ge6O4hNJW0dD3sSL"
+                  clientKey:@"GFnRQgp4dKzHSwWHkLTc7pv87BiVwB8CcttWalXG"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    NSLog(@"REGISTERING FOR NOTIFICATIONS");
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+     UIRemoteNotificationTypeAlert|
+     UIRemoteNotificationTypeSound];
+
+    // if logout is enabled - defaults to NO
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    // when the user hasn't set the setting it will be NO
     [defaults registerDefaults:[NSDictionary dictionaryWithObject:@"NO" forKey:@"Logout"]];
-    
-    // if logout is enabled
+
     if([defaults boolForKey:@"Logout"]){
         [defaults removeObjectForKey:@"Access Token"];
         [defaults removeObjectForKey:@"Expiration Date"];
@@ -169,6 +176,24 @@
     }
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"REGISTERED FOR PUSH");
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [PFPush handlePush:userInfo];
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"REGISTRATION DID FAIL: %@", error);
+}
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.

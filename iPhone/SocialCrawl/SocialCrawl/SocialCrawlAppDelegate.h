@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import <TestFlightSDK/TestFlight.h>
 #import <Parse/Parse.h>
 
 @interface SocialCrawlAppDelegate : UIResponder <UIApplicationDelegate>
