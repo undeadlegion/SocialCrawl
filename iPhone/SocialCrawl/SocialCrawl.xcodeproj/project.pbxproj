@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F0DF19016D2ECDB00F8D62A /* DataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0DF18F16D2ECDB00F8D62A /* DataFetcher.m */; };
-<<<<<<< HEAD
-		0F46FCE716ED99B300C4C0EA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F46FCE616ED99B300C4C0EA /* libz.dylib */; };
-		0F479F7416EAFC8C00F82218 /* DrinkLoggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F479F7316EAFC8C00F82218 /* DrinkLoggerViewController.m */; };
-=======
->>>>>>> 98a06de... Removed FacebookSDK from project
 		0F479F7D16EB114B00F82218 /* AddDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F479F7C16EB114B00F82218 /* AddDrinkViewController.m */; };
 		0F4F68F716EB327600A4EE29 /* book_bookmark_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F416EB327600A4EE29 /* book_bookmark_24.png */; };
 		0F4F68F816EB327600A4EE29 /* book_bookmark_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F516EB327600A4EE29 /* book_bookmark_48.png */; };
@@ -38,14 +33,6 @@
 		0FDAE43616CBD7E50046CBE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE40316CBD7E50046CBE5 /* Foundation.framework */; };
 		0FDAE43E16CBD7E50046CBE5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE43C16CBD7E50046CBE5 /* InfoPlist.strings */; };
 		0FDAE44116CBD7E50046CBE5 /* SocialCrawlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE44016CBD7E50046CBE5 /* SocialCrawlTests.m */; };
-<<<<<<< HEAD
-		0FDAE44B16CBD94A0046CBE5 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE44A16CBD94A0046CBE5 /* FacebookSDK.framework */; };
-		0FDAE44D16CBD9660046CBE5 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE44C16CBD9660046CBE5 /* FacebookSDKResources.bundle */; };
-		0FDAE44F16CBDAD40046CBE5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE44E16CBDAD40046CBE5 /* Accounts.framework */; };
-		0FDAE45116CBDADD0046CBE5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE45016CBDADD0046CBE5 /* AdSupport.framework */; };
-		0FDAE45316CBDAE50046CBE5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDAE45216CBDAE50046CBE5 /* Social.framework */; };
-=======
->>>>>>> 98a06de... Removed FacebookSDK from project
 		0FDAE4A216CBDC280046CBE5 /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE45416CBDC280046CBE5 /* 111-user.png */; };
 		0FDAE4A316CBDC280046CBE5 /* 112-group.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FDAE45516CBDC280046CBE5 /* 112-group.png */; };
 		0FDAE4A416CBDC280046CBE5 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDAE45716CBDC280046CBE5 /* Bar.m */; };
@@ -129,14 +116,6 @@
 		0FDAE43D16CBD7E50046CBE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FDAE43F16CBD7E50046CBE5 /* SocialCrawlTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocialCrawlTests.h; sourceTree = "<group>"; };
 		0FDAE44016CBD7E50046CBE5 /* SocialCrawlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialCrawlTests.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		0FDAE44A16CBD94A0046CBE5 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		0FDAE44C16CBD9660046CBE5 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
-		0FDAE44E16CBDAD40046CBE5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		0FDAE45016CBDADD0046CBE5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		0FDAE45216CBDAE50046CBE5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-=======
->>>>>>> 98a06de... Removed FacebookSDK from project
 		0FDAE45416CBDC280046CBE5 /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
 		0FDAE45516CBDC280046CBE5 /* 112-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "112-group.png"; sourceTree = "<group>"; };
 		0FDAE45616CBDC280046CBE5 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
@@ -196,22 +175,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				0FDAE4E116CC09D00046CBE5 /* QuartzCore.framework in Frameworks */,
-=======
->>>>>>> 98a06de... Removed FacebookSDK from project
 				0FDAE4DF16CC09C20046CBE5 /* SystemConfiguration.framework in Frameworks */,
 				0FDAE4DD16CC09990046CBE5 /* MapKit.framework in Frameworks */,
 				0FDAE40216CBD7E50046CBE5 /* UIKit.framework in Frameworks */,
 				0FDAE40416CBD7E50046CBE5 /* Foundation.framework in Frameworks */,
 				0FDAE40616CBD7E50046CBE5 /* CoreGraphics.framework in Frameworks */,
-<<<<<<< HEAD
-				0FDAE44B16CBD94A0046CBE5 /* FacebookSDK.framework in Frameworks */,
-				0FA840C016F0EBC00038B506 /* libTestFlight.a in Frameworks */,
-				0F46FCE716ED99B300C4C0EA /* libz.dylib in Frameworks */,
-=======
 				F063468A456F470080A95378 /* libPods.a in Frameworks */,
->>>>>>> 98a06de... Removed FacebookSDK from project
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,19 +254,8 @@
 		0FDAE40016CBD7E50046CBE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				0FDAE4E016CC09D00046CBE5 /* QuartzCore.framework */,
 				0FDAE4DE16CC09C20046CBE5 /* SystemConfiguration.framework */,
 				0FDAE4DC16CC09990046CBE5 /* MapKit.framework */,
-				0FDAE44C16CBD9660046CBE5 /* FacebookSDKResources.bundle */,
-				0FDAE44A16CBD94A0046CBE5 /* FacebookSDK.framework */,
-				0FDAE45216CBDAE50046CBE5 /* Social.framework */,
-				0FDAE45016CBDADD0046CBE5 /* AdSupport.framework */,
-				0FDAE44E16CBDAD40046CBE5 /* Accounts.framework */,
-=======
-				0FDAE4DE16CC09C20046CBE5 /* SystemConfiguration.framework */,
-				0FDAE4DC16CC09990046CBE5 /* MapKit.framework */,
->>>>>>> 98a06de... Removed FacebookSDK from project
 				0FDAE40116CBD7E50046CBE5 /* UIKit.framework */,
 				0FDAE40316CBD7E50046CBE5 /* Foundation.framework */,
 				0FDAE40516CBD7E50046CBE5 /* CoreGraphics.framework */,
@@ -522,7 +480,6 @@
 				0FDAE41816CBD7E50046CBE5 /* Default-568h@2x.png in Resources */,
 				0FDAE41B16CBD7E50046CBE5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				0FDAE41E16CBD7E50046CBE5 /* MainStoryboard_iPad.storyboard in Resources */,
-				0FDAE44D16CBD9660046CBE5 /* FacebookSDKResources.bundle in Resources */,
 				0FDAE4A216CBDC280046CBE5 /* 111-user.png in Resources */,
 				0FDAE4A316CBDC280046CBE5 /* 112-group.png in Resources */,
 				0FDAE4A816CBDC280046CBE5 /* bars.xml in Resources */,
@@ -741,14 +698,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DFDD9E67CDB847BC97CD9E98 /* Pods.xcconfig */;
 			buildSettings = {
-<<<<<<< HEAD
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-=======
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
->>>>>>> 98a06de... Removed FacebookSDK from project
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
@@ -765,16 +715,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-<<<<<<< HEAD
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-=======
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
->>>>>>> 98a06de... Removed FacebookSDK from project
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
