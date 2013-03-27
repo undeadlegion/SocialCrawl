@@ -106,6 +106,17 @@
                   clientKey:@"GFnRQgp4dKzHSwWHkLTc7pv87BiVwB8CcttWalXG"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    (void)[[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_TP78-NOrHM"
+                                                 withAppSecret:@"e319aea558bb46ec89e3d0328ab42b6f"
+                                                  usingOptions:nil];
+    [KCSPing pingKinveyWithBlock:^(KCSPingResult *result) {
+        if (result.pingWasSuccessful == YES){
+            NSLog(@"Kinvey Ping Success");
+        } else {
+            NSLog(@"Kinvey Ping Failed");
+        }
+    }];
+    
     NSLog(@"REGISTERING FOR NOTIFICATIONS");
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
