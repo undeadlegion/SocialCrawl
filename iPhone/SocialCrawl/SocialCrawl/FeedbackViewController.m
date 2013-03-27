@@ -54,7 +54,6 @@
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
-        [TestFlight submitFeedback:self.feedbackView.text];
     });
 }
 
@@ -78,7 +77,6 @@
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [TestFlight passCheckpoint:@"Type Feedback"];
     //    [self scrollViewToCenterOfScreen:textView];
 }
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView{

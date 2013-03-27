@@ -129,6 +129,10 @@
 //    [queue addOperation:loadEvents];
 
 
+    [Parse setApplicationId:@"62KUdydKMthgxjTx9GqMoCl0Ge6O4hNJW0dD3sSL"
+                  clientKey:@"GFnRQgp4dKzHSwWHkLTc7pv87BiVwB8CcttWalXG"];
+
+    
     
     //check if opened by an notification
     UILocalNotification *notif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];

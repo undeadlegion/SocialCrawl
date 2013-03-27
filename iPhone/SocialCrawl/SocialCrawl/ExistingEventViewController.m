@@ -36,7 +36,6 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [TestFlight passCheckpoint:@"Add Existing Event"];
 }
 
 - (void)dealloc
