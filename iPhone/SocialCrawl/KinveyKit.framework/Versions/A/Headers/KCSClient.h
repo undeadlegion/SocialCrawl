@@ -4,15 +4,22 @@
 //
 //  Copyright (c) 2008-2013, Kinvey, Inc. All rights reserved.
 //
-//  This software contains valuable confidential and proprietary information of
-//  KINVEY, INC and is subject to applicable licensing agreements.
-//  Unauthorized reproduction, transmission or distribution of this file and its
-//  contents is a violation of applicable laws.
+// This software is licensed to you under the Kinvey terms of service located at
+// http://www.kinvey.com/terms-of-use. By downloading, accessing and/or using this
+// software, you hereby accept such terms of service  (and any agreement referenced
+// therein) and agree that you have read, understand and agree to be bound by such
+// terms of service and are of legal age to agree to such terms with Kinvey.
+//
+// This software contains valuable confidential and proprietary information of
+// KINVEY, INC and is subject to applicable licensing agreements.
+// Unauthorized reproduction, transmission or distribution of this file and its
+// contents is a violation of applicable laws.
+//
 
 #import <Foundation/Foundation.h>
 #import "KinveyHeaderInfo.h"
 
-#define MINIMUM_KCS_VERSION_SUPPORTED @"2.0"
+#define MINIMUM_KCS_VERSION_SUPPORTED @"3.0"
 
 @class KCSAnalytics;
 @class UIApplication;
@@ -34,9 +41,6 @@
 /** This object shoul implement the `KCSLogSink` protocol. Use this along with +[KinveyKit configureLoggingWithNetworkEnabled:debugEnabled:traceEnabled:warningEnabled:errorEnabled:] to send log messages to a custom sink.*/
 #define KCS_LOG_SINK @"kcsLogSink"
 
-/** Set this key's value to @NO to turn off the ability to create implict users. This will generate an error if a user is not logged in and a request is made. **/
-#define KCS_USER_CAN_CREATE_IMPLICT @"kcsCreateImplicitUsers"
-
 #define KCS_PUSH_KEY_KEY @"kcsPushKey"
 #define KCS_PUSH_SECRET_KEY @"kcsPushSecret"
 #define KCS_PUSH_IS_ENABLED_KEY @"kcsPushEnabled"
@@ -49,6 +53,7 @@
 
 #define KCS_USE_OLD_PING_STYLE_KEY @"kcsPingStyle"
 
+#define KCS_FACEBOOK_APP_KEY @"facebookKey"
 #define KCS_TWITTER_CLIENT_KEY @"twitterKey"
 #define KCS_TWITTER_CLIENT_SECRET @"twitterSecret"
 #define KCS_LINKEDIN_API_KEY @"linkedinKey"
@@ -58,6 +63,8 @@
 #define KCS_SALESFORCE_IDENTITY_URL @"id"
 #define KCS_SALESFORCE_REFRESH_TOKEN @"refresh_token"
 #define KCS_SALESFORCE_CLIENT_ID @"client_id"
+
+#define KCS_CACHES_USE_V2 @"kinvey.usev2caching"
 
 /*! A Singleton Class that provides access to all Kinvey Services.
 
@@ -123,35 +130,29 @@
 @property (nonatomic, strong, readonly) KCSReachability *kinveyReachability;
 #endif
 
-
-
 ///---------------------------------------------------------------------------------------
 /// @name User Authentication
 ///---------------------------------------------------------------------------------------
-/*! Current Kinvey User */
-@property (nonatomic, strong) KCSUser *currentUser;
-/*! Has the current user been authenticated?  (NOTE: Thread Safe) */
-@property (nonatomic) BOOL userIsAuthenticated;
-/*! Is user authentication in progress?  (NOTE: Thread Safe, can be used to spin for completion) */
-@property (nonatomic) BOOL userAuthenticationInProgress;
-/*! Stored authentication credentials */
-@property (nonatomic, copy) NSURLCredential *authCredentials;
 
+/*! Current Kinvey User
+ @deprecatedIn 1.19.0
+ */
+@property (nonatomic, strong) KCSUser *currentUser KCS_DEPRECATED(Use [KCSuser activeUser] instead, 1.19.0);
 
-
-// Do not expose this to clients yet... soon?
 
 ///---------------------------------------------------------------------------------------
 /// @name Analytics
 ///---------------------------------------------------------------------------------------
+
 /*! The suite of Kinvey Analytics Services */
 @property (nonatomic, readonly) KCSAnalytics *analytics;
 
 ///---------------------------------------------------------------------------------------
 /// @name Data Type Support
 ///---------------------------------------------------------------------------------------
+
 /*! NSDateFormatter String for Date storage */
-@property (unsafe_unretained, nonatomic, readonly) NSString *dateStorageFormatString;
+@property (retain, nonatomic) NSString *dateStorageFormatString;
 
 
 
@@ -162,6 +163,7 @@
 ///---------------------------------------------------------------------------------------
 /// @name Accessing the Singleton
 ///---------------------------------------------------------------------------------------
+
 /*! Return the instance of the singleton.  (NOTE: Thread Safe)
  
  This routine will give you access to all the Kinvey Services by returning the Singleton KCSClient that
@@ -296,4 +298,13 @@
                             warningEnabled: (BOOL)warningIsEnabled
                               errorEnabled: (BOOL)errorIsEnabled;
 
+
+///---------------------------------------------------------------------------------------
+/// @name Utilities
+///---------------------------------------------------------------------------------------
+/** Clears out all the caches maintained by the library. 
+ 
+ Right now the only caches used are those created by `KCSCachedStore` to cache app data. 
+ */
+- (void) clearCache;
 @end

@@ -2,12 +2,19 @@
 //  KinveyCollection.h
 //  KinveyKit
 //
-//  Copyright (c) 2008-2012, Kinvey, Inc. All rights reserved.
+//  Copyright (c) 2008-2013, Kinvey, Inc. All rights reserved.
 //
-//  This software contains valuable confidential and proprietary information of
-//  KINVEY, INC and is subject to applicable licensing agreements.
-//  Unauthorized reproduction, transmission or distribution of this file and its
-//  contents is a violation of applicable laws.
+// This software is licensed to you under the Kinvey terms of service located at
+// http://www.kinvey.com/terms-of-use. By downloading, accessing and/or using this
+// software, you hereby accept such terms of service  (and any agreement referenced
+// therein) and agree that you have read, understand and agree to be bound by such
+// terms of service and are of legal age to agree to such terms with Kinvey.
+//
+// This software contains valuable confidential and proprietary information of
+// KINVEY, INC and is subject to applicable licensing agreements.
+// Unauthorized reproduction, transmission or distribution of this file and its
+// contents is a violation of applicable laws.
+//
 
 #import <Foundation/Foundation.h>
 #import "KinveyPersistable.h"
@@ -102,7 +109,7 @@
 @property (strong) NSArray *lastFetchResults;
 
 /*! The Endpoint where we look for a request */
-@property (nonatomic, strong) NSString *baseURL;
+@property (nonatomic, strong, readonly) NSString *baseURL;
 
 
 
@@ -119,14 +126,14 @@
  @return The collection object representing the back-end collection.
 
  */
-+ (KCSCollection *)collectionFromString: (NSString *)string ofClass: (Class)templateClass;
++ (instancetype) collectionFromString: (NSString *)string ofClass: (Class)templateClass;
 
 
 /** The special user collection
  @return a Collection that can be used to query `KCSUser` objects.
  @since 1.10.2
  */
-+ (KCSCollection*) userCollection;
++ (instancetype) userCollection;
 
 ///---------------------------------------------------------------------------------------
 /// @name Fetching Entities from Kinvey
@@ -166,6 +173,5 @@
  */
 - (void)entityCountWithDelegate: (id <KCSInformationDelegate>)delegate;
 - (void)entityCountWithBlock: (KCSCountBlock)countBlock;
-
 
 @end

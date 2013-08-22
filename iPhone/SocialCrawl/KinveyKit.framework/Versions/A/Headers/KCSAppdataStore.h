@@ -4,11 +4,17 @@
 //
 //  Copyright (c) 2012-2013 Kinvey, Inc. All rights reserved.
 //
-//  This software contains valuable confidential and proprietary information of
-//  KINVEY, INC and is subject to applicable licensing agreements.
-//  Unauthorized reproduction, transmission or distribution of this file and its
-//  contents is a violation of applicable laws.
-
+// This software is licensed to you under the Kinvey terms of service located at
+// http://www.kinvey.com/terms-of-use. By downloading, accessing and/or using this
+// software, you hereby accept such terms of service  (and any agreement referenced
+// therein) and agree that you have read, understand and agree to be bound by such
+// terms of service and are of legal age to agree to such terms with Kinvey.
+//
+// This software contains valuable confidential and proprietary information of
+// KINVEY, INC and is subject to applicable licensing agreements.
+// Unauthorized reproduction, transmission or distribution of this file and its
+// contents is a violation of applicable laws.
+//
 #import <Foundation/Foundation.h>
 #import "KCSStore.h"
 #import "KCSOfflineSaveStore.h"
@@ -61,7 +67,7 @@
  @see [KCSStore storeWithOptions:]
  @return An autoreleased empty store with configured options and default authentication. 
  */
-+ (id) storeWithCollection:(KCSCollection*)collection options:(NSDictionary*)options;
++ (instancetype) storeWithCollection:(KCSCollection*)collection options:(NSDictionary*)options;
 
 /** Initialize an empty store with the given options and the given authentication
  
@@ -77,7 +83,7 @@
  @see [KCSStore storeWithAuthHandler:withOptions:]
  @return An autoreleased empty store with configured options and given authentication.
  */
-+ (id)storeWithCollection:(KCSCollection*)collection authHandler:(KCSAuthHandler *)authHandler withOptions: (NSDictionary *)options;
++ (instancetype)storeWithCollection:(KCSCollection*)collection authHandler:(KCSAuthHandler *)authHandler withOptions: (NSDictionary *)options;
 
 ///---------------------------------------------------------------------------------------
 /// @name Querying/Fetching
@@ -127,7 +133,18 @@
 /** Count all the elements the collection
   
  @param countBlock the block that receives the response 
+ @see countWithQuery:completion:
  */
 - (void)countWithBlock: (KCSCountBlock)countBlock;
 
+/** Count all the elements the collection that match a given query.
+ 
+ This method is useful for finding out how big a query will be without transferring all the data. This method is __not__ cached. 
+ 
+ @param query the query to filter the elements
+ @param countBlock the block that receives the response
+ @since 1.15.0
+ @see countWithBlock:
+ */
+- (void)countWithQuery:(KCSQuery*)query completion:(KCSCountBlock)countBlock;
 @end

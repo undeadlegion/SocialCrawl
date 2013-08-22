@@ -2,7 +2,18 @@
 //  KCSCachedStore.h
 //  KinveyKit
 //
-//  Copyright (c) 2012 Kinvey, Inc. All rights reserved.
+//  Copyright (c) 2012-2013 Kinvey, Inc. All rights reserved.
+//
+// This software is licensed to you under the Kinvey terms of service located at
+// http://www.kinvey.com/terms-of-use. By downloading, accessing and/or using this
+// software, you hereby accept such terms of service  (and any agreement referenced
+// therein) and agree that you have read, understand and agree to be bound by such
+// terms of service and are of legal age to agree to such terms with Kinvey.
+//
+// This software contains valuable confidential and proprietary information of
+// KINVEY, INC and is subject to applicable licensing agreements.
+// Unauthorized reproduction, transmission or distribution of this file and its
+// contents is a violation of applicable laws.
 //
 
 #import <Foundation/Foundation.h>
@@ -38,7 +49,7 @@ typedef enum KCSCachePolicy {
  - `KCSCachePolicyNetworkFirst` - The network is queried and the cache is updated with each result. The cached value is only returned when the network is unavailable. 
  - `KCSCachePolicyBoth` - If available, the cached value is returned to `completionBlock`. The network is then queried and cache updated, afterwards. The `completionBlock` will be called again with the updated result from the server.
  
- For an individual store, the chace policy can inherit from the defaultCachePolicy, be set using storeWithOptions: factory constructor, supplying the enum for the key `KCSStoreKeyCahcePolicy`.
+ For an individual store, the cache policy can inherit from the defaultCachePolicy, be set using storeWithOptions: factory constructor, supplying the enum for the key `KCSStoreKeyCahcePolicy`.
  
  This store also provides offline save semantics. To enable offline save, supply a unique string for this store for the `KCSStoreKeyUniqueOfflineSaveIdentifier` key in the options dictionary passed in class factory method ([KCSAppdataStore storeWithCollection:options:]. You can also supply an optional `KCSStoreKeyOfflineSaveDelegate` to intercept or be notified when those saves happen when the application becomes online. 
  

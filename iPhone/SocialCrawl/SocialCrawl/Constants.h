@@ -28,9 +28,10 @@
 
 extern NSString * const reachabilityString;
 extern NSString * const serverString;
-extern NSString * const eventsRequestString;
-extern NSString * const publicEventsRequestString;
-extern NSString * const barRequestString;
+extern NSString * const eventsForIdRequestString;
+extern NSString * const eventWithIdRequestString;
+extern NSString * const publiceventsForIdRequestString;
+extern NSString * const barsForIdRequestString;
 extern NSString * const barsForEventRequestString;
 extern NSString * const feedbackString;
 extern BOOL useServer;
