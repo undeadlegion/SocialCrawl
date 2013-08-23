@@ -26,7 +26,7 @@
 
 - (NSDictionary *)barsDictionary {
     if (!_barsDictionary) {
-        SocialCrawlAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
         _barsDictionary = delegate.barsDictionary;
     }
     return _barsDictionary;
@@ -42,7 +42,7 @@
     [self.dateFormatter setDateFormat:@"h:mm a"];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsForEventFinishedLoading:) name:@"barsforevent" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"barsforid" object:nil];
 
     self.shouldReload = YES;
     self.serverURL = [[NSURL alloc] initWithString:serverString];
@@ -71,7 +71,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforevent" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"bars" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforid" object:nil];
 }
 
 - (void)barsForEventFinishedLoading:(NSNotification *)notification {
@@ -209,10 +209,10 @@
 }
 
 - (void)updateBarSpecials{
-    for (BarForEvent *barForEvent in self.currentEvent.barsForEvent) {
-        Bar *bar = [self.barsDictionary objectForKey:barForEvent.barId];
-        [bar.specials setObject:barForEvent.specials forKey:self.currentEvent.dateId];
-    }
+//    for (BarForEvent *barForEvent in self.currentEvent.barsForEvent) {
+//        Bar *bar = [self.barsDictionary objectForKey:barForEvent.barId];
+//        [bar.specials setObject:barForEvent.specials forKey:self.currentEvent.dateId];
+//    }
 }
 
 - (void)scheduleNotifications{
@@ -230,7 +230,9 @@
         //no need to schedule
         if(isScheduled)
             continue;
-        
+        if (!barForEvent.time) {
+            NSLog(@"TIME IS NIL");
+        }
         //get the days and hours between now and the event
         NSCalendar *calendar = [NSCalendar currentCalendar];
         unsigned unitFlags = NSYearCalendarUnit|NSMonthCalendarUnit |NSDayCalendarUnit| NSHourCalendarUnit |NSMinuteCalendarUnit |NSSecondCalendarUnit;

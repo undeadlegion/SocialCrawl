@@ -42,18 +42,23 @@
     NSString *dataType = data[@"type"];
     NSString *dataId = data[@"id"];
 
-    if ([dataType isEqualToString:@"bars"]) {
+    if ([dataType isEqualToString:@"barsforid"]) {
         dataFetcher = [[BarsFetcher alloc] init];
-        dataPath = barRequestString;
+        dataPath = barsForIdRequestString;
     }
-    if ([dataType isEqualToString:@"events"]) {
+    if ([dataType isEqualToString:@"eventsforid"]) {
         dataFetcher = [[EventsFetcher alloc] init];
-        dataPath = [eventsRequestString stringByAppendingString:[@(kFacebookId) stringValue]];
+        dataPath = [eventsForIdRequestString stringByAppendingString:[@(kFacebookId) stringValue]];
     }
     if ([dataType isEqualToString:@"barsforevent"]) {
         dataFetcher = [[BarsForEventFetcher alloc] init];
         dataPath = [barsForEventRequestString stringByAppendingString:dataId];
     }
+    if ([dataType isEqualToString:@"eventwithid"]) {
+        dataFetcher = [[EventsFetcher alloc] init];
+        dataPath = [eventWithIdRequestString stringByAppendingString:dataId];
+    }
+
     
     if (!useServer){
         dataPath = [[NSBundle mainBundle] pathForResource:dataType ofType:@"xml"];
@@ -98,14 +103,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #ifdef TESTING
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+//    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     [TestFlight takeOff:@"4326d680-cde2-442e-86c9-28b7bd2027a9"];
 
-    [Parse setApplicationId:@"62KUdydKMthgxjTx9GqMoCl0Ge6O4hNJW0dD3sSL"
-                  clientKey:@"GFnRQgp4dKzHSwWHkLTc7pv87BiVwB8CcttWalXG"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
     (void)[[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_TP78-NOrHM"
                                                  withAppSecret:@"e319aea558bb46ec89e3d0328ab42b6f"
                                                   usingOptions:nil];
@@ -134,21 +135,17 @@
         [defaults synchronize];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"barsforid" object:nil];
 
     // load from server
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     queue.name = @"Loading Queue";
     
     NSOperation *loadBars, *loadEvents;
-    loadBars = [self loadFromServer:@{@"type":@"bars"}];
+    loadBars = [self loadFromServer:@{@"type":@"barsforid"}];
     [queue addOperation:loadBars];
-//    loadEvents = [self loadFromServer:@{@"type":@"events"}];
+//    loadEvents = [self loadFromServer:@{@"type":@"eventsforid"}];
 //    [queue addOperation:loadEvents];
-
-
-    [Parse setApplicationId:@"62KUdydKMthgxjTx9GqMoCl0Ge6O4hNJW0dD3sSL"
-                  clientKey:@"GFnRQgp4dKzHSwWHkLTc7pv87BiVwB8CcttWalXG"];
 
     
     
@@ -190,16 +187,11 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"REGISTERED FOR PUSH");
-    // Store the deviceToken in the current installation and save it to Parse.
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation saveInBackground];
 }
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    [PFPush handlePush:userInfo];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
@@ -234,7 +226,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"bars" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforid" object:nil];
 }
 
 @end

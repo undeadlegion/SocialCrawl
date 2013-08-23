@@ -21,13 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // register notification for when events finish loading
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"events" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"eventsforid" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"eventwithid" object:nil];
     [self.tableView reloadData];
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"events" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"eventsforid" object:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

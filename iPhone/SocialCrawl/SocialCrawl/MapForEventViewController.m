@@ -45,7 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"bars" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"barsforid" object:nil];
 }
 
 - (void)barsFinishedLoading:(NSNotification *)notif
@@ -56,7 +56,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"bars" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforid" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
