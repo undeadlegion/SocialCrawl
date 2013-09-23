@@ -8,6 +8,8 @@
 
 #import "BarInfoViewController.h"
 #import "Bar.h"
+#import "SelectBarsViewController.h"
+#import "BarForEvent.h"
 
 @implementation BarInfoViewController
 
@@ -19,18 +21,13 @@
     self.headerViewImage.image = self.currentBar.detailedLogo;
     self.headerViewLabel.text = self.currentBar.name;
     self.title = self.currentBar.name;
+    self.datePicker.date = self.eventBar.time;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 }
 
-- (IBAction)unwindFromBarInfoViewController:(UIStoryboardSegue *)segue
-{
-    NSLog(@"Unwinding segue!");
-
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -78,6 +75,12 @@
         return messageHeight;
 }
 
+- (IBAction)doneButtonPressed:(id)sender {
+    NSLog(@"DONE BUTTON");
+    self.eventBar.time = self.datePicker.date;
+    [self performSegueWithIdentifier:@"unwindToSelectBars" sender:self];
+}
+
 - (CGFloat)getMessageHeight:(NSString *) text
 {
     return [text sizeWithFont:[UIFont systemFontOfSize:17] constrainedToSize:CGSizeMake(270,300) lineBreakMode:NSLineBreakByWordWrapping].height;
@@ -115,7 +118,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+  
 }
-
 @end

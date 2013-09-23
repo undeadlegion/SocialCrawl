@@ -12,6 +12,9 @@
 #define kCurrentSection 0
 #define kPastSection 1
 
+#define kSelectedSection 0
+#define kOtherSection 1
+
 #define kSpecialsSection 0
 #define kDescriptionSection 1
 #define kContactSection 2

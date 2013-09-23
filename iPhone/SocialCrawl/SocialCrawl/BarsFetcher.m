@@ -35,6 +35,7 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
+    
     if([elementName isEqualToString:@"Bar"]) {
         [barsDictionary setObject:currentBar forKey:currentBar.barId];
         currentBar = nil;
@@ -79,7 +80,8 @@
     }
     if([string hasPrefix:@"\n"])
         return;
-    [currentStringValue appendString:string];
+    [currentStringValue appendString:[string stringByTrimmingCharactersInSet:
+                                      [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
 }
 
 - (void)parseXMLFile:(NSString *)pathToFile relativeTo:(NSURL *)baseURL isURL:(BOOL)url{
