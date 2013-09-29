@@ -7,7 +7,7 @@
 //
 
 #import "EventNameViewController.h"
-#import "InviteContactFriendsViewController.h"
+#import "SelectFriendsViewController.h"
 
 @interface EventNameViewController ()
 
@@ -72,12 +72,10 @@
 }
 
 #pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    InviteContactFriendsViewController * viewController = [segue destinationViewController];
-//    viewController.createdEvent = self.createdEvent;
+    SelectFriendsViewController * viewController = [segue destinationViewController];
+    viewController.createdEvent = self.createdEvent;
 }
 
 @end

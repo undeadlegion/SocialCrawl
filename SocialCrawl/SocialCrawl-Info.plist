@@ -48,6 +48,8 @@
 	<string>1.0</string>
 	<key>FacebookAppID</key>
 	<string>581955835147917</string>
+	<key>FacebookDisplayName</key>
+	<string>SocialCrawl</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

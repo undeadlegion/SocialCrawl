@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddExistingEventViewController : UITableViewController<UITextViewDelegate>
+@interface AddWithIdViewController : UITableViewController<UITextViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @property (nonatomic, strong) NSString *eventId;

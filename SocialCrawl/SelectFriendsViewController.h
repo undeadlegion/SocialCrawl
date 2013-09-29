@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import "Event.h"
 
-@interface InviteFacebookFriendsViewController : UIViewController
-
+@interface SelectFriendsViewController : UIViewController <FBFriendPickerDelegate>
+@property (nonatomic, strong) Event *createdEvent;
 @end

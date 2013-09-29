@@ -16,14 +16,14 @@
 		0F4F68F716EB327600A4EE29 /* book_bookmark_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F416EB327600A4EE29 /* book_bookmark_24.png */; };
 		0F4F68F816EB327600A4EE29 /* book_bookmark_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F516EB327600A4EE29 /* book_bookmark_48.png */; };
 		0F4F68F916EB327600A4EE29 /* book_bookmark_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F68F616EB327600A4EE29 /* book_bookmark_64.png */; };
-		0F4F68FE16EB3A5900A4EE29 /* AddExistingEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F68FD16EB3A5900A4EE29 /* AddExistingEventViewController.m */; };
+		0F4F68FE16EB3A5900A4EE29 /* AddWithIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4F68FD16EB3A5900A4EE29 /* AddWithIdViewController.m */; };
 		0F6245F517608638004FDD21 /* DrinkLoggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6245F417608638004FDD21 /* DrinkLoggerViewController.m */; };
 		0F8CBEA116D59E0200923B08 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9D16D59E0100923B08 /* Default.png */; };
 		0F8CBEA216D59E0200923B08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9E16D59E0100923B08 /* Default@2x.png */; };
-		0F9C9C4417C6E66D000BF814 /* CreateNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C9C4317C6E66D000BF814 /* CreateNewEventViewController.m */; };
 		0F9E19CE17DFD68000F45704 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9E19CD17DFD68000F45704 /* AddressBook.framework */; };
 		0F9E19CF17DFED0500F45704 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9E19CB17DFB2C400F45704 /* AddressBookUI.framework */; };
-		0FA4348E17F0E62700C1181B /* InviteFacebookFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4348D17F0E62700C1181B /* InviteFacebookFriendsViewController.m */; };
+		0FA4348E17F0E62700C1181B /* SelectFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4348D17F0E62700C1181B /* SelectFriendsViewController.m */; };
+		0FA5996217F7AB820079B3B9 /* SelectDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5996117F7AB820079B3B9 /* SelectDateViewController.m */; };
 		0FC4212916EBB5D600395498 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9F16D59E0200923B08 /* Icon.png */; };
 		0FC4212A16EBB5D900395498 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBEA016D59E0200923B08 /* Icon@2x.png */; };
 		0FC9873716E8ED3E0067972A /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC9873616E8ED3E0067972A /* AddEventViewController.m */; };
@@ -116,20 +116,20 @@
 		0F4F68F416EB327600A4EE29 /* book_bookmark_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_bookmark_24.png; sourceTree = "<group>"; };
 		0F4F68F516EB327600A4EE29 /* book_bookmark_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_bookmark_48.png; sourceTree = "<group>"; };
 		0F4F68F616EB327600A4EE29 /* book_bookmark_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_bookmark_64.png; sourceTree = "<group>"; };
-		0F4F68FC16EB3A5900A4EE29 /* AddExistingEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExistingEventViewController.h; sourceTree = "<group>"; };
-		0F4F68FD16EB3A5900A4EE29 /* AddExistingEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExistingEventViewController.m; sourceTree = "<group>"; };
+		0F4F68FC16EB3A5900A4EE29 /* AddWithIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWithIdViewController.h; sourceTree = "<group>"; };
+		0F4F68FD16EB3A5900A4EE29 /* AddWithIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWithIdViewController.m; sourceTree = "<group>"; };
 		0F6245F317608638004FDD21 /* DrinkLoggerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkLoggerViewController.h; sourceTree = "<group>"; };
 		0F6245F417608638004FDD21 /* DrinkLoggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkLoggerViewController.m; sourceTree = "<group>"; };
 		0F8CBE9D16D59E0100923B08 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		0F8CBE9E16D59E0100923B08 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		0F8CBE9F16D59E0200923B08 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
 		0F8CBEA016D59E0200923B08 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = SOURCE_ROOT; };
-		0F9C9C4217C6E66D000BF814 /* CreateNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewEventViewController.h; sourceTree = "<group>"; };
-		0F9C9C4317C6E66D000BF814 /* CreateNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewEventViewController.m; sourceTree = "<group>"; };
 		0F9E19CB17DFB2C400F45704 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		0F9E19CD17DFD68000F45704 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		0FA4348C17F0E62700C1181B /* InviteFacebookFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFacebookFriendsViewController.h; sourceTree = "<group>"; };
-		0FA4348D17F0E62700C1181B /* InviteFacebookFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFacebookFriendsViewController.m; sourceTree = "<group>"; };
+		0FA4348C17F0E62700C1181B /* SelectFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectFriendsViewController.h; sourceTree = "<group>"; };
+		0FA4348D17F0E62700C1181B /* SelectFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectFriendsViewController.m; sourceTree = "<group>"; };
+		0FA5996017F7AB820079B3B9 /* SelectDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateViewController.h; sourceTree = "<group>"; };
+		0FA5996117F7AB820079B3B9 /* SelectDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateViewController.m; sourceTree = "<group>"; };
 		0FC9873516E8ED3E0067972A /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		0FC9873616E8ED3E0067972A /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		0FCCDB1917CC031500EF1C2E /* InviteContactFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteContactFriendsViewController.h; sourceTree = "<group>"; };
@@ -496,8 +496,8 @@
 		0FF5CE2517C7E1DC00E4F06A /* Existing Event */ = {
 			isa = PBXGroup;
 			children = (
-				0F4F68FC16EB3A5900A4EE29 /* AddExistingEventViewController.h */,
-				0F4F68FD16EB3A5900A4EE29 /* AddExistingEventViewController.m */,
+				0F4F68FC16EB3A5900A4EE29 /* AddWithIdViewController.h */,
+				0F4F68FD16EB3A5900A4EE29 /* AddWithIdViewController.m */,
 			);
 			name = "Existing Event";
 			sourceTree = "<group>";
@@ -505,18 +505,18 @@
 		0FF5CE2617C7E1E600E4F06A /* New Event */ = {
 			isa = PBXGroup;
 			children = (
-				0F9C9C4217C6E66D000BF814 /* CreateNewEventViewController.h */,
-				0F9C9C4317C6E66D000BF814 /* CreateNewEventViewController.m */,
 				0FF5CE2717C8FFEA00E4F06A /* EventNameViewController.h */,
 				0FF5CE2817C8FFEA00E4F06A /* EventNameViewController.m */,
+				0FA4348C17F0E62700C1181B /* SelectFriendsViewController.h */,
+				0FA4348D17F0E62700C1181B /* SelectFriendsViewController.m */,
 				0FCCDB1917CC031500EF1C2E /* InviteContactFriendsViewController.h */,
 				0FCCDB1A17CC031500EF1C2E /* InviteContactFriendsViewController.m */,
-				0FA4348C17F0E62700C1181B /* InviteFacebookFriendsViewController.h */,
-				0FA4348D17F0E62700C1181B /* InviteFacebookFriendsViewController.m */,
 				0FCCDB1C17CC03F700EF1C2E /* SelectBarsViewController.h */,
 				0FCCDB1D17CC03F700EF1C2E /* SelectBarsViewController.m */,
 				0FCCDB1F17CC046000EF1C2E /* AddDetailsViewController.h */,
 				0FCCDB2017CC046000EF1C2E /* AddDetailsViewController.m */,
+				0FA5996017F7AB820079B3B9 /* SelectDateViewController.h */,
+				0FA5996117F7AB820079B3B9 /* SelectDateViewController.m */,
 			);
 			name = "New Event";
 			sourceTree = "<group>";
@@ -700,16 +700,16 @@
 				0FCCDB2117CC046000EF1C2E /* AddDetailsViewController.m in Sources */,
 				0FDAE4C516CBDC280046CBE5 /* FeedbackViewController.m in Sources */,
 				0FCCDB1E17CC03F700EF1C2E /* SelectBarsViewController.m in Sources */,
+				0FA5996217F7AB820079B3B9 /* SelectDateViewController.m in Sources */,
 				0FDAE4C616CBDC280046CBE5 /* FeedPost.m in Sources */,
 				0FDAE4CD16CBDC280046CBE5 /* Reachability.m in Sources */,
 				0FDAE4D116CBDC280046CBE5 /* WallPost.m in Sources */,
-				0FA4348E17F0E62700C1181B /* InviteFacebookFriendsViewController.m in Sources */,
+				0FA4348E17F0E62700C1181B /* SelectFriendsViewController.m in Sources */,
 				0FDAE4E416CC17230046CBE5 /* SocialCrawlViewController.m in Sources */,
 				0F0DF19016D2ECDB00F8D62A /* DataFetcher.m in Sources */,
 				0FC9873716E8ED3E0067972A /* AddEventViewController.m in Sources */,
 				0F479F7D16EB114B00F82218 /* AddDrinkViewController.m in Sources */,
-				0F9C9C4417C6E66D000BF814 /* CreateNewEventViewController.m in Sources */,
-				0F4F68FE16EB3A5900A4EE29 /* AddExistingEventViewController.m in Sources */,
+				0F4F68FE16EB3A5900A4EE29 /* AddWithIdViewController.m in Sources */,
 				0FF5CE2917C8FFEA00E4F06A /* EventNameViewController.m in Sources */,
 				0F6245F517608638004FDD21 /* DrinkLoggerViewController.m in Sources */,
 			);

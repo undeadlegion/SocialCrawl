@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 SocialCrawl. All rights reserved.
 //
 
-#import "AddExistingEventViewController.h"
+#import "AddWithIdViewController.h"
 #import "SocialCrawlAppDelegate.h"
 #import "MBProgressHUD.h"
 
-@interface AddExistingEventViewController ()
+@interface AddWithIdViewController ()
 
 @end
 
-@implementation AddExistingEventViewController
+@implementation AddWithIdViewController
 
 - (void)pressedEnter
 {

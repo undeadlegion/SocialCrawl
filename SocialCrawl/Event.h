@@ -10,17 +10,7 @@
 
 @class BarForEvent;
 
-@interface Event : NSObject<NSCoding> {
-    NSString *eventId;
-    NSString *creatorId;
-    NSString *dateId;
-    NSDate *date;
-    NSString *title;
-    NSString *description;
-    UIImage *eventImage;
-    BOOL privacy;
-    NSArray *barsForEvent;
-}
+@interface Event : NSObject<NSCoding>
 
 @property (nonatomic, copy) NSString *eventId;
 @property (nonatomic, copy) NSString *creatorId;
@@ -31,6 +21,7 @@
 @property (nonatomic, strong) UIImage *eventImage;
 @property (nonatomic, getter = isPrivate) BOOL privacy;
 @property (nonatomic, strong) NSArray *barsForEvent;
+@property (nonatomic, strong) NSArray *selectedFriends;
 
 - (BOOL)isPast;
 @end

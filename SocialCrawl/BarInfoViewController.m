@@ -21,7 +21,15 @@
     self.headerViewImage.image = self.currentBar.detailedLogo;
     self.headerViewLabel.text = self.currentBar.name;
     self.title = self.currentBar.name;
-    self.datePicker.date = self.eventBar.time;
+    
+    NSLog(@"%@", [self presentingViewController]);
+    if ([[self presentingViewController] isKindOfClass:[SelectBarsViewController class]]) {
+        self.datePicker.date = self.eventBar.time;
+        self.datePicker.hidden = NO;
+    } else {
+        self.datePicker.hidden = YES;
+    }
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

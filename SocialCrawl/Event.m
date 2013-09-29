@@ -10,50 +10,55 @@
 #import "BarForEvent.h"
 
 @implementation Event
-@synthesize eventId, creatorId, date, title, description, eventImage, privacy, barsForEvent;
-@synthesize dateId;
 
-- (id)initWithCoder:(NSCoder *)aDecoder{
+- (NSDate *)date
+{
+    if (!_date) {
+        _date = [NSDate date];
+    }
+    return _date;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
     if((self = [super init])){
-        eventId = [aDecoder decodeObjectForKey:@"eventId"];
-        creatorId = [aDecoder decodeObjectForKey:@"creatorId"];
-        dateId = [aDecoder decodeObjectForKey:@"dateId"];
-        date = [aDecoder  decodeObjectForKey:@"date"];
-        title = [aDecoder  decodeObjectForKey:@"title"];
-        description = [aDecoder decodeObjectForKey:@"description"];
-        eventImage = [aDecoder decodeObjectForKey:@"eventImage"];
-        privacy = [aDecoder decodeBoolForKey:@"privacy"];
-        barsForEvent = [aDecoder decodeObjectForKey:@"barsForEvent"];
+        _eventId = [aDecoder decodeObjectForKey:@"eventId"];
+        _creatorId = [aDecoder decodeObjectForKey:@"creatorId"];
+        _dateId = [aDecoder decodeObjectForKey:@"dateId"];
+        _date = [aDecoder  decodeObjectForKey:@"date"];
+        _title = [aDecoder  decodeObjectForKey:@"title"];
+        _description = [aDecoder decodeObjectForKey:@"description"];
+        _eventImage = [aDecoder decodeObjectForKey:@"eventImage"];
+        _privacy = [aDecoder decodeBoolForKey:@"privacy"];
+        _barsForEvent = [aDecoder decodeObjectForKey:@"barsForEvent"];
+        _selectedFriends = [aDecoder decodeObjectForKey:@"selectedFriends"];
     }
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:eventId forKey:@"eventId"];
-    [aCoder encodeObject:creatorId forKey:@"creatorId"];
-    [aCoder encodeObject:dateId forKey:@"dateId"];
-    [aCoder encodeObject:date forKey:@"date"];
-    [aCoder encodeObject:title forKey:@"title"];
-    [aCoder encodeObject:description forKey:@"description"];
-    [aCoder encodeObject:eventImage forKey:@"eventImage"];
-    [aCoder encodeBool:privacy forKey:@"privacy"];
-    [aCoder encodeObject:barsForEvent forKey:@"barsForEvent"];
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:_eventId forKey:@"eventId"];
+    [aCoder encodeObject:_creatorId forKey:@"creatorId"];
+    [aCoder encodeObject:_dateId forKey:@"dateId"];
+    [aCoder encodeObject:_date forKey:@"date"];
+    [aCoder encodeObject:_title forKey:@"title"];
+    [aCoder encodeObject:_description forKey:@"description"];
+    [aCoder encodeObject:_eventImage forKey:@"eventImage"];
+    [aCoder encodeBool:_privacy forKey:@"privacy"];
+    [aCoder encodeObject:_barsForEvent forKey:@"barsForEvent"];
+    [aCoder encodeObject:_selectedFriends forKey:@"selectedFriends"];
 }
 
-- (BOOL)isPast{
-//    NSLog(@"Event: %@", title);
-//    NSLog(@"Today is: %@", [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle]);
-//    NSLog(@"Event date: %@", [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle]);
-//    NSLog(@"Compare: %d", [date compare:[NSDate date]]);
-
+- (BOOL)isPast
+{
     //get the days and hours between now and the event
     NSCalendar *calendar = [NSCalendar currentCalendar];
     unsigned unitFlags = NSDayCalendarUnit| NSHourCalendarUnit;
-    NSDateComponents *dateComps = [calendar components:unitFlags fromDate:[NSDate date] toDate:date options:0];
+    NSDateComponents *dateComps = [calendar components:unitFlags fromDate:[NSDate date] toDate:self.date options:0];
     int years = [dateComps year];
     int months = [dateComps month];
     int days = [dateComps day];
-//    int hours = [dateComps hour];
     
     //past event
     if(days < 0 && years != 0 && months != 0)

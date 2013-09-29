@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSDictionary *barsDictionary;
+@property (strong, nonatomic) FBSession *session;
+
 - (void)showAlert:(NSString*)pushmessage withTitle:(NSString*)title;
 - (BOOL)isReachable;
 - (NSOperation *)loadFromServer:(id)data;

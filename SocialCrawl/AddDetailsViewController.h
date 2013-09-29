@@ -11,5 +11,6 @@
 
 @interface AddDetailsViewController : UITableViewController
 @property (nonatomic, strong) Event *createdEvent;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end

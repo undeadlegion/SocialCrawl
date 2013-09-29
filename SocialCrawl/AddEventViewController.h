@@ -21,5 +21,6 @@
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
+- (IBAction)addFromFacebook:(id)sender;
 
 @end

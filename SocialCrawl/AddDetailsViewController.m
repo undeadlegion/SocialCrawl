@@ -8,18 +8,26 @@
 
 #import "AddDetailsViewController.h"
 #import "SocialCrawlViewController.h"
+#import "SelectDateViewController.h"
 
 @interface AddDetailsViewController ()
-
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation AddDetailsViewController
+
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    return _dateFormatter;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -27,65 +35,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.dateFormatter setDateFormat:@"MM/dd/yy"];
+    [self.dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    self.dateLabel.text = [self.dateFormatter stringFromDate:self.createdEvent.date];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"View will appear %@", self.createdEvent.date);
+    NSLog(@"Formatted: %@", [self.dateFormatter stringFromDate:self.createdEvent.date]);
+    self.dateLabel.text = [self.dateFormatter stringFromDate:self.createdEvent.date];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"View did appear");
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}           
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    SocialCrawlViewController * viewController = [segue destinationViewController];
+    if ([segue.identifier isEqualToString:@"SelectDate"]) {
+        SelectDateViewController *viewController = [segue destinationViewController];
+        viewController.createdEvent = self.createdEvent;
+    }
+    //    SocialCrawlViewController * viewController = [segue destinationViewController];
 }
 
 
