@@ -9,6 +9,8 @@
 #import "AddDetailsViewController.h"
 #import "SocialCrawlViewController.h"
 #import "SelectDateViewController.h"
+#import "BarForEvent.h"
+#import "SocialCrawlAppDelegate.h"
 
 @interface AddDetailsViewController ()
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
@@ -42,15 +44,29 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"View will appear %@", self.createdEvent.date);
-    NSLog(@"Formatted: %@", [self.dateFormatter stringFromDate:self.createdEvent.date]);
+    [super viewWillAppear:animated];
+
+    if ([self.createdEvent.privacyType isEqualToString:kPrivacyTypePrivate]) {
+        self.privacyToggle.on = YES;
+    } else {
+        self.privacyToggle.on = NO;
+    }
     self.dateLabel.text = [self.dateFormatter stringFromDate:self.createdEvent.date];
+    self.textView.text = self.createdEvent.eventDescription;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"View did appear");
+    if ([self.privacyToggle isOn]) {
+        self.createdEvent.privacyType = kPrivacyTypePrivate;
+    } else {
+        self.createdEvent.privacyType = kPrivacyTypePublic;
+    }
+    self.createdEvent.eventDescription = self.textView.text;
+    [self.textView resignFirstResponder];
+    [super viewWillDisappear:animated];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -59,12 +75,90 @@
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    self.createdEvent.eventDescription = self.textView.text;
+    
     if ([segue.identifier isEqualToString:@"SelectDate"]) {
+        self.createdEvent.eventDescription = self.textView.text;
         SelectDateViewController *viewController = [segue destinationViewController];
         viewController.createdEvent = self.createdEvent;
+    } else if ([segue.identifier isEqualToString:@"SaveCreatedEvent"]) {
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        unsigned dateFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+        unsigned timeFlags = NSHourCalendarUnit | NSMinuteCalendarUnit;
+        NSDateComponents *dateComps, *timeComps;
+
+        // set event start time
+        BarForEvent *firstBarForEvent = [self.createdEvent.barsForEvent firstObject];
+        if (firstBarForEvent) {
+            dateComps = [calendar components:dateFlags fromDate:self.createdEvent.date];
+            timeComps = [calendar components:timeFlags fromDate:firstBarForEvent.time];
+            dateComps.hour = timeComps.hour;
+            dateComps.minute = timeComps.minute;
+            dateComps.second = 0;
+            self.createdEvent.date = [calendar dateFromComponents:dateComps];
+        }
+        
+        // reflect new event date in selected bars
+        for (BarForEvent *barForEvent in self.createdEvent.barsForEvent) {
+            dateComps = [calendar components:dateFlags fromDate:self.createdEvent.date];
+            timeComps = [calendar components:timeFlags fromDate:barForEvent.time];
+            dateComps.hour = timeComps.hour;
+            dateComps.minute = timeComps.minute;
+            dateComps.second = 0;
+            barForEvent.time = [calendar dateFromComponents:dateComps];
+        }
+
+        // set creator id
+        SocialCrawlAppDelegate *appDelegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.createdEvent.creatorId = appDelegate.fbId;
     }
-    //    SocialCrawlViewController * viewController = [segue destinationViewController];
 }
 
-
+- (void)getPublishPermissions
+{
+    if (!FBSession.activeSession.isOpen) {
+        [FBSession openActiveSessionWithPublishPermissions:@[@"create_event"]
+                                           defaultAudience:FBSessionDefaultAudienceEveryone
+                                              allowLoginUI:YES
+                                         completionHandler:^(FBSession *session,
+                                                             FBSessionState state,
+                                                             NSError *error) {
+                                             if (error) {
+                                                 UIAlertView *alertView =
+                                                 [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                            message:error.localizedDescription
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"OK"
+                                                                  otherButtonTitles:nil];
+                                                 [alertView show];
+                                             } else if (session.isOpen) {
+                                                 [self performSegueWithIdentifier:@"SaveCreatedEvent" sender:self];
+                                             }
+                                         }];
+    } else {
+        if (![FBSession.activeSession.permissions containsObject:@"create_event"]) {
+            [[FBSession activeSession] requestNewPublishPermissions:@[@"create_event"]
+                                                    defaultAudience:FBSessionDefaultAudienceEveryone
+                                                  completionHandler:^(FBSession *session, NSError *error) {
+                                                      if (error) {
+                                                          UIAlertView *alertView =
+                                                          [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                     message:error.localizedDescription
+                                                                                    delegate:nil
+                                                                           cancelButtonTitle:@"OK"
+                                                                           otherButtonTitles:nil];
+                                                          [alertView show];
+                                                      } else if (session.isOpen) {
+                                                          [self performSegueWithIdentifier:@"SaveCreatedEvent"sender:self];         
+                                                      }
+                                                  }];
+        } else {
+            [self performSegueWithIdentifier:@"SaveCreatedEvent"sender:self];
+        }
+    }
+}
+- (IBAction)doneButtonPressed:(id)sender
+{
+    [self getPublishPermissions];
+}
 @end

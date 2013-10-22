@@ -8,41 +8,59 @@
 
 #import "BarForEvent.h"
 
+@interface BarForEvent ()
+@end
 
 @implementation BarForEvent
-@synthesize barId, time, specials;
 
-- (id)initWithCoder:(NSCoder *)aDecoder{
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
     if((self = [super init])){
-        barId = [aDecoder decodeObjectForKey:@"barId"];
-        time = [aDecoder decodeObjectForKey:@"time"];
+        _barId = [aDecoder decodeObjectForKey:@"barId"];
+        _time = [aDecoder decodeObjectForKey:@"time"];
 
     }
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:barId forKey:@"barId"];
-    [aCoder encodeObject:time forKey:@"time"];
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:_barId forKey:@"barId"];
+    [aCoder encodeObject:_time forKey:@"time"];
 }
 
-- (BOOL)isPast{
-    //get the days and hours between now and the event
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    unsigned unitFlags = NSDayCalendarUnit| NSHourCalendarUnit;
-//    NSDateComponents *dateComps = [calendar components:unitFlags fromDate:[NSDate date] toDate:time options:0];
-//    int years = [dateComps year];
-//    int months = [dateComps month];
-//    int days = [dateComps day];
-//    int hours = [dateComps hour];
+- (NSDictionary *)serializeAsDictionary
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+
+    NSMutableArray *keys = [[NSMutableArray alloc] init];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+
+    [keys addObject:@"bar_id"];
+    [keys addObject:@"location_id"];
+    [keys addObject:@"start_time"];
+    [values addObject:self.barId];
+    [values addObject:@(12)];
+    [values addObject:[dateFormatter stringFromDate:self.time]];
     
-    //past event
-//    if(days < 0 && years != 0 && months != 0)
-//        return YES;
-//    else return NO;
-    if([time compare:[NSDate date]] == NSOrderedAscending)
+    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
+}
+
+- (BOOL)isPast
+{
+    if([_time compare:[NSDate date]] == NSOrderedAscending)
         return YES;
     return NO;
 }
 
+- (NSString *)description
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    
+    return [NSString stringWithFormat:@"[BarId:%@; Time:%@; Specials:%@]", self.barId, [dateFormatter stringFromDate:self.time], self.specials];
+}
 @end

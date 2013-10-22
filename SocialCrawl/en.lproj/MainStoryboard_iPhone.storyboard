@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -383,7 +383,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-k8-HTI">
-                                <rect key="frame" x="60" y="212" width="200" height="80"/>
+                                <rect key="frame" x="60" y="212" width="201" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="vBC-z0-wx5"/>
                                 </constraints>
@@ -419,7 +419,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4w-LE-hYq">
                                 <rect key="frame" x="60" y="125" width="200" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="7Sb-Ml-CxB"/>
+                                    <constraint firstAttribute="width" constant="200" id="Hbe-W1-u7X"/>
                                     <constraint firstAttribute="height" constant="79" id="IsU-CJ-n85"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -434,14 +434,32 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <segue destination="xqS-qU-cuP" kind="push" identifier="EventName" id="8Oq-7M-Uue"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emK-Rt-0KE">
+                                <rect key="frame" x="60" y="386" width="200" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Test Event">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testEventPressed:" destination="itH-kd-frK" eventType="touchUpInside" id="oTn-4d-6TB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="g4w-LE-hYq" firstAttribute="leading" secondItem="OC2-k8-HTI" secondAttribute="leading" type="default" id="0GF-eg-ZeR"/>
                             <constraint firstItem="OC2-k8-HTI" firstAttribute="leading" secondItem="XIO-1K-mnS" secondAttribute="leading" type="default" id="2iY-vL-yIs"/>
+                            <constraint firstItem="emK-Rt-0KE" firstAttribute="leading" secondItem="XIO-1K-mnS" secondAttribute="leading" type="default" id="NMD-zx-awK"/>
+                            <constraint firstItem="emK-Rt-0KE" firstAttribute="top" secondItem="XIO-1K-mnS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QN3-tb-S74"/>
                             <constraint firstAttribute="centerX" secondItem="OC2-k8-HTI" secondAttribute="centerX" type="user" id="TdL-bS-Chh"/>
                             <constraint firstItem="XIO-1K-mnS" firstAttribute="centerX" secondItem="g4w-LE-hYq" secondAttribute="centerX" type="user" id="U61-jm-ecC"/>
                             <constraint firstItem="OC2-k8-HTI" firstAttribute="top" secondItem="g4w-LE-hYq" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="UPC-xc-gUa"/>
+                            <constraint firstItem="emK-Rt-0KE" firstAttribute="trailing" secondItem="XIO-1K-mnS" secondAttribute="trailing" type="default" id="Yup-KM-sdq"/>
                             <constraint firstItem="XIO-1K-mnS" firstAttribute="centerX" secondItem="OC2-k8-HTI" secondAttribute="centerX" type="user" id="bZ6-4C-PTe"/>
                             <constraint firstAttribute="centerY" secondItem="OC2-k8-HTI" secondAttribute="centerY" type="user" id="qGe-Bi-yrK"/>
                             <constraint firstItem="XIO-1K-mnS" firstAttribute="top" secondItem="OC2-k8-HTI" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="r5d-R5-7be"/>
@@ -808,11 +826,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Mh-N0-0eF">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Mh-N0-0eF">
                                                     <rect key="frame" x="203" y="8" width="79" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </switch>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public Event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2c-EZ-fB9">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2c-EZ-fB9">
                                                     <rect key="frame" x="20" y="11" width="175" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -827,7 +845,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraint firstItem="V2c-EZ-fB9" firstAttribute="centerY" secondItem="3Mh-N0-0eF" secondAttribute="centerY" type="user" id="EWj-nY-7uo"/>
                                             <constraint firstItem="3Mh-N0-0eF" firstAttribute="leading" secondItem="V2c-EZ-fB9" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pLs-gl-KbQ"/>
                                             <constraint firstItem="V2c-EZ-fB9" firstAttribute="leading" secondItem="CUg-XD-Olp" secondAttribute="leading" constant="30" type="default" id="pte-ww-9yC"/>
-                                            <constraint firstItem="V2c-EZ-fB9" firstAttribute="centerY" secondItem="CUg-XD-Olp" secondAttribute="centerY" constant="-0.5" type="default" id="tbr-cG-vDA"/>
+                                            <constraint firstItem="3Mh-N0-0eF" firstAttribute="centerY" secondItem="CUg-XD-Olp" secondAttribute="centerY" constant="-0.5" type="default" id="vb7-7q-bZ7"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -870,12 +888,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="Add Details" id="8FM-bS-a0p">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="TMc-wf-g6b">
                             <connections>
-                                <segue destination="Gsb-wv-g5o" kind="unwind" unwindAction="unwindToSocialCrawlViewController:" id="BkU-IG-hTv"/>
+                                <action selector="doneButtonPressed:" destination="6JH-2o-oOR" id="mE4-bo-c99"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="O2H-uY-HO4" id="vQm-3C-C1U"/>
+                        <outlet property="privacyToggle" destination="3Mh-N0-0eF" id="O3x-MD-LsJ"/>
+                        <outlet property="textView" destination="76g-0s-9CH" id="Cnl-B9-J0E"/>
+                        <segue destination="Gsb-wv-g5o" kind="unwind" identifier="SaveCreatedEvent" unwindAction="unwindToSocialCrawlViewController:" id="KR6-ar-S4B"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98q-8q-MXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -934,7 +955,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="Set Name" id="SYW-mA-jer">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="yCs-w8-aoQ">
                             <connections>
-                                <segue destination="EYy-7t-jKo" kind="push" identifier="InviteFriends" id="q8a-Tm-AbZ"/>
+                                <segue destination="EYy-7t-jKo" kind="push" identifier="SelectFriends" id="q8a-Tm-AbZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

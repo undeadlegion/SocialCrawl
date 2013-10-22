@@ -9,14 +9,12 @@
 #import <Foundation/Foundation.h>
 
 
-@interface BarForEvent : NSObject <NSCoding> {
-    NSString *barId;
-    NSDate *time;
-    NSString *specials;
-}
+@interface BarForEvent : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *barId;
 @property (nonatomic, copy) NSDate *time;
 @property (nonatomic, copy) NSString *specials;
+
+- (NSDictionary *)serializeAsDictionary;
 - (BOOL)isPast;
 @end

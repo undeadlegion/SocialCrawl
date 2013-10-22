@@ -56,15 +56,11 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    NSLog(@"%@", text);
     if([text isEqualToString:@"\n"]){
         [textView resignFirstResponder];
-        
-        self.createdEvent.title = textView.text;
-        
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-
+        [self performSegueWithIdentifier:@"SelectFriends" sender:self];
         return NO;
     }
     return YES;
@@ -74,6 +70,7 @@
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    self.createdEvent.title = self.textView.text;
     SelectFriendsViewController * viewController = [segue destinationViewController];
     viewController.createdEvent = self.createdEvent;
 }

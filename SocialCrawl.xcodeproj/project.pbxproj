@@ -22,8 +22,10 @@
 		0F8CBEA216D59E0200923B08 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9E16D59E0100923B08 /* Default@2x.png */; };
 		0F9E19CE17DFD68000F45704 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9E19CD17DFD68000F45704 /* AddressBook.framework */; };
 		0F9E19CF17DFED0500F45704 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9E19CB17DFB2C400F45704 /* AddressBookUI.framework */; };
+		0FA18C3B17FE04AE00C7585B /* TestEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA18C3A17FE04AE00C7585B /* TestEvent.json */; };
 		0FA4348E17F0E62700C1181B /* SelectFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4348D17F0E62700C1181B /* SelectFriendsViewController.m */; };
 		0FA5996217F7AB820079B3B9 /* SelectDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5996117F7AB820079B3B9 /* SelectDateViewController.m */; };
+		0FC3266C1816561100849B19 /* TutorialEvent.archive in Resources */ = {isa = PBXBuildFile; fileRef = 0FC3266B1816561100849B19 /* TutorialEvent.archive */; };
 		0FC4212916EBB5D600395498 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBE9F16D59E0200923B08 /* Icon.png */; };
 		0FC4212A16EBB5D900395498 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CBEA016D59E0200923B08 /* Icon@2x.png */; };
 		0FC9873716E8ED3E0067972A /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC9873616E8ED3E0067972A /* AddEventViewController.m */; };
@@ -126,10 +128,12 @@
 		0F8CBEA016D59E0200923B08 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		0F9E19CB17DFB2C400F45704 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		0F9E19CD17DFD68000F45704 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		0FA18C3A17FE04AE00C7585B /* TestEvent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestEvent.json; sourceTree = "<group>"; };
 		0FA4348C17F0E62700C1181B /* SelectFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectFriendsViewController.h; sourceTree = "<group>"; };
 		0FA4348D17F0E62700C1181B /* SelectFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectFriendsViewController.m; sourceTree = "<group>"; };
 		0FA5996017F7AB820079B3B9 /* SelectDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateViewController.h; sourceTree = "<group>"; };
 		0FA5996117F7AB820079B3B9 /* SelectDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateViewController.m; sourceTree = "<group>"; };
+		0FC3266B1816561100849B19 /* TutorialEvent.archive */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = TutorialEvent.archive; path = SocialCrawl/TutorialEvent.archive; sourceTree = "<group>"; };
 		0FC9873516E8ED3E0067972A /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		0FC9873616E8ED3E0067972A /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		0FCCDB1917CC031500EF1C2E /* InviteContactFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteContactFriendsViewController.h; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 		0FDAE3F516CBD7E50046CBE5 = {
 			isa = PBXGroup;
 			children = (
+				0FC3266B1816561100849B19 /* TutorialEvent.archive */,
 				0FDAE40716CBD7E50046CBE5 /* SocialCrawl */,
 				0FDAE43916CBD7E50046CBE5 /* SocialCrawlTests */,
 				0FDAE40016CBD7E50046CBE5 /* Frameworks */,
@@ -429,6 +434,7 @@
 				0FDAE46116CBDC280046CBE5 /* barsForEvent.xml */,
 				0FDAE48516CBDC280046CBE5 /* events.xml */,
 				0FDAE48C16CBDC280046CBE5 /* eventxmlformat.xml */,
+				0FA18C3A17FE04AE00C7585B /* TestEvent.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -595,6 +601,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC3266C1816561100849B19 /* TutorialEvent.archive in Resources */,
 				0FDAE40C16CBD7E50046CBE5 /* InfoPlist.strings in Resources */,
 				0FDAE41816CBD7E50046CBE5 /* Default-568h@2x.png in Resources */,
 				0FDAE41B16CBD7E50046CBE5 /* MainStoryboard_iPhone.storyboard in Resources */,
@@ -607,6 +614,7 @@
 				0FDAE4B216CBDC280046CBE5 /* bulb_off_48.png in Resources */,
 				0FDAE4B316CBDC280046CBE5 /* bulb_off_64.png in Resources */,
 				0FDAE4B416CBDC280046CBE5 /* commentIcon.png in Resources */,
+				0FA18C3B17FE04AE00C7585B /* TestEvent.json in Resources */,
 				0FDAE4C016CBDC280046CBE5 /* events.xml in Resources */,
 				0FDAE4C416CBDC280046CBE5 /* eventxmlformat.xml in Resources */,
 				0FDAE4CA16CBDC280046CBE5 /* man_24.png in Resources */,
@@ -838,6 +846,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SocialCrawl\"",
@@ -862,6 +871,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialCrawl/SocialCrawl-Prefix.pch";
 				INFOPLIST_FILE = "SocialCrawl/SocialCrawl-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SocialCrawl\"",

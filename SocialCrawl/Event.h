@@ -17,11 +17,12 @@
 @property (nonatomic, copy) NSString *dateId;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *eventDescription;
 @property (nonatomic, strong) UIImage *eventImage;
-@property (nonatomic, getter = isPrivate) BOOL privacy;
+@property (nonatomic, copy) NSString *privacyType;
 @property (nonatomic, strong) NSArray *barsForEvent;
 @property (nonatomic, strong) NSArray *selectedFriends;
 
+- (NSDictionary *)serializeAsDictionary;
 - (BOOL)isPast;
 @end

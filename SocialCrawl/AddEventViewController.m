@@ -49,15 +49,107 @@
 
 - (IBAction)addFromFacebook:(id)sender
 {
-    SocialCrawlAppDelegate *appDelegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication]delegate];
-    if (!appDelegate.session.isOpen) {
-        appDelegate.session = [[FBSession alloc] init];
-        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
-                                                         FBSessionState status,
-                                                         NSError *error) {
-            [self.delegate addEventViewControllerDidSave:self];
-        }];
+    if (!FBSession.activeSession.isOpen) {
+        [FBSession openActiveSessionWithReadPermissions:nil
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session,
+                                                          FBSessionState state,
+                                                          NSError *error) {
+                                          if (error) {
+                                              UIAlertView *alertView =
+                                              [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                         message:error.localizedDescription
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil];
+                                              [alertView show];
+                                          } else if (session.isOpen) {
+                                              [self requestFbId];
+                                          }
+                                      }];
+        
+    } else {
+        [self.delegate addEventViewControllerDidSave:self];
     }
+}
+
+- (void)requestFbId
+{
+    SocialCrawlAppDelegate *appDelegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
+ 
+    if (!appDelegate.fbId && [FBSession activeSession].isOpen) {
+        // get id for /me
+        [FBRequestConnection startForMeWithCompletionHandler:
+         ^(FBRequestConnection *connection, id result, NSError *error) {
+             appDelegate.fbId = [result id];
+             [self.delegate addEventViewControllerDidSave:self];
+         }];
+
+    }
+}
+
+- (IBAction)testEventPressed:(id)sender
+{
+    [self getPublishPermissions];
+}
+
+- (void)getPublishPermissions
+{
+    // closed so open and request permissions
+    if (!FBSession.activeSession.isOpen) {
+        [FBSession openActiveSessionWithPublishPermissions:@[@"create_event"]
+                                           defaultAudience:FBSessionDefaultAudienceEveryone
+                                              allowLoginUI:YES
+                                         completionHandler:^(FBSession *session,
+                                                             FBSessionState state,
+                                                             NSError *error) {
+                                             if (error) {
+                                                 UIAlertView *alertView =
+                                                 [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                            message:error.localizedDescription
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"OK"
+                                                                  otherButtonTitles:nil];
+                                                 [alertView show];
+                                             } else if (session.isOpen) {
+                                                 [self sendMockObject];
+                                                 [self requestFbId];
+                                                 [self.delegate addEventViewControllerDidCancel:self];
+                                             }
+                                         }];
+        // open but no publishing permissions
+    } else if (![FBSession.activeSession.permissions containsObject:@"create_event"]) {
+            [[FBSession activeSession] requestNewPublishPermissions:@[@"create_event"]
+                                                    defaultAudience:FBSessionDefaultAudienceEveryone
+                                                  completionHandler:^(FBSession *session, NSError *error) {
+                                                      if (error) {
+                                                          UIAlertView *alertView =
+                                                          [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                     message:error.localizedDescription
+                                                                                    delegate:nil
+                                                                           cancelButtonTitle:@"OK"
+                                                                           otherButtonTitles:nil];
+                                                          [alertView show];
+                                                      } else if (session.isOpen) {
+                                                          [self sendMockObject];
+                                                          [self.delegate addEventViewControllerDidCancel:self];
+                                                      }
+                                                  }];
+        // open and permissions available
+    } else {
+        [self sendMockObject];
+        [self.delegate addEventViewControllerDidCancel:self];
+    }
+}
+
+- (void)sendMockObject
+{
+    // send mock object for testing
+    SocialCrawlAppDelegate *appDelegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSData *jsonData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TestEvent" ofType:@"json"]];
+    NSError *error = NULL;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+    [appDelegate sendAsJSON:dict];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

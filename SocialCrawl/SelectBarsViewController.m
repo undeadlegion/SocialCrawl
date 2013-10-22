@@ -231,10 +231,12 @@
             selectedSectionIndex = [self.selectedBars count];
         } else {
             NSCalendar *calendar = [NSCalendar currentCalendar];
-            NSDateComponents *firstTime = [[NSDateComponents alloc] init];
-            firstTime.hour = 19;
-            firstTime.minute = 0;
-            selectedBar.time = [calendar dateFromComponents:firstTime];
+            unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+            NSDateComponents *dateComps = [calendar components:unitFlags fromDate:self.createdEvent.date];
+            dateComps.hour = 19;
+            dateComps.minute = 0;
+            dateComps.second = 0;
+            selectedBar.time = [calendar dateFromComponents:dateComps];
             selectedSectionIndex = 0;
         }
         [self.otherBars removeObject:selectedBar];

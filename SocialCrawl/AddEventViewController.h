@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 
 @class AddEventViewController;
@@ -22,5 +23,6 @@
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
 - (IBAction)addFromFacebook:(id)sender;
+- (IBAction)testEventPressed:(id)sender;
 
 @end

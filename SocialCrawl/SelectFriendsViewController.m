@@ -54,12 +54,10 @@
 
 - (void)friendPickerViewControllerDataDidChange:(FBFriendPickerViewController *)friendPicker
 {
-    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)friendPickerViewControllerSelectionDidChange:(FBFriendPickerViewController *)friendPicker
 {
-    NSLog(@"%s", __FUNCTION__);
 }
 
 - (BOOL)friendPickerViewController:(FBFriendPickerViewController *)friendPicker
@@ -76,8 +74,6 @@
 
 - (IBAction)inviteFromFacebookSelected:(id)sender
 {
-    NSLog(@"%s", __FUNCTION__);
-
     if (!FBSession.activeSession.isOpen) {
         [FBSession openActiveSessionWithReadPermissions:nil
                                            allowLoginUI:YES
@@ -85,13 +81,15 @@
                                                           FBSessionState state,
                                                           NSError *error) {
                                           if (error) {
-                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                                  message:error.localizedDescription
-                                                                                                 delegate:nil
-                                                                                        cancelButtonTitle:@"OK"
-                                                                                        otherButtonTitles:nil];
+                                              UIAlertView *alertView =
+                                              [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                         message:error.localizedDescription
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil];
                                               [alertView show];
                                           } else if (session.isOpen) {
+                                              [self requestFbId];
                                               [self showFriendPicker];
                                           }
                                       }];
@@ -100,26 +98,40 @@
         [self showFriendPicker];
     }
 }
-
+- (void)requestFbId
+{
+    SocialCrawlAppDelegate *appDelegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (!appDelegate.fbId && [FBSession activeSession].isOpen) {
+        // get id for /me
+        [FBRequestConnection startForMeWithCompletionHandler:
+         ^(FBRequestConnection *connection, id result, NSError *error) {
+             appDelegate.fbId = [result id];
+         }];
+        
+    }
+}
 - (void)facebookViewControllerDoneWasPressed:(id)sender
 {
 }
 
 - (void)nextButtonPressed:(id)sender
 {
-    self.createdEvent.selectedFriends = self.friendPicker.selection;
+    NSMutableArray *friendIds = [[NSMutableArray alloc] init];
+    for (id<FBGraphUser> user in self.friendPicker.selection) {
+        [friendIds addObject:user.id];
+    }
+    self.createdEvent.selectedFriends = friendIds;
     [self performSegueWithIdentifier:@"SelectBars" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // added friends from facebook
-//    if ([sender isKindOfClass:[SelectFriendsViewController class]]) {
     if ([segue.identifier isEqualToString:@"SelectBars"]) {
         SelectBarsViewController *viewController = [segue destinationViewController];
         viewController.createdEvent = self.createdEvent;
     // skipped friend selection
-//    } else if ([sender isKindOfClass:[UIBarButtonItem class]]) {
     } else if ([segue.identifier isEqualToString:@"InviteContacts"]) {
         InviteContactFriendsViewController *viewController = [segue destinationViewController];
         viewController.createdEvent = self.createdEvent;

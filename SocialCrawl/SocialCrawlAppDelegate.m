@@ -23,86 +23,11 @@
 
 @implementation SocialCrawlAppDelegate
 
-#pragma mark - Utility Methods -
-
-- (NSOperation *)loadFromServer:(id)theData {
-    NSString *dataPath = @"";
-    DataFetcher *dataFetcher;
-    NSURL *serverURL = [NSURL URLWithString:serverString];
-    
-    if (![theData isKindOfClass:[NSDictionary class]]){
-        NSLog(@"Trying to load unknown data from server");
-        return nil;
-    }
-    if(![self isReachable]){
-        [self showAlert:@"Network Connection Unavailable" withTitle:@"Connection Error"];
-        return nil;
-    }
-    NSDictionary *data = (NSDictionary *) theData;
-    NSString *dataType = data[@"type"];
-    NSString *dataId = data[@"id"];
-
-    if ([dataType isEqualToString:@"barsforid"]) {
-        dataFetcher = [[BarsFetcher alloc] init];
-        dataPath = barsForIdRequestString;
-    }
-    if ([dataType isEqualToString:@"eventsforid"]) {
-        dataFetcher = [[EventsFetcher alloc] init];
-        dataPath = [eventsForIdRequestString stringByAppendingString:[@(kFacebookId) stringValue]];
-    }
-    if ([dataType isEqualToString:@"barsforevent"]) {
-        dataFetcher = [[BarsForEventFetcher alloc] init];
-        dataPath = [barsForEventRequestString stringByAppendingString:dataId];
-    }
-    if ([dataType isEqualToString:@"eventwithid"]) {
-        dataFetcher = [[EventsFetcher alloc] init];
-        dataPath = [eventWithIdRequestString stringByAppendingString:dataId];
-    }
-
-    
-    if (!useServer){
-        dataPath = [[NSBundle mainBundle] pathForResource:dataType ofType:@"xml"];
-    }
-    
-    // asynchronously load from server
-    __block NSDictionary *dataFromServer;
-    NSBlockOperation *theOp = [NSBlockOperation blockOperationWithBlock:^{
-        NSLog(@"Server:  %@ from server", dataType);
-        dataFromServer = [dataFetcher fetchDataFromPath:dataPath relativeTo:serverURL isURL:useServer];
-        NSLog(@"Server: Loaded %@ from server", dataType);
-    }];
-    // post completion notification on main thread
-    [theOp setCompletionBlock:^(void){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:dataType object:self userInfo:dataFromServer];
-        });
-    }];
-    return theOp;
-}
-
-- (void)barsFinishedLoading:(NSNotification *)notification {
-    self.barsDictionary = notification.userInfo;
-}
-
-- (BOOL)isReachable {
-    Reachability *r = [Reachability reachabilityWithHostName:reachabilityString];
-    NetworkStatus internetStatus = [r currentReachabilityStatus];
-    if(internetStatus == NotReachable) {
-        return NO;
-    }
-    return YES;
-}
-
-- (void) showAlert:(NSString*)pushmessage withTitle:(NSString*)title
-{
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:pushmessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
-}
 
 #pragma mark - App Delegate -
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#ifdef TESTING
+#ifdef DEBUG
 //    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     [TestFlight takeOff:@"4326d680-cde2-442e-86c9-28b7bd2027a9"];
@@ -182,7 +107,7 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"REGISTERED FOR PUSH");
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (void)application:(UIApplication *)application
@@ -191,7 +116,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    NSLog(@"REGISTRATION DID FAIL: %@", error);
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -202,31 +127,26 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     // attempt to extract a token from the url
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
-                        withSession:self.session];
+                        withSession:[FBSession activeSession]];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     NSLog(@"%s", __FUNCTION__);
     [FBAppEvents activateApp];
-    [FBAppCall handleDidBecomeActiveWithSession:self.session];
+    [FBAppCall handleDidBecomeActiveWithSession:[FBSession activeSession]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -237,6 +157,105 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"barsforid" object:nil];
+}
+
+
+#pragma mark - Utility Methods -
+- (NSOperation *)loadFromServer:(id)theData {
+    NSString *dataPath = @"";
+    DataFetcher *dataFetcher;
+    NSURL *serverURL = [NSURL URLWithString:serverString];
+    
+    if (![theData isKindOfClass:[NSDictionary class]]){
+        NSLog(@"Trying to load unknown data from server");
+        return nil;
+    }
+    if(![self isReachable]){
+        [self showAlert:@"Network Connection Unavailable" withTitle:@"Connection Error"];
+        return nil;
+    }
+    NSDictionary *data = (NSDictionary *) theData;
+    NSString *dataType = data[@"type"];
+    NSString *dataId = data[@"id"];
+    
+    if ([dataType isEqualToString:@"barsforid"]) {
+        dataFetcher = [[BarsFetcher alloc] init];
+        dataPath = barsForIdRequestString;
+    }
+    if ([dataType isEqualToString:@"eventsforid"]) {
+        dataFetcher = [[EventsFetcher alloc] init];
+        dataPath = [eventsForIdRequestString stringByAppendingString:[@(kFacebookId) stringValue]];
+    }
+    if ([dataType isEqualToString:@"barsforevent"]) {
+        dataFetcher = [[BarsForEventFetcher alloc] init];
+        dataPath = [barsForEventRequestString stringByAppendingString:dataId];
+    }
+    if ([dataType isEqualToString:@"eventwithid"]) {
+        dataFetcher = [[EventsFetcher alloc] init];
+        dataPath = [eventWithIdRequestString stringByAppendingString:dataId];
+    }
+    
+    
+    if (!useServer){
+        dataPath = [[NSBundle mainBundle] pathForResource:dataType ofType:@"xml"];
+    }
+    
+    // asynchronously load from server
+    __block NSDictionary *dataFromServer;
+    NSBlockOperation *theOp = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"Server:  %@ from server", dataType);
+        dataFromServer = [dataFetcher fetchDataFromPath:dataPath relativeTo:serverURL isURL:useServer];
+        NSLog(@"Server: Loaded %@ from server", dataType);
+    }];
+    // post completion notification on main thread
+    [theOp setCompletionBlock:^(void){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:dataType object:self userInfo:dataFromServer];
+        });
+    }];
+    return theOp;
+}
+
+- (void)createEvent:(Event *)event
+{
+    [self sendAsJSON:[event serializeAsDictionary]];
+}
+- (void)sendAsJSON:(NSDictionary *)jsonDict
+{
+    NSLog(@"JSON Dictionary: %@", jsonDict);
+
+    NSURL *serverURL = [NSURL URLWithString:serverString];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:serverURL];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *accessToken = FBSession.activeSession.accessTokenData.accessToken;
+    [manager.requestSerializer setAuthorizationHeaderFieldWithToken:accessToken];
+    manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    [manager POST:createEventString parameters:jsonDict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Success!");
+        NSLog(@"%@", task);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Failure");
+        NSLog(@"%@", error);
+    }];
+}
+- (void)barsFinishedLoading:(NSNotification *)notification {
+    self.barsDictionary = notification.userInfo;
+}
+
+- (BOOL)isReachable {
+    Reachability *r = [Reachability reachabilityWithHostName:reachabilityString];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void) showAlert:(NSString*)pushmessage withTitle:(NSString*)title
+{
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:pushmessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
 
 @end

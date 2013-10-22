@@ -9,8 +9,13 @@
 #import "Constants.h"
 
 NSString * const reachabilityString = @"www.google.com";
-//NSString * const serverString = @"http://crawlwith.me/";
-NSString * const serverString = @"http://jamie.local:8888/";
+
+#ifdef DEBUG
+    NSString * const serverString = @"http://jamie.local:8888/";
+#else
+    NSString * const serverString = @"http://crawlwith.me/";
+#endif
+NSString * const createEventString = @"DatabaseInteraction/DataRequest.php";
 NSString * const eventsForIdRequestString = @"DatabaseInteraction/DataRequest.php?type=eventsforid&id=";
 NSString * const eventWithIdRequestString = @"DatabaseInteraction/DataRequest.php?type=eventwithid&id=";
 NSString * const barsForIdRequestString = @"DatabaseInteraction/DataRequest.php?type=bars&id=12";

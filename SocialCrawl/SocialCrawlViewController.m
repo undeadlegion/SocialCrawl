@@ -10,6 +10,8 @@
 #import "EventSegmentsController.h"
 #import "Event.h"
 #import "EventsFetcher.h"
+#import "AddDetailsViewController.h"
+#import "SocialCrawlAppDelegate.h"
 
 @interface SocialCrawlViewController ()
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
@@ -22,7 +24,16 @@
     [super viewDidLoad];
     // register notification for when events finish loading
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"eventsforid" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"eventwithid" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventAdded:) name:@"eventwithid" object:nil];
+    
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hideTutorial"] || DEBUG) {
+        //add tutorial event
+        NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/TutorialEvent.archive"];
+        Event *tutorialEvent = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        tutorialEvent.date = [NSDate date];
+        [self.currentEvents addObject:tutorialEvent];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideTutorial"];
+    }
     [self.tableView reloadData];
 }
 
@@ -31,16 +42,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"eventsforid" object:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"AddEvent"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        AddEventViewController *addEventViewController = [[navigationController viewControllers] objectAtIndex:0];
-        addEventViewController.delegate = self;
-    }
-}
 #pragma mark - Date Methods
-
 - (void)sortEvents{
     self.pastEvents = [[NSMutableArray alloc] init];
     self.currentEvents = [[NSMutableArray alloc] init];
@@ -80,7 +82,9 @@
                 return @"A Week";
             if(days < 17)
                 return @"Two Weeks";
-            return @"A Few Weeks";
+            if(days < 29)
+                return @"A Few Weeks";
+            return @"A Month";
         }
         if(months == 1)
             return @"A Month";
@@ -121,14 +125,7 @@
     return _eventsList;
 }
 
-- (void)eventsListLoaded:(NSNotification *)notif {
-    self.eventsList = notif.userInfo;
-    [self sortEvents];
-    [self.tableView reloadData];
-}
-
 #pragma mark - Table view data source
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }
@@ -170,7 +167,6 @@
 }
 
 #pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     Event *selectedEvent;
@@ -184,7 +180,6 @@
 }
 
 #pragma mark - Add event view controller delegate
-
 - (void)addEventViewControllerDidCancel:(AddEventViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -192,11 +187,82 @@
 
 - (void)addEventViewControllerDidSave:(AddEventViewController *)controller
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self reloadEventsList];
+    }];
 }
 
+#pragma mark - Event loading
+- (void)reloadEventsList
+{
+    SocialCrawlAppDelegate *appDelegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
+    NSOperation *loadOperation = [appDelegate loadFromServer:@{@"type":@"eventsforid", @"id":appDelegate.fbId}];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    queue.name = @"Events Loader";
+    [queue addOperation:loadOperation];
+    
+    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progressHUD.labelText = @"Loading";
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+}
+
+- (void)eventsListLoaded:(NSNotification *)notif
+{
+    // update view with new list
+    self.eventsList = notif.userInfo;
+    [self sortEvents];
+    [self turnOffActivityIndicator];
+    [self.tableView reloadData];
+}
+
+- (void)eventAdded:(NSNotification *)notif
+{
+    // add event to list and update view
+    [self sortEvents];
+    [self turnOffActivityIndicator];
+    [self.tableView reloadData];
+}
+
+- (void)turnOffActivityIndicator
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AddEvent"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddEventViewController *addEventViewController = [[navigationController viewControllers] objectAtIndex:0];
+        addEventViewController.delegate = self;
+    }
+}
 - (IBAction)unwindToSocialCrawlViewController:(UIStoryboardSegue *)segue
 {
-    NSLog(@"Segue back to Socialcrawl!");
+    if ([segue.identifier isEqualToString:@"SaveCreatedEvent"]) {
+        AddDetailsViewController *viewController = [segue sourceViewController];
+        self.createdEvent = viewController.createdEvent;
+        SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate createEvent:self.createdEvent];
+
+        // save event to disk
+//        NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/TutorialEvent.archive"];
+//        [NSKeyedArchiver archiveRootObject:self.createdEvent toFile:path];
+//        NSLog(@"Event:%@", self.createdEvent);
+        
+        // insert into current events
+        int insertIndex = [self.currentEvents indexOfObject:self.createdEvent
+                                         inSortedRange:NSMakeRange(0, [self.currentEvents count])
+                                               options:NSBinarySearchingInsertionIndex
+                                       usingComparator:^(Event *event1, Event *event2){
+                                           return [event1.date compare:event2.date];
+                                       }];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:insertIndex inSection:kCurrentSection];
+        [self.currentEvents insertObject:self.createdEvent atIndex:insertIndex];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 @end

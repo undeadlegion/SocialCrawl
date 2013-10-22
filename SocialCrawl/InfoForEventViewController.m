@@ -69,7 +69,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == EVENT_DESCRIPTION) {
-        return 30+[self getMessageHeight:currentEvent.description];
+        return 30+[self getMessageHeight:currentEvent.eventDescription];
     }
     else
         return 45;
@@ -142,7 +142,7 @@
         
         case EVENT_DESCRIPTION:
             cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.textLabel.text = currentEvent.description;
+            cell.textLabel.text = currentEvent.eventDescription;
             cell.textLabel.font = [cell.textLabel.font fontWithSize:14];
             cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
             cell.textLabel.numberOfLines = 0;

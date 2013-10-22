@@ -27,9 +27,9 @@
         _dateId = [aDecoder decodeObjectForKey:@"dateId"];
         _date = [aDecoder  decodeObjectForKey:@"date"];
         _title = [aDecoder  decodeObjectForKey:@"title"];
-        _description = [aDecoder decodeObjectForKey:@"description"];
+        _eventDescription = [aDecoder decodeObjectForKey:@"eventDescription"];
         _eventImage = [aDecoder decodeObjectForKey:@"eventImage"];
-        _privacy = [aDecoder decodeBoolForKey:@"privacy"];
+        _privacyType = [aDecoder decodeObjectForKey:@"privacyType"];
         _barsForEvent = [aDecoder decodeObjectForKey:@"barsForEvent"];
         _selectedFriends = [aDecoder decodeObjectForKey:@"selectedFriends"];
     }
@@ -43,11 +43,62 @@
     [aCoder encodeObject:_dateId forKey:@"dateId"];
     [aCoder encodeObject:_date forKey:@"date"];
     [aCoder encodeObject:_title forKey:@"title"];
-    [aCoder encodeObject:_description forKey:@"description"];
+    [aCoder encodeObject:_eventDescription forKey:@"eventDescription"];
     [aCoder encodeObject:_eventImage forKey:@"eventImage"];
-    [aCoder encodeBool:_privacy forKey:@"privacy"];
+    [aCoder encodeObject:_privacyType forKey:@"privacyType"];
     [aCoder encodeObject:_barsForEvent forKey:@"barsForEvent"];
     [aCoder encodeObject:_selectedFriends forKey:@"selectedFriends"];
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _eventId = @"";
+        _creatorId = @"";
+        _dateId = @"";
+        _date = [NSDate date];
+        _title = @"";
+        _eventDescription = @"";
+        _eventImage = [[UIImage alloc] init];
+        _privacyType = kPrivacyTypePrivate;
+        _barsForEvent = [[NSArray alloc] init];
+        _selectedFriends = [[NSArray alloc] init];
+    }
+    return self;
+}
+
+- (NSDictionary *)serializeAsDictionary
+{
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+
+    NSMutableArray *keys = [[NSMutableArray alloc] init];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    [keys addObject:@"creator_id"];
+    [keys addObject:@"start_time"];
+    [keys addObject:@"name"];
+    [keys addObject:@"description"];
+    [keys addObject:@"privacy_type"];
+    [keys addObject:@"selected_bars"];
+    [keys addObject:@"invited_guests"];
+    [values addObject:self.creatorId];
+    [values addObject:[dateFormatter stringFromDate:self.date]];
+    [values addObject:self.title];
+    [values addObject:self.eventDescription];
+    [values addObject:self.privacyType];
+    
+    // serialize each bar
+    NSMutableArray *bars = [[NSMutableArray alloc] init];
+    [self.barsForEvent enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [bars addObject:[(BarForEvent *)obj serializeAsDictionary]];
+    }];
+    [values addObject:bars];
+    [values addObject:self.selectedFriends];
+
+    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 
 - (BOOL)isPast
@@ -66,4 +117,8 @@
     else return NO;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"[EventId:%@\nCreatorId:%@\nDateId:%@\nDate:%@\nTitle:%@\nDescription:%@\nPrivacyType:%@\nBarsForEvent:%@\nSelectedFriends%@]", self.eventId, self.creatorId, self.dateId, self.date, self.title, self.eventDescription, self.privacyType, self.barsForEvent, self.selectedFriends];
+}
 @end

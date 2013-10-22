@@ -1,5 +1,5 @@
 //
-//  InviteFriendsViewController.h
+//  InviteContactFriendsViewController.h
 //  SocialCrawl
 //
 //  Created by James Lubo on 8/26/13.

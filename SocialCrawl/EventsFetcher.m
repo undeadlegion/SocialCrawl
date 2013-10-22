@@ -15,8 +15,7 @@
     if((self = [super init])){
         serverURL = [[NSURL alloc] initWithString:serverString];
         dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//        [dateFormatter setLocale:[NSLocale currentLocale]];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     }
     return self;
@@ -56,15 +55,15 @@
         currentEvent.title = currentStringValue;
     }
     if([elementName isEqualToString:@"description"]){
-        currentEvent.description = currentStringValue;
+        currentEvent.eventDescription = currentStringValue;
     }
     if([elementName isEqualToString:@"picture"]){
         NSURL *imageURL = [NSURL URLWithString:currentStringValue relativeToURL:serverURL];
         NSData *data = [NSData dataWithContentsOfURL:imageURL];
         currentEvent.eventImage = [UIImage imageWithData:data];
     }
-    if([elementName isEqualToString:@"privacy"]){
-        currentEvent.privacy = [currentStringValue boolValue];
+    if([elementName isEqualToString:@"privacytype"]){
+        currentEvent.privacyType = currentStringValue;
     }
     
     currentStringValue = nil;

@@ -51,6 +51,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // tutorial event
+    if ([self.currentEvent.title isEqualToString:@"Example SocialCrawl"]) {
+        self.currentBars = [self.currentEvent.barsForEvent mutableCopy];
+        [self.tableView reloadData];
+        return;
+    }
     if (self.shouldReload) {
         SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
         NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"barsforevent", @"id":self.currentEvent.eventId}];

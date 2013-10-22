@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/Facebook.h>
 #import "AddEventViewController.h"
+#import "Event.h"
+
 @class EventSegmentsController;
 
 @interface SocialCrawlViewController : UITableViewController <AddEventViewControllerDelegate>
@@ -17,5 +20,6 @@
 @property (strong, nonatomic) NSMutableArray *pastEvents;
 @property (strong, nonatomic) NSDictionary *barsDictionary;
 @property (strong, nonatomic) NSDate *lastUpdated;
+@property (strong, nonatomic) Event *createdEvent;
 
 @end
