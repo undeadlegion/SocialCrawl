@@ -81,7 +81,7 @@ BOOL isResettingIndex;
     
     //change to the titles of the views
     self.viewToggle = [[UISegmentedControl alloc]
-                  initWithItems:[NSArray arrayWithObjects:@"Itenerary",
+                  initWithItems:[NSArray arrayWithObjects:@"Crawl",
                                  @"Info", @"Map", nil]];
     
     self.viewToggle.segmentedControlStyle = UISegmentedControlStyleBar;

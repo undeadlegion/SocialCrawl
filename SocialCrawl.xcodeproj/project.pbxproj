@@ -133,7 +133,7 @@
 		0FA4348D17F0E62700C1181B /* SelectFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectFriendsViewController.m; sourceTree = "<group>"; };
 		0FA5996017F7AB820079B3B9 /* SelectDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateViewController.h; sourceTree = "<group>"; };
 		0FA5996117F7AB820079B3B9 /* SelectDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateViewController.m; sourceTree = "<group>"; };
-		0FC3266B1816561100849B19 /* TutorialEvent.archive */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = TutorialEvent.archive; path = SocialCrawl/TutorialEvent.archive; sourceTree = "<group>"; };
+		0FC3266B1816561100849B19 /* TutorialEvent.archive */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TutorialEvent.archive; sourceTree = "<group>"; };
 		0FC9873516E8ED3E0067972A /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		0FC9873616E8ED3E0067972A /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		0FCCDB1917CC031500EF1C2E /* InviteContactFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteContactFriendsViewController.h; sourceTree = "<group>"; };
@@ -310,7 +310,6 @@
 		0FDAE3F516CBD7E50046CBE5 = {
 			isa = PBXGroup;
 			children = (
-				0FC3266B1816561100849B19 /* TutorialEvent.archive */,
 				0FDAE40716CBD7E50046CBE5 /* SocialCrawl */,
 				0FDAE43916CBD7E50046CBE5 /* SocialCrawlTests */,
 				0FDAE40016CBD7E50046CBE5 /* Frameworks */,
@@ -435,6 +434,7 @@
 				0FDAE48516CBDC280046CBE5 /* events.xml */,
 				0FDAE48C16CBDC280046CBE5 /* eventxmlformat.xml */,
 				0FA18C3A17FE04AE00C7585B /* TestEvent.json */,
+				0FC3266B1816561100849B19 /* TutorialEvent.archive */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

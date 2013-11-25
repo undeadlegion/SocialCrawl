@@ -25,15 +25,18 @@
     // register notification for when events finish loading
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"eventsforid" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventAdded:) name:@"eventwithid" object:nil];
-    
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hideTutorial"] || DEBUG) {
-        //add tutorial event
+#ifndef DEBUG
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hideTutorial"]) {
+#endif
+    //add tutorial event
         NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/TutorialEvent.archive"];
         Event *tutorialEvent = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
         tutorialEvent.date = [NSDate date];
         [self.currentEvents addObject:tutorialEvent];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideTutorial"];
+#ifndef DEBUG
     }
+#endif
     [self.tableView reloadData];
 }
 
@@ -152,7 +155,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarCrawlCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarCrawlCell" forIndexPath:indexPath];
 
     Event *cellEvent;
     if(indexPath.section == kCurrentSection)

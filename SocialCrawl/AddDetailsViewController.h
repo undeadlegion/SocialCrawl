@@ -12,9 +12,14 @@
 
 @interface AddDetailsViewController : UITableViewController
 @property (nonatomic, strong) Event *createdEvent;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UISwitch *privacyToggle;
-- (IBAction)doneButtonPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *privacyCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *descriptionCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *dateCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *datePickerCell;
+- (IBAction)dateChanged:(id)sender;
+
+- (IBAction)doneButtonPressed:(id)sender;
 @end

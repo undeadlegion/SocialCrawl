@@ -18,9 +18,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headerViewImage;
 @property (weak, nonatomic) IBOutlet UILabel *headerViewLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) BarForEvent *eventBar;
+@property (nonatomic, assign) BOOL shouldUnwindToSelectBars;
+@property (nonatomic, copy) NSDate *currentTime;
+
 - (IBAction)doneButtonPressed:(id)sender;
-- (CGFloat)getMessageHeight:(NSString *)text;
+- (IBAction)cancelButtonPressed:(id)sender;
+//- (CGFloat)getMessageHeight:(NSString *)text;
 
 @end

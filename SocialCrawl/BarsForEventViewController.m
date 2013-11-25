@@ -18,7 +18,7 @@
 
 @interface BarsForEventViewController ()
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
-@property (assign, nonatomic) BOOL shouldReload;
+@property (assign, nonatomic) BOOL shouldReloadBars;
 @end
 
 @implementation BarsForEventViewController
@@ -31,20 +31,25 @@
     }
     return _barsDictionary;
 }
-
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        [self.dateFormatter setDateFormat:@"h:mm a"];
+        [_dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    }
+    return _dateFormatter;
+}
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"h:mm a"];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsForEventFinishedLoading:) name:@"barsforevent" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"barsforid" object:nil];
 
-    self.shouldReload = YES;
+    self.shouldReloadBars = YES;
     self.serverURL = [[NSURL alloc] initWithString:serverString];
 }
 
@@ -57,7 +62,8 @@
         [self.tableView reloadData];
         return;
     }
-    if (self.shouldReload) {
+    // reload bars for event
+    if (self.shouldReloadBars) {
         SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
         NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"barsforevent", @"id":self.currentEvent.eventId}];
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -71,7 +77,7 @@
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
-    self.shouldReload = YES;
+    self.shouldReloadBars = YES;
     [super viewWillDisappear:animated];
 }
 - (void)dealloc
@@ -106,7 +112,7 @@
 - (IBAction)unwindToBarsForEvent:(UIStoryboardSegue *)segue
 {
     NSLog(@"BarsForEvent: Unwinding segue!");
-    self.shouldReload = NO;
+    self.shouldReloadBars = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -124,8 +130,10 @@
         if(indexPath.section == kPastSection)
             eventBar = [self.pastBars objectAtIndex:indexPath.row];
         
+        barInfoViewController.shouldUnwindToSelectBars = NO;
         barInfoViewController.currentBar = [self.barsDictionary objectForKey:eventBar.barId];
         barInfoViewController.currentDateId = self.currentEvent.dateId;
+        barInfoViewController.eventBar = eventBar;
     }
 }
 
@@ -159,7 +167,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarForEventCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarForEventCell" forIndexPath:indexPath];
     BarForEvent *barForEvent;
     
     if(indexPath.section == kCurrentSection){

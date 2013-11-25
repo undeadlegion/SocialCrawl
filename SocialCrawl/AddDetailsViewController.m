@@ -14,6 +14,7 @@
 
 @interface AddDetailsViewController ()
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, assign) BOOL pickerHidden;
 @end
 
 @implementation AddDetailsViewController
@@ -22,6 +23,8 @@
 {
     if (!_dateFormatter) {
         _dateFormatter = [[NSDateFormatter alloc] init];
+        [_dateFormatter setDateFormat:@"MM/dd/yy"];
+        [_dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     }
     return _dateFormatter;
 }
@@ -37,9 +40,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.dateFormatter setDateFormat:@"MM/dd/yy"];
-    [self.dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
-    self.dateLabel.text = [self.dateFormatter stringFromDate:self.createdEvent.date];
+
+    self.dateCell.detailTextLabel.text = [self.dateFormatter stringFromDate:self.createdEvent.date];
+    self.pickerHidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,7 +54,6 @@
     } else {
         self.privacyToggle.on = NO;
     }
-    self.dateLabel.text = [self.dateFormatter stringFromDate:self.createdEvent.date];
     self.textView.text = self.createdEvent.eventDescription;
 }
 
@@ -157,8 +159,69 @@
         }
     }
 }
+- (IBAction)dateChanged:(id)sender
+{
+    UIDatePicker *datePicker = (UIDatePicker *)sender;
+    self.createdEvent.date = datePicker.date;
+    self.dateCell.detailTextLabel.text = [self.dateFormatter stringFromDate:self.createdEvent.date];
+}
+
 - (IBAction)doneButtonPressed:(id)sender
 {
     [self getPublishPermissions];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == kDateSection && indexPath.row == kDatePickerRow) {
+        return kDatePickerRowHeight;
+    }
+    if (indexPath.section == kEventDescriptionSection) {
+        return self.descriptionCell.frame.size.height;
+    }
+    return tableView.rowHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == kDateSection && indexPath.row == kDateRow) {
+        self.pickerHidden = !self.pickerHidden;
+        NSIndexPath *pickerIndexPath = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section];
+        if (self.pickerHidden) {
+            [tableView deleteRowsAtIndexPaths:@[pickerIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        } else {
+            [tableView insertRowsAtIndexPaths:@[pickerIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView scrollToRowAtIndexPath:pickerIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == kDateSection) {
+        return (self.pickerHidden) ? 1 : 2;
+    }
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == kEventDescriptionSection) {
+        return self.descriptionCell;
+    }
+    if (indexPath.section == kPrivacySection) {
+        return self.privacyCell;
+    }
+    if (indexPath.section == kDateSection) {
+        if (indexPath.row == kDateRow) {
+            return self.dateCell;
+        } else {
+            UIDatePicker *datePicker = (UIDatePicker *)[self.datePickerCell viewWithTag:1];
+            datePicker.date = self.createdEvent.date;
+            return self.datePickerCell;
+        }
+    }
+    return nil;
 }
 @end
