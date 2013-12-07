@@ -21,9 +21,12 @@
 @property (weak, nonatomic) BarForEvent *eventBar;
 @property (nonatomic, assign) BOOL shouldUnwindToSelectBars;
 @property (nonatomic, copy) NSDate *currentTime;
+@property (nonatomic, assign) BOOL timeChanged;
 
 - (IBAction)doneButtonPressed:(id)sender;
 - (IBAction)cancelButtonPressed:(id)sender;
+- (BOOL)canEditEvent;
+
 //- (CGFloat)getMessageHeight:(NSString *)text;
 
 @end

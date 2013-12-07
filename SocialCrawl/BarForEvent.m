@@ -18,7 +18,6 @@
     if((self = [super init])){
         _barId = [aDecoder decodeObjectForKey:@"barId"];
         _time = [aDecoder decodeObjectForKey:@"time"];
-
     }
     return self;
 }
@@ -41,9 +40,11 @@
     [keys addObject:@"bar_id"];
     [keys addObject:@"location_id"];
     [keys addObject:@"start_time"];
+    [keys addObject:@"edited_time"];
     [values addObject:self.barId];
-    [values addObject:@(12)];
+    [values addObject:@(7)];
     [values addObject:[dateFormatter stringFromDate:self.time]];
+    [values addObject:[dateFormatter stringFromDate:self.editedTime]];
     
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }

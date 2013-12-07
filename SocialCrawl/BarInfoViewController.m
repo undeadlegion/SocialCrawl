@@ -10,6 +10,7 @@
 #import "Bar.h"
 #import "SelectBarsViewController.h"
 #import "BarForEvent.h"
+#import "SocialCrawlAppDelegate.h"
 
 static NSString *kBarInfoCell = @"barInfoCell";
 static NSString *kTimeCell = @"timeCell";
@@ -42,32 +43,49 @@ static NSString *kDatePickerCell = @"datePickerCell";
 
 #pragma mark - View lifecycle
 
+- (BOOL)canEditEvent
+{
+    SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if ([delegate.fbId isEqualToString:@"1153050430"]
+        || [delegate.fbId isEqualToString:@"754465610"]
+        || [delegate.fbId isEqualToString:@"100000835591326"]
+        || [delegate.fbId isEqualToString:@"502270177"]) {
+        return true;
+    }
+    return false;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"View DID load");
     self.headerViewImage.image = self.currentBar.detailedLogo;
     self.headerViewLabel.text = self.currentBar.name;
     self.title = self.currentBar.name;
     self.currentTime = self.eventBar.time;
-    if (self.shouldUnwindToSelectBars) {
+    if (self.shouldUnwindToSelectBars || [self canEditEvent]) {
         self.doneButton.title = @"Save";
     } else {
         self.doneButton.title = @"Done";
     }
+    self.timeChanged = NO;
 }
 
 - (IBAction)doneButtonPressed:(id)sender
 {
+    [TestFlight passCheckpoint:@"Pressed Done"];
     if (self.shouldUnwindToSelectBars) {
         self.eventBar.time = self.currentTime;
         [self performSegueWithIdentifier:@"unwindToSelectBarsSave" sender:self];
     } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        self.eventBar.editedTime = self.currentTime;
+        [self performSegueWithIdentifier:@"unwindToBarsForEventSave" sender:self];
     }
 }
 
 - (IBAction)cancelButtonPressed:(id)sender
 {
+    [TestFlight passCheckpoint:@"Pressed Cancel"];
     if (self.shouldUnwindToSelectBars) {
         [self performSegueWithIdentifier:@"unwindToSelectBarsCancel" sender:self];
     } else {
@@ -90,7 +108,7 @@ static NSString *kDatePickerCell = @"datePickerCell";
     if (section == kTimeSection)
         return (self.datePickerIndexPath == nil) ? 1 : 2;
     if (section == kSpecialsSection)
-        return 0;
+        return 1;
     if (section == kContactInfoSection)
         return 2;
     return 1;
@@ -100,6 +118,9 @@ static NSString *kDatePickerCell = @"datePickerCell";
 {
     if (indexPath.section == kTimeSection && indexPath.row == kDatePickerRow) {
         return kDatePickerRowHeight;
+    }
+    if (indexPath.section == kSpecialsSection && [self.currentBar.name isEqualToString:@"The Apartment"]) {
+        return 150;
     }
     return self.tableView.rowHeight;
 }
@@ -111,7 +132,6 @@ static NSString *kDatePickerCell = @"datePickerCell";
         return @"Specials";
     if(section == kContactInfoSection)
         return @"Contact Information";
-
     if(section == kDescriptionSection)
         return @"Description";
     return @"";
@@ -172,7 +192,10 @@ static NSString *kDatePickerCell = @"datePickerCell";
         }
     }
     if (indexPath.section == kSpecialsSection) {
-        cell.textLabel.text = [self.currentBar.specials objectForKey:self.currentDateId];
+        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        cell.textLabel.numberOfLines = 6;
+        
+        cell.textLabel.text = [self.eventBar.specials stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
     }
     if (indexPath.section == kContactInfoSection) {
         if (indexPath.row == kAddressRow) {
@@ -191,6 +214,7 @@ static NSString *kDatePickerCell = @"datePickerCell";
 
 - (void)toggleDatePickerCellAtIndexPath:(NSIndexPath *)indexPath
 {
+    [TestFlight passCheckpoint:@"Date Picker Toggled"];
     [self.tableView beginUpdates];
     
     if (self.datePickerIndexPath == nil) {
@@ -218,6 +242,7 @@ static NSString *kDatePickerCell = @"datePickerCell";
     UIDatePicker *datePicker = (UIDatePicker *)sender;
     timeCell.detailTextLabel.text = [self.dateFormatter stringFromDate:datePicker.date];
     self.currentTime = datePicker.date;
+    self.timeChanged = YES;
 }
 
 #pragma mark - Table view
@@ -226,6 +251,8 @@ static NSString *kDatePickerCell = @"datePickerCell";
 {
     if (indexPath.section == kTimeSection && indexPath.row == kTimeRow) {
         [self toggleDatePickerCellAtIndexPath:indexPath];
+    } else {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 @end

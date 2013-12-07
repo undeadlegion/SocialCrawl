@@ -18,14 +18,14 @@
 
 - (void)pressedEnter
 {
+    [TestFlight passCheckpoint:@"Pressed Enter"];
     SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
-    NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"eventwithid", @"id":self.eventId}];
+    NSOperation *loadOperation = [delegate loadFromServer:@{@"type":@"eventwithshortid", @"id":self.eventId}];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     queue.name = @"Events Loader";
     [queue addOperation:loadOperation];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(turnOffActivityIndicator:) name:@"eventwithid" object:nil];
     MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     progressHUD.labelText = @"Loading";
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -40,12 +40,13 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"eventwithid" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"eventwithshortid" object:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(turnOffActivityIndicator:) name:@"eventwithshortid" object:nil];
     self.textView.scrollEnabled = NO;
 }
 

@@ -17,7 +17,7 @@
 
 - (NSDictionary *)barsDictionary {
     if (!_barsDictionary) {
-        SocialCrawlAppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[UIApplication sharedApplication].delegate;
         _barsDictionary = delegate.barsDictionary;
     }
     return _barsDictionary;
@@ -28,13 +28,12 @@
 - (void)goToLocation{
     MKCoordinateRegion region;
     MKCoordinateSpan span;
-    span.latitudeDelta=0.007;
-    span.longitudeDelta=0.007;
+    span.latitudeDelta=0.150;
+    span.longitudeDelta=0.150;
     
-    //fourth and green
     CLLocationCoordinate2D location;
-    location.latitude = 40.1102662;
-    location.longitude = -88.2335352;
+    location.latitude = 41.975665;
+    location.longitude = -87.692008;
     region.span=span;
     region.center=location;
     
@@ -61,6 +60,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [TestFlight passCheckpoint:@"Viewing Map"];
     barAnnotations = [[NSMutableArray alloc] init];
     //add all annotations
     for (BarForEvent *barForEvent in self.currentEvent.barsForEvent) {
@@ -122,13 +122,13 @@
     UIButton *button = sender;
     UIView *calloutAccessoryView = button.superview;
     MKPinAnnotationView *pinView = (MKPinAnnotationView *)calloutAccessoryView.superview;
-    Bar *selectedBar = pinView.annotation;
+//    Bar *selectedBar = pinView.annotation;
     
-    BarInfoViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BarInfoViewController"];
-    detailViewController.currentBar = selectedBar;
-    detailViewController.currentDateId = self.currentEvent.dateId;
+//    BarInfoViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BarInfoViewController"];
+//    detailViewController.currentBar = selectedBar;
+//    detailViewController.currentDateId = self.currentEvent.dateId;
 
-    [self.navigationController pushViewController:detailViewController animated:YES];
+//    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 //    MKPlacemark *placemark = [MKPlacemark alloc] initWithCoordinate:<#(CLLocationCoordinate2D)#> addressDictionary:<#(NSDictionary *)#>

@@ -24,16 +24,16 @@
     [super viewDidLoad];
     // register notification for when events finish loading
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventsListLoaded:) name:@"eventsforid" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventAdded:) name:@"eventwithid" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventAdded:) name:@"eventwithshortid" object:nil];
 #ifndef DEBUG
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hideTutorial"]) {
 #endif
     //add tutorial event
-        NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/TutorialEvent.archive"];
-        Event *tutorialEvent = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-        tutorialEvent.date = [NSDate date];
-        [self.currentEvents addObject:tutorialEvent];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideTutorial"];
+//        NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/TutorialEvent.archive"];
+//        Event *tutorialEvent = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+//        tutorialEvent.date = [NSDate date];
+//        [self.currentEvents addObject:tutorialEvent];
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hideTutorial"];
 #ifndef DEBUG
     }
 #endif
@@ -166,12 +166,33 @@
     cell.textLabel.text = cellEvent.title;
     cell.detailTextLabel.text = [self fuzzyDateFromDate:cellEvent.date];
     
+    // image for blackout wednesday event
+    if ([cellEvent.title isEqualToString:@"Blackout Wednesday 2013"]) {
+        //image view resizing properties
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        cell.imageView.autoresizingMask = ( UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight );
+        
+        //scale the image
+        CGSize size = CGSizeMake(50, 50);
+        UIGraphicsBeginImageContext(size);
+        NSData *imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"blackout_wednesday" ofType:@"png"]];
+        UIImage *image = [UIImage imageWithData:imageData];
+        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        UIImage *newThumbnail = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        if(newThumbnail == nil)
+            NSLog(@"could not scale image");
+        cell.imageView.image = newThumbnail;
+
+    }
+    
     return cell;
 }
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    [TestFlight passCheckpoint:@"Event Selected"];
     Event *selectedEvent;
     if(indexPath.section == kCurrentSection)
         selectedEvent = [self.currentEvents objectAtIndex:indexPath.row];
@@ -223,6 +244,7 @@
 - (void)eventAdded:(NSNotification *)notif
 {
     // add event to list and update view
+    self.eventsList = notif.userInfo;
     [self sortEvents];
     [self turnOffActivityIndicator];
     [self.tableView reloadData];
@@ -238,6 +260,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"AddEvent"]) {
+        [TestFlight passCheckpoint:@"Add Event"];
         UINavigationController *navigationController = segue.destinationViewController;
         AddEventViewController *addEventViewController = [[navigationController viewControllers] objectAtIndex:0];
         addEventViewController.delegate = self;
@@ -248,8 +271,7 @@
     if ([segue.identifier isEqualToString:@"SaveCreatedEvent"]) {
         AddDetailsViewController *viewController = [segue sourceViewController];
         self.createdEvent = viewController.createdEvent;
-        SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
-        [delegate createEvent:self.createdEvent];
+
 
         // save event to disk
 //        NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/TutorialEvent.archive"];

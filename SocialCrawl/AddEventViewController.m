@@ -39,16 +39,23 @@
 
 - (IBAction)cancel:(id)sender
 {
+    [TestFlight passCheckpoint:@"Pressed Cancel"];
     [self.delegate addEventViewControllerDidCancel:self];
 }
 
 - (IBAction)done:(id)sender
 {
+    [TestFlight passCheckpoint:@"Pressed Done"];
     [self.delegate addEventViewControllerDidSave:self];
 }
 
 - (IBAction)addFromFacebook:(id)sender
 {
+    [TestFlight passCheckpoint:@"Add From Facebook"];
+    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progressHUD.labelText = @"Loading";
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
     if (!FBSession.activeSession.isOpen) {
         [FBSession openActiveSessionWithReadPermissions:nil
                                            allowLoginUI:YES
@@ -69,7 +76,7 @@
                                       }];
         
     } else {
-        [self.delegate addEventViewControllerDidSave:self];
+        [self requestFbId];
     }
 }
 
@@ -82,9 +89,15 @@
         [FBRequestConnection startForMeWithCompletionHandler:
          ^(FBRequestConnection *connection, id result, NSError *error) {
              appDelegate.fbId = [result id];
+             NSLog(@"FacebookId:%@", appDelegate.fbId);
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
              [self.delegate addEventViewControllerDidSave:self];
          }];
-
+    } else {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [self.delegate addEventViewControllerDidSave:self];
     }
 }
 
@@ -155,8 +168,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"EventName"]) {
+        [TestFlight passCheckpoint:@"Creating Event"];
         EventNameViewController *viewController = [segue destinationViewController];
         viewController.createdEvent = [[Event alloc] init];
+    }
+    if ([segue.identifier isEqualToString:@"AddWithId"]) {
+        [TestFlight passCheckpoint:@"Add Event with ID"];        
     }
 }
 @end

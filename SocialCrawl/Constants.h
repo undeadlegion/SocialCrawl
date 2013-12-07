@@ -51,7 +51,7 @@ extern NSString * const reachabilityString;
 extern NSString * const serverString;
 extern NSString * const createEventString;
 extern NSString * const eventsForIdRequestString;
-extern NSString * const eventWithIdRequestString;
+extern NSString * const eventWithShortIdRequestString;
 extern NSString * const publiceventsForIdRequestString;
 extern NSString * const barsForIdRequestString;
 extern NSString * const barsForEventRequestString;

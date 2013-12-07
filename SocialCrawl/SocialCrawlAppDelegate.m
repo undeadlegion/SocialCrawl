@@ -27,11 +27,8 @@
 #pragma mark - App Delegate -
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#ifdef DEBUG
-//    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
-    [TestFlight takeOff:@"4326d680-cde2-442e-86c9-28b7bd2027a9"];
 
+    [TestFlight takeOff:@"4326d680-cde2-442e-86c9-28b7bd2027a9"];
     (void)[[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_TP78-NOrHM"
                                                  withAppSecret:@"e319aea558bb46ec89e3d0328ab42b6f"
                                                   usingOptions:nil];
@@ -42,12 +39,14 @@
             NSLog(@"Kinvey Ping Failed");
         }
     }];
-    
-    NSLog(@"REGISTERING FOR NOTIFICATIONS");
+    [TestFlight passCheckpoint:@"Launched App"];
+    NSLog(@"Registering for remote notifications");
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"barsforid" object:nil];
 
+    
     // if logout is enabled - defaults to NO
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:[NSDictionary dictionaryWithObject:@"NO" forKey:@"Logout"]];
@@ -55,24 +54,31 @@
     if([defaults boolForKey:@"Logout"]){
         [defaults removeObjectForKey:@"Access Token"];
         [defaults removeObjectForKey:@"Expiration Date"];
-        [defaults removeObjectForKey:@"UserId"];
         [defaults setBool:NO forKey:@"Logout"];
         [defaults synchronize];
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(barsFinishedLoading:) name:@"barsforid" object:nil];
-
+    // set unique user id
+    if (![defaults stringForKey:@"UserId"]) {
+        NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        uuid = [uuid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        [defaults setValue:uuid forKey:@"UUID"];
+        [defaults synchronize];
+        self.userId = [defaults stringForKey:@"UUID"];
+        NSLog(@"UserId not loaded. Generating a new one:%@", self.userId);
+    } else {
+        self.userId = [defaults stringForKey:@"UUID"];
+        NSLog(@"UserId loaded from defaults:%@", self.userId);
+    }
+    
+    
     // load from server
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     queue.name = @"Loading Queue";
-    
     NSOperation *loadBars, *loadEvents;
     loadBars = [self loadFromServer:@{@"type":@"barsforid"}];
     [queue addOperation:loadBars];
 //    loadEvents = [self loadFromServer:@{@"type":@"eventsforid"}];
 //    [queue addOperation:loadEvents];
-
-    
     
     //check if opened by an notification
     UILocalNotification *notif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
@@ -177,22 +183,21 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     NSDictionary *data = (NSDictionary *) theData;
     NSString *dataType = data[@"type"];
     NSString *dataId = data[@"id"];
-    
     if ([dataType isEqualToString:@"barsforid"]) {
         dataFetcher = [[BarsFetcher alloc] init];
         dataPath = barsForIdRequestString;
     }
     if ([dataType isEqualToString:@"eventsforid"]) {
         dataFetcher = [[EventsFetcher alloc] init];
-        dataPath = [eventsForIdRequestString stringByAppendingString:[@(kFacebookId) stringValue]];
+        dataPath = [eventsForIdRequestString stringByAppendingFormat:@"%@&uid=%@", self.fbId, self.userId];
     }
     if ([dataType isEqualToString:@"barsforevent"]) {
         dataFetcher = [[BarsForEventFetcher alloc] init];
         dataPath = [barsForEventRequestString stringByAppendingString:dataId];
     }
-    if ([dataType isEqualToString:@"eventwithid"]) {
+    if ([dataType isEqualToString:@"eventwithshortid"]) {
         dataFetcher = [[EventsFetcher alloc] init];
-        dataPath = [eventWithIdRequestString stringByAppendingString:dataId];
+        dataPath = [eventWithShortIdRequestString stringByAppendingFormat:@"%@&uid=%@", dataId, self.userId];
     }
     
     
@@ -204,6 +209,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     __block NSDictionary *dataFromServer;
     NSBlockOperation *theOp = [NSBlockOperation blockOperationWithBlock:^{
         NSLog(@"Server:  %@ from server", dataType);
+        NSLog(@"\t%@%@", serverURL,dataPath);
         dataFromServer = [dataFetcher fetchDataFromPath:dataPath relativeTo:serverURL isURL:useServer];
         NSLog(@"Server: Loaded %@ from server", dataType);
     }];
@@ -219,6 +225,10 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 - (void)createEvent:(Event *)event
 {
     [self sendAsJSON:[event serializeAsDictionary]];
+}
+- (void)editEvent:(Event *)event
+{
+    [self sendAsJSON:[event serializeAsEditedDictionary]];
 }
 - (void)sendAsJSON:(NSDictionary *)jsonDict
 {

@@ -268,6 +268,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="headerViewLabel" destination="kzq-zH-tSe" id="Dam-xe-fgA"/>
                         <segue destination="n1X-UO-27C" kind="unwind" identifier="unwindToSelectBarsSave" unwindAction="unwindToSelectBarsSave:" id="C0u-cD-NVT"/>
                         <segue destination="n1X-UO-27C" kind="unwind" identifier="unwindToSelectBarsCancel" unwindAction="unwindToSelectBarsCancel:" id="coH-qZ-M9x"/>
+                        <segue destination="n1X-UO-27C" kind="unwind" identifier="unwindToBarsForEventSave" unwindAction="unwindToBarsForEventSave:" id="lLh-44-2lG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Swf-QT-SyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,8 +333,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tabBar>
                     <connections>
                         <segue destination="i1s-YV-evq" kind="relationship" relationship="viewControllers" id="lnF-41-AOe"/>
-                        <segue destination="xQp-6l-lwz" kind="relationship" relationship="viewControllers" id="vFn-zV-cbA"/>
-                        <segue destination="IjL-uy-zE7" kind="relationship" relationship="viewControllers" id="cFq-EX-Cc1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -426,12 +425,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-k8-HTI">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-k8-HTI">
                                 <rect key="frame" x="60" y="245" width="201" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="vBC-z0-wx5"/>
                                 </constraints>
-                                <state key="normal" title="Add With ID">
+                                <state key="normal" title="Use SocialCrawl ID">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -443,7 +442,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="nxZ-wj-aWz"/>
                                 </constraints>
-                                <state key="normal" title="Add From Facebook">
+                                <state key="normal" title="Use Facebook Invite">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -463,7 +462,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <segue destination="xqS-qU-cuP" kind="push" identifier="EventName" id="8Oq-7M-Uue"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emK-Rt-0KE">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emK-Rt-0KE">
                                 <rect key="frame" x="60" y="419" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Test Event">
@@ -665,8 +664,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRv-yZ-usD">
-                                <rect key="frame" x="60" y="154" width="200" height="79"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRv-yZ-usD">
+                                <rect key="frame" x="60" y="270" width="200" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="Teg-eL-s88"/>
@@ -680,7 +679,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUa-3J-wys">
-                                <rect key="frame" x="60" y="270" width="200" height="79"/>
+                                <rect key="frame" x="60" y="154" width="200" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="aV3-d2-cU1"/>
@@ -944,7 +943,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Set Name" id="SYW-mA-jer">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="yCs-w8-aoQ">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="yCs-w8-aoQ">
                             <connections>
                                 <segue destination="EYy-7t-jKo" kind="push" identifier="SelectFriends" id="q8a-Tm-AbZ"/>
                             </connections>
@@ -1262,7 +1261,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Bmo-ND-Gb9"/>
         <segue reference="aHZ-6o-Faf"/>
-        <segue reference="TKQ-VL-4b9"/>
     </inferredMetricsTieBreakers>
 </document>

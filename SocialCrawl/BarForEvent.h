@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy) NSString *barId;
 @property (nonatomic, copy) NSDate *time;
+@property (nonatomic, copy) NSDate *editedTime;
 @property (nonatomic, copy) NSString *specials;
 
 - (NSDictionary *)serializeAsDictionary;

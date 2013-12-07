@@ -56,6 +56,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [TestFlight passCheckpoint:@"Viewing Crawl"];
     // tutorial event
     if ([self.currentEvent.title isEqualToString:@"Example SocialCrawl"]) {
         self.currentBars = [self.currentEvent.barsForEvent mutableCopy];
@@ -109,16 +110,26 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)unwindToBarsForEvent:(UIStoryboardSegue *)segue
+- (IBAction)unwindToBarsForEventSave:(UIStoryboardSegue *)segue
 {
-    NSLog(@"BarsForEvent: Unwinding segue!");
+    NSLog(@"BarsForEvent: Unwinding segue");
     self.shouldReloadBars = NO;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    BarInfoViewController *barInfoViewController = segue.sourceViewController;
+    if (barInfoViewController.timeChanged && [barInfoViewController canEditEvent]) {
+        [TestFlight passCheckpoint:@"Event Time Edited"];
+        //send edits to server
+        SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+        self.currentEvent.editedBar =  barInfoViewController.eventBar;
+        [delegate editEvent:self.currentEvent];
+        self.shouldReloadBars = YES;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"BarInfo"]) {
+        [TestFlight passCheckpoint:@"Bar Selected"];
         UINavigationController *navigationController = segue.destinationViewController;
         BarInfoViewController *barInfoViewController = [[navigationController viewControllers] objectAtIndex:0];
         UITableViewCell *selectedCell = sender;
@@ -265,7 +276,6 @@
         //|| years != 0 || months != 0
         if(days < 0 || hours < 0)
             continue;
-        NSLog(@"OK");
         
         //it's the day of
         if(days == 0 || (days == 1 && hours == 0)){

@@ -48,11 +48,13 @@ BOOL isResettingIndex;
         isResettingIndex = NO;
         return;
     }
-        
+    [TestFlight passCheckpoint:@"Toggled Segment"];
+
     NSUInteger index = segmentedControl.selectedSegmentIndex;
     UIViewController *incomingViewController = [self.viewControllers objectAtIndex:index];
     incomingViewController.navigationItem.titleView = segmentedControl;
-    incomingViewController.navigationItem.prompt = @"View Event Details";
+//    incomingViewController.navigationItem.prompt = @"View Event Details";
+    incomingViewController.navigationItem.prompt = self.currentEvent.title;
     
     ((InfoForEventViewController *)incomingViewController).currentEvent = self.currentEvent;
     
@@ -68,7 +70,8 @@ BOOL isResettingIndex;
 
     BarsForEventViewController *firstViewController = (BarsForEventViewController *)[self.viewControllers objectAtIndex:self.viewToggle.selectedSegmentIndex];
     firstViewController.currentEvent = self.currentEvent;
-    firstViewController.navigationItem.prompt = @"View Event Details";
+//    firstViewController.navigationItem.prompt = @"View Event Details";
+    firstViewController.navigationItem.prompt = self.currentEvent.title;
     firstViewController.navigationItem.titleView = self.viewToggle;
     [self.navigationController pushViewController:firstViewController animated:YES];
 
@@ -81,8 +84,7 @@ BOOL isResettingIndex;
     
     //change to the titles of the views
     self.viewToggle = [[UISegmentedControl alloc]
-                  initWithItems:[NSArray arrayWithObjects:@"Crawl",
-                                 @"Info", @"Map", nil]];
+                  initWithItems:[NSArray arrayWithObjects:@"Crawl", @"Map", nil]];
     
     self.viewToggle.segmentedControlStyle = UISegmentedControlStyleBar;
     self.viewToggle.frame = CGRectMake(0, 0, 400, kCustomButtonHeight);
@@ -96,7 +98,7 @@ BOOL isResettingIndex;
     InfoForEventViewController *infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoForEventViewController"];
     MapForEventViewController *mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MapForEventViewController"];
     
-    self.viewControllers = [[NSArray alloc] initWithObjects:detailViewController,infoViewController, mapViewController,nil];
+    self.viewControllers = [[NSArray alloc] initWithObjects:detailViewController, mapViewController,nil];
     
 
 }

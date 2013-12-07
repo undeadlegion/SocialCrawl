@@ -60,7 +60,8 @@
         [textView resignFirstResponder];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        [self performSegueWithIdentifier:@"SelectFriends" sender:self];
+        [TestFlight passCheckpoint:@"Entered Name"];
+        //        [self performSegueWithIdentifier:@"SelectFriends" sender:self];
         return NO;
     }
     return YES;

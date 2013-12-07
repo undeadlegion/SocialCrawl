@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import <TestFlight.h>
 #import <KinveyKit/KinveyKit.h>
 #import <TouchJSON/CJSONSerializer.h>
 #import <TouchJSON/CJSONDeserializer.h>
@@ -23,11 +22,13 @@
 @property (strong, nonatomic) NSDictionary *barsDictionary;
 @property (strong, nonatomic) FBSession *session;
 @property (copy, nonatomic) NSString *fbId;
+@property (copy, nonatomic) NSString *userId;
 
 - (void)showAlert:(NSString*)pushmessage withTitle:(NSString*)title;
 - (BOOL)isReachable;
 - (NSOperation *)loadFromServer:(id)data;
 - (void)createEvent:(Event *)event;
+- (void)editEvent:(Event *)event;
 - (void)sendAsJSON:(NSDictionary *)jsonDict;
 
 @end

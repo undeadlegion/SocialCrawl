@@ -113,6 +113,10 @@
         // set creator id
         SocialCrawlAppDelegate *appDelegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
         self.createdEvent.creatorId = appDelegate.fbId;
+        
+        // create event on server
+        SocialCrawlAppDelegate *delegate = (SocialCrawlAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate createEvent:self.createdEvent];
     }
 }
 

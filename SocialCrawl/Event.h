@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @class BarForEvent;
-
 @interface Event : NSObject<NSCoding>
 
 @property (nonatomic, copy) NSString *eventId;
@@ -22,7 +21,8 @@
 @property (nonatomic, copy) NSString *privacyType;
 @property (nonatomic, strong) NSArray *barsForEvent;
 @property (nonatomic, strong) NSArray *selectedFriends;
-
+@property (nonatomic, strong) BarForEvent *editedBar;
 - (NSDictionary *)serializeAsDictionary;
+- (NSDictionary *)serializeAsEditedDictionary;
 - (BOOL)isPast;
 @end

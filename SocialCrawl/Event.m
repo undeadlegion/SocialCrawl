@@ -77,6 +77,7 @@
 
     NSMutableArray *keys = [[NSMutableArray alloc] init];
     NSMutableArray *values = [[NSMutableArray alloc] init];
+    [keys addObject:@"should_create"];
     [keys addObject:@"creator_id"];
     [keys addObject:@"start_time"];
     [keys addObject:@"name"];
@@ -84,6 +85,7 @@
     [keys addObject:@"privacy_type"];
     [keys addObject:@"selected_bars"];
     [keys addObject:@"invited_guests"];
+    [values addObject:@"NO"];
     [values addObject:self.creatorId];
     [values addObject:[dateFormatter stringFromDate:self.date]];
     [values addObject:self.title];
@@ -98,6 +100,37 @@
     [values addObject:bars];
     [values addObject:self.selectedFriends];
 
+    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
+}
+- (NSDictionary *)serializeAsEditedDictionary
+{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    
+    NSMutableArray *keys = [[NSMutableArray alloc] init];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    [keys addObject:@"should_create"];
+    [keys addObject:@"creator_id"];
+    [keys addObject:@"start_time"];
+    [keys addObject:@"name"];
+    [keys addObject:@"description"];
+    [keys addObject:@"privacy_type"];
+    [keys addObject:@"selected_bars"];
+    [keys addObject:@"invited_guests"];
+    [values addObject:@"NO"];
+    [values addObject:self.creatorId];
+    [values addObject:[dateFormatter stringFromDate:self.date]];
+    [values addObject:self.title];
+    [values addObject:self.eventDescription];
+    [values addObject:self.privacyType];
+    
+    NSMutableArray *bars = [[NSMutableArray alloc] init];
+    [bars addObject:[self.editedBar serializeAsDictionary]];
+    [values addObject:bars];
+    [values addObject:self.selectedFriends];
+    
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 

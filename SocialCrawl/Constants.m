@@ -17,8 +17,8 @@ NSString * const reachabilityString = @"www.google.com";
 #endif
 NSString * const createEventString = @"DatabaseInteraction/DataRequest.php";
 NSString * const eventsForIdRequestString = @"DatabaseInteraction/DataRequest.php?type=eventsforid&id=";
-NSString * const eventWithIdRequestString = @"DatabaseInteraction/DataRequest.php?type=eventwithid&id=";
-NSString * const barsForIdRequestString = @"DatabaseInteraction/DataRequest.php?type=bars&id=12";
+NSString * const eventWithShortIdRequestString = @"DatabaseInteraction/DataRequest.php?type=eventwithshortid&id=";
+NSString * const barsForIdRequestString = @"DatabaseInteraction/DataRequest.php?type=bars&id=7";
 NSString * const barsForEventRequestString = @"DatabaseInteraction/DataRequest.php?type=barsforevent&id=";
 NSString * const feedbackString = @"DatabaseInteraction/DataRequest.php?type=feedback&id=";
 BOOL useServer = YES;
