@@ -943,7 +943,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Set Name" id="SYW-mA-jer">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="yCs-w8-aoQ">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="yCs-w8-aoQ">
                             <connections>
                                 <segue destination="EYy-7t-jKo" kind="push" identifier="SelectFriends" id="q8a-Tm-AbZ"/>
                             </connections>
