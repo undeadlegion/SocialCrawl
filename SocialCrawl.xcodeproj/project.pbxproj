@@ -577,6 +577,11 @@
 				CLASSPREFIX = SocialCrawl;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = SocialCrawl;
+				TargetAttributes = {
+					0FDAE3FD16CBD7E50046CBE5 = {
+						DevelopmentTeam = 874P5ZR7JM;
+					};
+				};
 			};
 			buildConfigurationList = 0FDAE3F916CBD7E50046CBE5 /* Build configuration list for PBXProject "SocialCrawl" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -833,6 +838,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -847,6 +854,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -857,8 +865,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

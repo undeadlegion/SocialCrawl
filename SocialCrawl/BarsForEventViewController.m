@@ -169,9 +169,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == kCurrentSection)
-        return @"Current Bars";
+        return @"Current";
     if(section == kPastSection)
-        return @"Past Bars";
+        return @"Past";
     return @"";
 }
 

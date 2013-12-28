@@ -129,7 +129,7 @@ static NSString *kDatePickerCell = @"datePickerCell";
     if(section == kTimeSection)
         return @"Time";
     if(section == kSpecialsSection)
-        return @"Specials";
+        return @"Description";
     if(section == kContactInfoSection)
         return @"Contact Information";
     if(section == kDescriptionSection)
@@ -195,7 +195,8 @@ static NSString *kDatePickerCell = @"datePickerCell";
         cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         cell.textLabel.numberOfLines = 6;
         
-        cell.textLabel.text = [self.eventBar.specials stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
+//        cell.textLabel.text = [self.eventBar.specials stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
+        cell.textLabel.text = self.currentBar.description;
     }
     if (indexPath.section == kContactInfoSection) {
         if (indexPath.row == kAddressRow) {
